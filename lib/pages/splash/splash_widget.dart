@@ -80,7 +80,7 @@ class _SplashWidgetState extends State<SplashWidget>
             children: [
               Container(
                 width: double.infinity,
-                height: 844.0,
+                height: MediaQuery.of(context).size.height * 1.0,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).primaryBackground,
                 ),
