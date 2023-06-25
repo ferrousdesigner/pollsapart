@@ -79,7 +79,7 @@ class _SplashWidgetState extends State<SplashWidget>
             mainAxisSize: MainAxisSize.max,
             children: [
               Container(
-                width: 390.0,
+                width: double.infinity,
                 height: 844.0,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).primaryBackground,
