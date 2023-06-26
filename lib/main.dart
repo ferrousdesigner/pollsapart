@@ -130,8 +130,8 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'Feed': FeedWidget(),
-      'Search': SearchWidget(),
       'AddPoll': AddPollWidget(),
+      'Search': SearchWidget(),
       'Profile': ProfileWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
@@ -162,14 +162,14 @@ class _NavBarPageState extends State<NavBarPage> {
             iconSize: 24.0,
           ),
           GButton(
-            icon: Icons.search,
-            text: 'Search',
-            iconSize: 20.0,
-          ),
-          GButton(
             icon: Icons.add_circle_sharp,
             text: 'Add',
             iconSize: 30.0,
+          ),
+          GButton(
+            icon: Icons.search,
+            text: 'Search',
+            iconSize: 20.0,
           ),
           GButton(
             icon: Icons.person,
