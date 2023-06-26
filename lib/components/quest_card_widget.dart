@@ -404,33 +404,32 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                     Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        if (widget.canDelete == true)
-                          Builder(
-                            builder: (context) => Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 10.0, 0.0),
-                              child: FlutterFlowIconButton(
-                                borderRadius: 20.0,
-                                borderWidth: 1.0,
-                                buttonSize: 40.0,
-                                fillColor: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                icon: Icon(
-                                  Icons.ios_share,
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  size: 20.0,
-                                ),
-                                onPressed: () async {
-                                  await Share.share(
-                                    widget.docRef!.id,
-                                    sharePositionOrigin:
-                                        getWidgetBoundingBox(context),
-                                  );
-                                },
+                        Builder(
+                          builder: (context) => Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 10.0, 0.0),
+                            child: FlutterFlowIconButton(
+                              borderRadius: 20.0,
+                              borderWidth: 1.0,
+                              buttonSize: 40.0,
+                              fillColor: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                              icon: Icon(
+                                Icons.ios_share,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 20.0,
                               ),
+                              onPressed: () async {
+                                await Share.share(
+                                  widget.docRef!.id,
+                                  sharePositionOrigin:
+                                      getWidgetBoundingBox(context),
+                                );
+                              },
                             ),
                           ),
+                        ),
                         if (widget.canDelete == true)
                           FlutterFlowIconButton(
                             borderColor: Colors.transparent,
