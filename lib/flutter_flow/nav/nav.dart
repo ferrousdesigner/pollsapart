@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import '../flutter_flow_theme.dart';
@@ -404,9 +403,8 @@ class FFRoute {
                   child: SizedBox(
                     width: 50.0,
                     height: 50.0,
-                    child: SpinKitRipple(
+                    child: CircularProgressIndicator(
                       color: FlutterFlowTheme.of(context).primary,
-                      size: 50.0,
                     ),
                   ),
                 )

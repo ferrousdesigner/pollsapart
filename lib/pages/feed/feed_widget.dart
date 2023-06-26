@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -75,9 +74,8 @@ class _FeedWidgetState extends State<FeedWidget> {
                         child: SizedBox(
                           width: 50.0,
                           height: 50.0,
-                          child: SpinKitRipple(
+                          child: CircularProgressIndicator(
                             color: FlutterFlowTheme.of(context).primary,
-                            size: 50.0,
                           ),
                         ),
                       );

@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:provider/provider.dart';
@@ -60,9 +59,8 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
               child: SizedBox(
                 width: 50.0,
                 height: 50.0,
-                child: SpinKitRipple(
+                child: CircularProgressIndicator(
                   color: FlutterFlowTheme.of(context).primary,
-                  size: 50.0,
                 ),
               ),
             ),
@@ -457,10 +455,9 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                       child: SizedBox(
                                         width: 50.0,
                                         height: 50.0,
-                                        child: SpinKitRipple(
+                                        child: CircularProgressIndicator(
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
-                                          size: 50.0,
                                         ),
                                       ),
                                     );
