@@ -114,6 +114,7 @@ class _UpdateProfileWidgetState extends State<UpdateProfileWidget> {
                                   validateFileFormat(m.storagePath, context))) {
                             setState(() => _model.isDataUploading = true);
                             var selectedUploadedFiles = <FFUploadedFile>[];
+
                             var downloadUrls = <String>[];
                             try {
                               showUploadMessage(

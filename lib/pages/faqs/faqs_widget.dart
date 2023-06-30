@@ -99,7 +99,7 @@ class _FaqsWidgetState extends State<FaqsWidget> {
                                       ),
                                       collapsed: Container(
                                         width:
-                                            MediaQuery.of(context).size.width *
+                                            MediaQuery.sizeOf(context).width *
                                                 1.0,
                                         height: 40.0,
                                         decoration: BoxDecoration(
@@ -182,7 +182,7 @@ class _FaqsWidgetState extends State<FaqsWidget> {
                                       ),
                                       collapsed: Container(
                                         width:
-                                            MediaQuery.of(context).size.width *
+                                            MediaQuery.sizeOf(context).width *
                                                 1.0,
                                         height: 40.0,
                                         decoration: BoxDecoration(
@@ -265,7 +265,7 @@ class _FaqsWidgetState extends State<FaqsWidget> {
                                       ),
                                       collapsed: Container(
                                         width:
-                                            MediaQuery.of(context).size.width *
+                                            MediaQuery.sizeOf(context).width *
                                                 1.0,
                                         height: 40.0,
                                         decoration: BoxDecoration(
@@ -348,7 +348,7 @@ class _FaqsWidgetState extends State<FaqsWidget> {
                                       ),
                                       collapsed: Container(
                                         width:
-                                            MediaQuery.of(context).size.width *
+                                            MediaQuery.sizeOf(context).width *
                                                 1.0,
                                         height: 40.0,
                                         decoration: BoxDecoration(
@@ -431,7 +431,7 @@ class _FaqsWidgetState extends State<FaqsWidget> {
                                       ),
                                       collapsed: Container(
                                         width:
-                                            MediaQuery.of(context).size.width *
+                                            MediaQuery.sizeOf(context).width *
                                                 1.0,
                                         height: 40.0,
                                         decoration: BoxDecoration(

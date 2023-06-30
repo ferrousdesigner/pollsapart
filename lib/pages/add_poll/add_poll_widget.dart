@@ -115,7 +115,7 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                     children: [
                                       Container(
                                         width:
-                                            MediaQuery.of(context).size.width *
+                                            MediaQuery.sizeOf(context).width *
                                                 0.42,
                                         decoration: BoxDecoration(),
                                         child: Form(
@@ -162,6 +162,7 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                                   .isDataUploading1 = true);
                                               var selectedUploadedFiles =
                                                   <FFUploadedFile>[];
+
                                               var downloadUrls = <String>[];
                                               try {
                                                 selectedUploadedFiles =
@@ -229,10 +230,10 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                                     _model.uploadedFileUrl1,
                                                     'https://firebasestorage.googleapis.com/v0/b/binosophy.appspot.com/o/assets%2FPollsapart%20Default.png?alt=media&token=44294253-c963-4676-838a-9b08e98b0d08',
                                                   ),
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.42,
+                                                  width:
+                                                      MediaQuery.sizeOf(context)
+                                                              .width *
+                                                          0.42,
                                                   height: 150.0,
                                                   fit: BoxFit.cover,
                                                 ),
@@ -267,7 +268,7 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                     children: [
                                       Container(
                                         width:
-                                            MediaQuery.of(context).size.width *
+                                            MediaQuery.sizeOf(context).width *
                                                 0.42,
                                         decoration: BoxDecoration(),
                                         child: Form(
@@ -314,6 +315,7 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                                   .isDataUploading2 = true);
                                               var selectedUploadedFiles =
                                                   <FFUploadedFile>[];
+
                                               var downloadUrls = <String>[];
                                               try {
                                                 selectedUploadedFiles =
@@ -381,10 +383,10 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                                     _model.uploadedFileUrl2,
                                                     'https://firebasestorage.googleapis.com/v0/b/binosophy.appspot.com/o/assets%2FPollsapart%20Default.png?alt=media&token=44294253-c963-4676-838a-9b08e98b0d08',
                                                   ),
-                                                  width: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.42,
+                                                  width:
+                                                      MediaQuery.sizeOf(context)
+                                                              .width *
+                                                          0.42,
                                                   height: 150.0,
                                                   fit: BoxFit.cover,
                                                 ),

@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
+
 import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
@@ -194,4 +196,53 @@ Map<String, dynamic> createPollsRecordData({
   );
 
   return firestoreData;
+}
+
+class PollsRecordDocumentEquality implements Equality<PollsRecord> {
+  const PollsRecordDocumentEquality();
+
+  @override
+  bool equals(PollsRecord? e1, PollsRecord? e2) {
+    return e1?.createdAt == e2?.createdAt &&
+        e1?.modifiedAt == e2?.modifiedAt &&
+        e1?.question == e2?.question &&
+        e1?.optionOne == e2?.optionOne &&
+        e1?.optionTwo == e2?.optionTwo &&
+        e1?.optionOneImg == e2?.optionOneImg &&
+        e1?.optionTwoImg == e2?.optionTwoImg &&
+        e1?.optionOneCount == e2?.optionOneCount &&
+        e1?.optionTwoCount == e2?.optionTwoCount &&
+        e1?.createdBy == e2?.createdBy &&
+        e1?.isAnonymous == e2?.isAnonymous &&
+        e1?.upVotes == e2?.upVotes &&
+        e1?.isBanned == e2?.isBanned &&
+        e1?.reportAbusesCount == e2?.reportAbusesCount &&
+        e1?.isNsfw == e2?.isNsfw &&
+        e1?.isDeleted == e2?.isDeleted &&
+        e1?.category == e2?.category;
+  }
+
+  @override
+  int hash(PollsRecord? e) => const ListEquality().hash([
+        e?.createdAt,
+        e?.modifiedAt,
+        e?.question,
+        e?.optionOne,
+        e?.optionTwo,
+        e?.optionOneImg,
+        e?.optionTwoImg,
+        e?.optionOneCount,
+        e?.optionTwoCount,
+        e?.createdBy,
+        e?.isAnonymous,
+        e?.upVotes,
+        e?.isBanned,
+        e?.reportAbusesCount,
+        e?.isNsfw,
+        e?.isDeleted,
+        e?.category
+      ]);
+
+  @override
+  bool isValidKey(Object? o) => o is PollsRecord;
 }

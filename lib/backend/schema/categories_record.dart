@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
+
 import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
@@ -83,4 +85,22 @@ Map<String, dynamic> createCategoriesRecordData({
   );
 
   return firestoreData;
+}
+
+class CategoriesRecordDocumentEquality implements Equality<CategoriesRecord> {
+  const CategoriesRecordDocumentEquality();
+
+  @override
+  bool equals(CategoriesRecord? e1, CategoriesRecord? e2) {
+    return e1?.categoryName == e2?.categoryName &&
+        e1?.createdBy == e2?.createdBy &&
+        e1?.createdAt == e2?.createdAt;
+  }
+
+  @override
+  int hash(CategoriesRecord? e) =>
+      const ListEquality().hash([e?.categoryName, e?.createdBy, e?.createdAt]);
+
+  @override
+  bool isValidKey(Object? o) => o is CategoriesRecord;
 }

@@ -69,7 +69,7 @@ class _SplashWidgetState extends State<SplashWidget>
             children: [
               Container(
                 width: double.infinity,
-                height: MediaQuery.of(context).size.height * 1.0,
+                height: MediaQuery.sizeOf(context).height * 1.0,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).primaryBackground,
                 ),
@@ -86,7 +86,7 @@ class _SplashWidgetState extends State<SplashWidget>
                           borderRadius: BorderRadius.circular(0.0),
                           child: Image.asset(
                             'assets/images/Group_19.png',
-                            width: MediaQuery.of(context).size.width * 1.0,
+                            width: MediaQuery.sizeOf(context).width * 1.0,
                             height: 413.0,
                             fit: BoxFit.cover,
                           ),

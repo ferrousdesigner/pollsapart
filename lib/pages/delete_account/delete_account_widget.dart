@@ -108,7 +108,7 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                               ],
                               onChanged: (val) =>
                                   setState(() => _model.dropDownValue = val),
-                              width: MediaQuery.of(context).size.width * 1.0,
+                              width: MediaQuery.sizeOf(context).width * 1.0,
                               height: 50.0,
                               textStyle:
                                   FlutterFlowTheme.of(context).bodyMedium,

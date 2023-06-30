@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -104,7 +105,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
       padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 10.0),
       child: ClipRRect(
         child: Container(
-          width: MediaQuery.of(context).size.width * 1.0,
+          width: MediaQuery.sizeOf(context).width * 1.0,
           height: 280.0,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
@@ -128,7 +129,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 10.0, 10.0),
                     child: Container(
-                      width: MediaQuery.of(context).size.width * 0.85,
+                      width: MediaQuery.sizeOf(context).width * 0.85,
                       height: 50.0,
                       decoration: BoxDecoration(),
                       alignment: AlignmentDirectional(-1.0, 0.0),
@@ -212,7 +213,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                                 widget.optionOneImg,
                                 'https://firebasestorage.googleapis.com/v0/b/binosophy.appspot.com/o/assets%2FPollsapart%20Default.png?alt=media&token=44294253-c963-4676-838a-9b08e98b0d08',
                               ),
-                              width: MediaQuery.of(context).size.width * 0.35,
+                              width: MediaQuery.sizeOf(context).width * 0.35,
                               height: 100.0,
                               fit: BoxFit.cover,
                             ),
@@ -279,7 +280,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                                 widget.questionTwoImg,
                                 'https://firebasestorage.googleapis.com/v0/b/binosophy.appspot.com/o/assets%2FPollsapart%20Default.png?alt=media&token=44294253-c963-4676-838a-9b08e98b0d08',
                               ),
-                              width: MediaQuery.of(context).size.width * 0.35,
+                              width: MediaQuery.sizeOf(context).width * 0.35,
                               height: 100.0,
                               fit: BoxFit.cover,
                             ),
@@ -422,7 +423,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                               ),
                               onPressed: () async {
                                 await Share.share(
-                                  widget.docRef!.id,
+                                  functions.getPollLink(widget.docRef)!,
                                   sharePositionOrigin:
                                       getWidgetBoundingBox(context),
                                 );

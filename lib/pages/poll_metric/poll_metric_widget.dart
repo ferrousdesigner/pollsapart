@@ -128,8 +128,7 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                                   .optionOneImg,
                                               'https://firebasestorage.googleapis.com/v0/b/binosophy.appspot.com/o/assets%2FPollsapart%20Default.png?alt=media&token=44294253-c963-4676-838a-9b08e98b0d08',
                                             ),
-                                            width: MediaQuery.of(context)
-                                                    .size
+                                            width: MediaQuery.sizeOf(context)
                                                     .width *
                                                 0.4,
                                             height: 150.0,
@@ -221,8 +220,7 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                                   .optionTwoImg,
                                               'https://firebasestorage.googleapis.com/v0/b/binosophy.appspot.com/o/assets%2FPollsapart%20Default.png?alt=media&token=44294253-c963-4676-838a-9b08e98b0d08',
                                             ),
-                                            width: MediaQuery.of(context)
-                                                    .size
+                                            width: MediaQuery.sizeOf(context)
                                                     .width *
                                                 0.4,
                                             height: 150.0,

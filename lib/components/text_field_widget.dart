@@ -58,7 +58,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
         child: Container(
-          width: MediaQuery.of(context).size.width * 1.0,
+          width: MediaQuery.sizeOf(context).width * 1.0,
           child: TextFormField(
             controller: _model.textController,
             autofocus: true,

@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
+
 import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
@@ -183,4 +185,54 @@ Map<String, dynamic> createUsersRecordData({
   );
 
   return firestoreData;
+}
+
+class UsersRecordDocumentEquality implements Equality<UsersRecord> {
+  const UsersRecordDocumentEquality();
+
+  @override
+  bool equals(UsersRecord? e1, UsersRecord? e2) {
+    const listEquality = ListEquality();
+    return e1?.email == e2?.email &&
+        e1?.displayName == e2?.displayName &&
+        e1?.photoUrl == e2?.photoUrl &&
+        e1?.uid == e2?.uid &&
+        e1?.createdTime == e2?.createdTime &&
+        e1?.phoneNumber == e2?.phoneNumber &&
+        e1?.bio == e2?.bio &&
+        listEquality.equals(e1?.pollsCreated, e2?.pollsCreated) &&
+        listEquality.equals(e1?.pollsSaved, e2?.pollsSaved) &&
+        listEquality.equals(e1?.pollsAnswered, e2?.pollsAnswered) &&
+        listEquality.equals(e1?.pollsUpvoted, e2?.pollsUpvoted) &&
+        listEquality.equals(e1?.pollsDownvoted, e2?.pollsDownvoted) &&
+        listEquality.equals(e1?.pollsBanned, e2?.pollsBanned) &&
+        e1?.allowNsfw == e2?.allowNsfw &&
+        e1?.isDeleted == e2?.isDeleted &&
+        e1?.accountDeletionComment == e2?.accountDeletionComment &&
+        e1?.accountDeletionReason == e2?.accountDeletionReason;
+  }
+
+  @override
+  int hash(UsersRecord? e) => const ListEquality().hash([
+        e?.email,
+        e?.displayName,
+        e?.photoUrl,
+        e?.uid,
+        e?.createdTime,
+        e?.phoneNumber,
+        e?.bio,
+        e?.pollsCreated,
+        e?.pollsSaved,
+        e?.pollsAnswered,
+        e?.pollsUpvoted,
+        e?.pollsDownvoted,
+        e?.pollsBanned,
+        e?.allowNsfw,
+        e?.isDeleted,
+        e?.accountDeletionComment,
+        e?.accountDeletionReason
+      ]);
+
+  @override
+  bool isValidKey(Object? o) => o is UsersRecord;
 }
