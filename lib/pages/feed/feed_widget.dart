@@ -63,8 +63,6 @@ class _FeedWidgetState extends State<FeedWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
                 child: StreamBuilder<List<CategoriesRecord>>(
                   stream: queryCategoriesRecord(
-                    queryBuilder: (categoriesRecord) =>
-                        categoriesRecord.orderBy('created_at'),
                     limit: 20,
                   ),
                   builder: (context, snapshot) {
@@ -120,7 +118,10 @@ class _FeedWidgetState extends State<FeedWidget> {
                                     ),
                                 elevation: 0.0,
                                 borderSide: BorderSide(
-                                  color: Colors.transparent,
+                                  color: FFAppState().currentCategory ==
+                                          rowCategoriesRecord.categoryName
+                                      ? FlutterFlowTheme.of(context).primary
+                                      : Color(0x00000000),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(30.0),

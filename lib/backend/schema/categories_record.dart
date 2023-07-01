@@ -21,11 +21,6 @@ class CategoriesRecord extends FirestoreRecord {
   String get categoryName => _categoryName ?? '';
   bool hasCategoryName() => _categoryName != null;
 
-  // "created_by" field.
-  DocumentReference? _createdBy;
-  DocumentReference? get createdBy => _createdBy;
-  bool hasCreatedBy() => _createdBy != null;
-
   // "created_at" field.
   DateTime? _createdAt;
   DateTime? get createdAt => _createdAt;
@@ -33,7 +28,6 @@ class CategoriesRecord extends FirestoreRecord {
 
   void _initializeFields() {
     _categoryName = snapshotData['category_name'] as String?;
-    _createdBy = snapshotData['created_by'] as DocumentReference?;
     _createdAt = snapshotData['created_at'] as DateTime?;
   }
 
@@ -73,13 +67,11 @@ class CategoriesRecord extends FirestoreRecord {
 
 Map<String, dynamic> createCategoriesRecordData({
   String? categoryName,
-  DocumentReference? createdBy,
   DateTime? createdAt,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'category_name': categoryName,
-      'created_by': createdBy,
       'created_at': createdAt,
     }.withoutNulls,
   );
@@ -93,13 +85,12 @@ class CategoriesRecordDocumentEquality implements Equality<CategoriesRecord> {
   @override
   bool equals(CategoriesRecord? e1, CategoriesRecord? e2) {
     return e1?.categoryName == e2?.categoryName &&
-        e1?.createdBy == e2?.createdBy &&
         e1?.createdAt == e2?.createdAt;
   }
 
   @override
   int hash(CategoriesRecord? e) =>
-      const ListEquality().hash([e?.categoryName, e?.createdBy, e?.createdAt]);
+      const ListEquality().hash([e?.categoryName, e?.createdAt]);
 
   @override
   bool isValidKey(Object? o) => o is CategoriesRecord;
