@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'splash_model.dart';
@@ -97,8 +96,8 @@ class _SplashWidgetState extends State<SplashWidget>
                     Align(
                       alignment: AlignmentDirectional(-1.0, 0.0),
                       child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 0.0, 0.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            40.0, 20.0, 0.0, 0.0),
                         child: Text(
                           'Pollsapart',
                           style: FlutterFlowTheme.of(context)
@@ -127,79 +126,87 @@ class _SplashWidgetState extends State<SplashWidget>
                         ),
                       ),
                     ),
-                    Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            0.0, 20.0, 0.0, 10.0),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            GoRouter.of(context).prepareAuthEvent();
-                            final user =
-                                await authManager.signInWithGoogle(context);
-                            if (user == null) {
-                              return;
-                            }
-                            if (valueOrDefault<bool>(
-                                currentUserDocument?.isDeleted, false)) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Account deleted.  Please try a different emai.',
-                                    style: GoogleFonts.getFont(
-                                      'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                  ),
-                                  duration: Duration(milliseconds: 4000),
-                                  backgroundColor:
-                                      FlutterFlowTheme.of(context).secondary,
-                                ),
-                              );
-                              GoRouter.of(context).prepareAuthEvent();
-                              await authManager.signOut();
-                              GoRouter.of(context).clearRedirectLocation();
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    'Login successful',
-                                    style: GoogleFonts.getFont(
-                                      'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                  ),
-                                  duration: Duration(milliseconds: 4000),
-                                  backgroundColor:
-                                      FlutterFlowTheme.of(context).secondary,
-                                ),
-                              );
-
-                              context.goNamedAuth('Feed', context.mounted);
-                            }
-                          },
-                          text: 'Login with Google',
-                          icon: FaIcon(
-                            FontAwesomeIcons.google,
-                            size: 16.0,
-                          ),
-                          options: FFButtonOptions(
-                            width: 300.0,
-                            height: 50.0,
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 0.0),
+                      child: Container(
+                        width: double.infinity,
+                        height: 100.0,
+                        decoration: BoxDecoration(),
+                        child: Align(
+                          alignment: AlignmentDirectional(0.0, -1.0),
+                          child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
-                            textStyle: FlutterFlowTheme.of(context).bodySmall,
-                            elevation: 0.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
+                                0.0, 20.0, 0.0, 10.0),
+                            child: FFButtonWidget(
+                              onPressed: () async {
+                                GoRouter.of(context).prepareAuthEvent();
+                                final user =
+                                    await authManager.signInWithGoogle(context);
+                                if (user == null) {
+                                  return;
+                                }
+                                if (valueOrDefault<bool>(
+                                    currentUserDocument?.isDeleted, false)) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Account deleted.  Please try a different emai.',
+                                        style: GoogleFonts.getFont(
+                                          'Poppins',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondary,
+                                    ),
+                                  );
+                                  GoRouter.of(context).prepareAuthEvent();
+                                  await authManager.signOut();
+                                  GoRouter.of(context).clearRedirectLocation();
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        'Login successful',
+                                        style: GoogleFonts.getFont(
+                                          'Poppins',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                        ),
+                                      ),
+                                      duration: Duration(milliseconds: 4000),
+                                      backgroundColor:
+                                          FlutterFlowTheme.of(context)
+                                              .secondary,
+                                    ),
+                                  );
+
+                                  context.goNamedAuth('Feed', context.mounted);
+                                }
+                              },
+                              text: 'Login with Google',
+                              options: FFButtonOptions(
+                                width: double.infinity,
+                                height: 50.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context).primary,
+                                textStyle:
+                                    FlutterFlowTheme.of(context).bodySmall,
+                                elevation: 0.0,
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(30.0),
+                              ),
                             ),
-                            borderRadius: BorderRadius.circular(30.0),
                           ),
                         ),
                       ),

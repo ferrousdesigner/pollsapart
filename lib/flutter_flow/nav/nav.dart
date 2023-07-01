@@ -402,7 +402,7 @@ class FFRoute {
               ? Container(
                   color: Colors.transparent,
                   child: Image.asset(
-                    'assets/images/SPLASH_(1).png',
+                    'assets/images/SPLASH_(2).png',
                     fit: BoxFit.cover,
                   ),
                 )

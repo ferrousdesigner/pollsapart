@@ -222,20 +222,25 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                             alignment:
                                                 AlignmentDirectional(0.0, 0.0),
                                             children: [
-                                              ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(15.0),
-                                                child: Image.network(
-                                                  valueOrDefault<String>(
-                                                    _model.uploadedFileUrl1,
-                                                    'https://firebasestorage.googleapis.com/v0/b/binosophy.appspot.com/o/assets%2FPollsapart%20Default.png?alt=media&token=44294253-c963-4676-838a-9b08e98b0d08',
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15.0),
+                                                  child: Image.network(
+                                                    valueOrDefault<String>(
+                                                      _model.uploadedFileUrl1,
+                                                      'https://firebasestorage.googleapis.com/v0/b/binosophy.appspot.com/o/assets%2FPollsapart%20Default.png?alt=media&token=44294253-c963-4676-838a-9b08e98b0d08',
+                                                    ),
+                                                    width: MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        0.42,
+                                                    height: 150.0,
+                                                    fit: BoxFit.cover,
                                                   ),
-                                                  width:
-                                                      MediaQuery.sizeOf(context)
-                                                              .width *
-                                                          0.42,
-                                                  height: 150.0,
-                                                  fit: BoxFit.cover,
                                                 ),
                                               ),
                                               FlutterFlowIconButton(
@@ -418,8 +423,10 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                   ),
                                 ],
                               ),
-                              if (!_model.showAddCategoryForm!)
-                                StreamBuilder<List<CategoriesRecord>>(
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 20.0, 0.0, 0.0),
+                                child: StreamBuilder<List<CategoriesRecord>>(
                                   stream: queryCategoriesRecord(
                                     queryBuilder: (categoriesRecord) =>
                                         categoriesRecord.orderBy('created_at'),
@@ -480,6 +487,7 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                     );
                                   },
                                 ),
+                              ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 15.0, 0.0, 0.0),
