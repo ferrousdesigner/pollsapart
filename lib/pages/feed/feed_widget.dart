@@ -63,6 +63,8 @@ class _FeedWidgetState extends State<FeedWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
                 child: StreamBuilder<List<CategoriesRecord>>(
                   stream: queryCategoriesRecord(
+                    queryBuilder: (categoriesRecord) =>
+                        categoriesRecord.orderBy('category_name'),
                     limit: 20,
                   ),
                   builder: (context, snapshot) {
@@ -111,8 +113,11 @@ class _FeedWidgetState extends State<FeedWidget> {
                                     .titleSmall
                                     .override(
                                       fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
+                                      color: FFAppState().currentCategory ==
+                                              rowCategoriesRecord.categoryName
+                                          ? FlutterFlowTheme.of(context).primary
+                                          : FlutterFlowTheme.of(context)
+                                              .secondaryText,
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.w500,
                                     ),

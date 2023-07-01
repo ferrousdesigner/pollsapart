@@ -13,8 +13,8 @@ import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -23,15 +23,16 @@ class AddPollModel extends FlutterFlowModel {
 
   bool? showAddCategoryForm = true;
 
+  DocumentReference? selectedCategoryRef;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  final formKey6 = GlobalKey<FormState>();
-  final formKey3 = GlobalKey<FormState>();
-  final formKey1 = GlobalKey<FormState>();
-  final formKey4 = GlobalKey<FormState>();
   final formKey5 = GlobalKey<FormState>();
   final formKey2 = GlobalKey<FormState>();
+  final formKey1 = GlobalKey<FormState>();
+  final formKey3 = GlobalKey<FormState>();
+  final formKey4 = GlobalKey<FormState>();
   // Model for AppBar component.
   late AppBarModel appBarModel;
   // Model for TextFieldDouble component.
@@ -53,14 +54,14 @@ class AddPollModel extends FlutterFlowModel {
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
-  // Model for TextField component.
-  late TextFieldModel textFieldModel3;
   // State field(s) for Switch widget.
   bool? switchValue1;
   // State field(s) for Switch widget.
   bool? switchValue2;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   PollsRecord? pollCreated;
+  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
+  CategoriesRecord? chosenCategory;
 
   /// Initialization and disposal methods.
 
@@ -69,12 +70,10 @@ class AddPollModel extends FlutterFlowModel {
     textFieldDoubleModel = createModel(context, () => TextFieldDoubleModel());
     textFieldModel1 = createModel(context, () => TextFieldModel());
     textFieldModel2 = createModel(context, () => TextFieldModel());
-    textFieldModel3 = createModel(context, () => TextFieldModel());
 
-    textFieldDoubleModel.textControllerValidator = _formTextFieldValidator6;
-    textFieldModel1.textControllerValidator = _formTextFieldValidator3;
-    textFieldModel2.textControllerValidator = _formTextFieldValidator4;
-    textFieldModel3.textControllerValidator = _formTextFieldValidator2;
+    textFieldDoubleModel.textControllerValidator = _formTextFieldValidator5;
+    textFieldModel1.textControllerValidator = _formTextFieldValidator2;
+    textFieldModel2.textControllerValidator = _formTextFieldValidator3;
   }
 
   void dispose() {
@@ -83,14 +82,13 @@ class AddPollModel extends FlutterFlowModel {
     textFieldDoubleModel.dispose();
     textFieldModel1.dispose();
     textFieldModel2.dispose();
-    textFieldModel3.dispose();
   }
 
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
 
-  String? _formTextFieldValidator6(BuildContext context, String? val) {
+  String? _formTextFieldValidator5(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -100,6 +98,21 @@ class AddPollModel extends FlutterFlowModel {
     }
     if (val.length > 200) {
       return 'Maximum 200 characters allowed, currently ${val.length}.';
+    }
+
+    return null;
+  }
+
+  String? _formTextFieldValidator2(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    if (val.length < 2) {
+      return 'Requires at least 2 characters.';
+    }
+    if (val.length > 20) {
+      return 'Maximum 20 characters allowed, currently ${val.length}.';
     }
 
     return null;
@@ -117,38 +130,6 @@ class AddPollModel extends FlutterFlowModel {
       return 'Maximum 20 characters allowed, currently ${val.length}.';
     }
 
-    return null;
-  }
-
-  String? _formTextFieldValidator4(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Field is required';
-    }
-
-    if (val.length < 2) {
-      return 'Requires at least 2 characters.';
-    }
-    if (val.length > 20) {
-      return 'Maximum 20 characters allowed, currently ${val.length}.';
-    }
-
-    return null;
-  }
-
-  String? _formTextFieldValidator2(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Field is required';
-    }
-
-    if (val.length < 3) {
-      return 'Requires at least 3 characters.';
-    }
-    if (val.length > 20) {
-      return 'Maximum 20 characters allowed, currently ${val.length}.';
-    }
-    if (!RegExp('').hasMatch(val)) {
-      return 'Invalid text';
-    }
     return null;
   }
 }

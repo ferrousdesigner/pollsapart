@@ -148,12 +148,12 @@ class _NavBarPageState extends State<NavBarPage> {
         activeColor: FlutterFlowTheme.of(context).primary,
         tabBackgroundColor: FlutterFlowTheme.of(context).accent1,
         tabBorderRadius: 20.0,
-        tabMargin: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+        tabMargin: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 20.0),
         padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
         gap: 5.0,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         duration: Duration(milliseconds: 500),
-        haptic: false,
+        haptic: true,
         tabs: [
           GButton(
             icon: Icons.home_rounded,

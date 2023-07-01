@@ -26,9 +26,15 @@ class CategoriesRecord extends FirestoreRecord {
   DateTime? get createdAt => _createdAt;
   bool hasCreatedAt() => _createdAt != null;
 
+  // "polls_count" field.
+  int? _pollsCount;
+  int get pollsCount => _pollsCount ?? 0;
+  bool hasPollsCount() => _pollsCount != null;
+
   void _initializeFields() {
     _categoryName = snapshotData['category_name'] as String?;
     _createdAt = snapshotData['created_at'] as DateTime?;
+    _pollsCount = castToType<int>(snapshotData['polls_count']);
   }
 
   static CollectionReference get collection =>
@@ -68,11 +74,13 @@ class CategoriesRecord extends FirestoreRecord {
 Map<String, dynamic> createCategoriesRecordData({
   String? categoryName,
   DateTime? createdAt,
+  int? pollsCount,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'category_name': categoryName,
       'created_at': createdAt,
+      'polls_count': pollsCount,
     }.withoutNulls,
   );
 
@@ -85,12 +93,13 @@ class CategoriesRecordDocumentEquality implements Equality<CategoriesRecord> {
   @override
   bool equals(CategoriesRecord? e1, CategoriesRecord? e2) {
     return e1?.categoryName == e2?.categoryName &&
-        e1?.createdAt == e2?.createdAt;
+        e1?.createdAt == e2?.createdAt &&
+        e1?.pollsCount == e2?.pollsCount;
   }
 
   @override
   int hash(CategoriesRecord? e) =>
-      const ListEquality().hash([e?.categoryName, e?.createdAt]);
+      const ListEquality().hash([e?.categoryName, e?.createdAt, e?.pollsCount]);
 
   @override
   bool isValidKey(Object? o) => o is CategoriesRecord;

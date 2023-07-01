@@ -13,8 +13,8 @@ import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'add_poll_model.dart';
@@ -93,7 +93,7 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                 ),
                               ),
                               Form(
-                                key: _model.formKey6,
+                                key: _model.formKey5,
                                 autovalidateMode: AutovalidateMode.always,
                                 child: wrapWithModel(
                                   model: _model.textFieldDoubleModel,
@@ -119,7 +119,7 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                                 0.42,
                                         decoration: BoxDecoration(),
                                         child: Form(
-                                          key: _model.formKey3,
+                                          key: _model.formKey2,
                                           autovalidateMode:
                                               AutovalidateMode.always,
                                           child: wrapWithModel(
@@ -272,7 +272,7 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                                 0.42,
                                         decoration: BoxDecoration(),
                                         child: Form(
-                                          key: _model.formKey4,
+                                          key: _model.formKey3,
                                           autovalidateMode:
                                               AutovalidateMode.always,
                                           child: wrapWithModel(
@@ -289,7 +289,7 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                         ),
                                       ),
                                       Form(
-                                        key: _model.formKey5,
+                                        key: _model.formKey4,
                                         autovalidateMode:
                                             AutovalidateMode.always,
                                         child: InkWell(
@@ -458,7 +458,7 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                               .labelMedium,
                                       textStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium,
-                                      hintText: 'Please choose a category',
+                                      hintText: 'Please choose a topic',
                                       searchHintText: 'Search for category',
                                       icon: Icon(
                                         Icons.keyboard_arrow_down_rounded,
@@ -479,68 +479,6 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                       isSearchable: true,
                                     );
                                   },
-                                ),
-                              Form(
-                                key: _model.formKey2,
-                                autovalidateMode: AutovalidateMode.always,
-                                child: Visibility(
-                                  visible: _model.showAddCategoryForm ?? true,
-                                  child: wrapWithModel(
-                                    model: _model.textFieldModel3,
-                                    updateCallback: () => setState(() {}),
-                                    child: TextFieldWidget(
-                                      hint: 'Example: Automobiles',
-                                      label: 'New category',
-                                      isDisabled: false,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              if (!_model.showAddCategoryForm!)
-                                Align(
-                                  alignment: AlignmentDirectional(-1.0, 0.0),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 10.0, 0.0, 0.0),
-                                    child: FFButtonWidget(
-                                      onPressed: () async {
-                                        setState(() {
-                                          _model.showAddCategoryForm = true;
-                                        });
-                                      },
-                                      text: 'Add another category',
-                                      icon: FaIcon(
-                                        FontAwesomeIcons.plus,
-                                        size: 16.0,
-                                      ),
-                                      options: FFButtonOptions(
-                                        height: 40.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            24.0, 0.0, 24.0, 0.0),
-                                        iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                0.0, 0.0, 0.0, 0.0),
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              fontSize: 14.0,
-                                              fontWeight: FontWeight.normal,
-                                            ),
-                                        borderSide: BorderSide(
-                                          color: Colors.transparent,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(30.0),
-                                      ),
-                                    ),
-                                  ),
                                 ),
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
@@ -704,13 +642,18 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                   onPressed: !((_model.textFieldDoubleModel
                                                       .textController.text !=
                                                   null &&
-                                              _model.textFieldDoubleModel
+                                              _model.textFieldDoubleModel.textController
+                                                      .text !=
+                                                  '') &&
+                                          (_model.textFieldModel1.textController
+                                                      .text !=
+                                                  null &&
+                                              _model.textFieldModel1
                                                       .textController.text !=
                                                   '') &&
-                                          (_model.textFieldModel1.textController.text != null &&
-                                              _model.textFieldModel1.textController.text !=
-                                                  '') &&
-                                          (_model.textFieldModel2.textController.text != null &&
+                                          (_model.textFieldModel2.textController
+                                                      .text !=
+                                                  null &&
                                               _model.textFieldModel2
                                                       .textController.text !=
                                                   '') &&
@@ -718,18 +661,8 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                               _model.uploadedFileUrl1 != '') &&
                                           (_model.uploadedFileUrl2 != null &&
                                               _model.uploadedFileUrl2 != '') &&
-                                          ((_model.dropDownValue != null &&
-                                                  _model.dropDownValue != '') ||
-                                              (_model
-                                                          .textFieldModel3
-                                                          .textController
-                                                          .text !=
-                                                      null &&
-                                                  _model
-                                                          .textFieldModel3
-                                                          .textController
-                                                          .text !=
-                                                      '')))
+                                          (_model.dropDownValue != null &&
+                                              _model.dropDownValue != ''))
                                       ? null
                                       : () async {
                                           var pollsRecordReference =
@@ -758,8 +691,7 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                             isNsfw: _model.switchValue2,
                                             isBanned: false,
                                             reportAbusesCount: 0,
-                                            category: _model.textFieldModel3
-                                                .textController.text,
+                                            category: _model.dropDownValue,
                                           ));
                                           _model.pollCreated =
                                               PollsRecord.getDocumentFromData(
@@ -794,10 +726,8 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                                     isNsfw: _model.switchValue2,
                                                     isBanned: false,
                                                     reportAbusesCount: 0,
-                                                    category: _model
-                                                        .textFieldModel3
-                                                        .textController
-                                                        .text,
+                                                    category:
+                                                        _model.dropDownValue,
                                                   ),
                                                   pollsRecordReference);
 
@@ -806,6 +736,21 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                                 FieldValue.arrayUnion([
                                               _model.pollCreated!.reference
                                             ]),
+                                          });
+                                          _model.chosenCategory =
+                                              await queryCategoriesRecordOnce(
+                                            queryBuilder: (categoriesRecord) =>
+                                                categoriesRecord.where(
+                                                    'category_name',
+                                                    isEqualTo:
+                                                        _model.dropDownValue),
+                                            singleRecord: true,
+                                          ).then((s) => s.firstOrNull);
+
+                                          await _model.chosenCategory!.reference
+                                              .update({
+                                            'polls_count':
+                                                FieldValue.increment(1),
                                           });
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
