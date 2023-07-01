@@ -292,6 +292,20 @@ class _UpdateProfileWidgetState extends State<UpdateProfileWidget> {
                                 _model.textFieldDoubleModel.textController.text,
                             allowNsfw: _model.switchValue,
                           ));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Profile updated!',
+                                style: TextStyle(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                              ),
+                              duration: Duration(milliseconds: 4000),
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).secondary,
+                            ),
+                          );
 
                           context.pushNamed('Feed');
                         },
