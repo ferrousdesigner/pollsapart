@@ -423,7 +423,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                               ),
                               onPressed: () async {
                                 await Share.share(
-                                  functions.getPollLink(widget.docRef)!,
+                                  functions.getPollLink(widget.docRef!.id)!,
                                   sharePositionOrigin:
                                       getWidgetBoundingBox(context),
                                 );

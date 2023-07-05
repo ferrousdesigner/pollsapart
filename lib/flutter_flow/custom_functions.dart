@@ -38,8 +38,7 @@ bool? canShowPoll(
   return true;
 }
 
-String? getPollLink(DocumentReference? docRef) {
-  String docLink = docRef.toString();
-  String finalLink = 'poll' + docLink;
+String? getPollLink(String docID) {
+  String finalLink = 'poll/' + docID;
   return finalLink;
 }

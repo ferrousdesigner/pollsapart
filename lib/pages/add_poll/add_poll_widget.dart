@@ -101,7 +101,6 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                   child: TextFieldDoubleWidget(
                                     hint: 'Which operating system is better?',
                                     label: 'Question',
-                                    value: 'Which operating system is better?',
                                   ),
                                 ),
                               ),
@@ -129,7 +128,6 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                             child: TextFieldWidget(
                                               hint: 'iOS',
                                               label: 'Option A',
-                                              value: 'iOS',
                                               isDisabled: false,
                                             ),
                                           ),
@@ -287,7 +285,6 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                             child: TextFieldWidget(
                                               hint: 'Android',
                                               label: 'Option B',
-                                              value: 'Android',
                                               isDisabled: false,
                                             ),
                                           ),
@@ -429,7 +426,8 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                 child: StreamBuilder<List<CategoriesRecord>>(
                                   stream: queryCategoriesRecord(
                                     queryBuilder: (categoriesRecord) =>
-                                        categoriesRecord.orderBy('created_at'),
+                                        categoriesRecord
+                                            .orderBy('category_name'),
                                     limit: 20,
                                   ),
                                   builder: (context, snapshot) {
