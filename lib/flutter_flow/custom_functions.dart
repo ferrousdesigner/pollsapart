@@ -39,7 +39,7 @@ bool? canShowPoll(
 }
 
 String? getPollLink(String docID) {
-  String finalLink = 'poll/' + docID;
+  String finalLink = 'pollsapart://pollapart/poll/' + docID;
   return finalLink;
 }
 

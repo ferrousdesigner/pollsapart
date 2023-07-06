@@ -37,7 +37,7 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>pollsapart.com</string>
+        <string>pollsapart</string>
         <key>CFBundleURLSchemes</key>
         <array>
         <string>pollsapart</string>
