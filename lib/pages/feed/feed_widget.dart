@@ -2,9 +2,10 @@ import '/backend/backend.dart';
 import '/components/app_bar_widget.dart';
 import '/components/newest_polls_widget.dart';
 import '/components/trending_polls_widget.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -60,12 +61,11 @@ class _FeedWidgetState extends State<FeedWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
-                child: StreamBuilder<List<CategoriesRecord>>(
-                  stream: queryCategoriesRecord(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 10.0),
+                child: FutureBuilder<List<CategoriesRecord>>(
+                  future: queryCategoriesRecordOnce(
                     queryBuilder: (categoriesRecord) =>
                         categoriesRecord.orderBy('category_name'),
-                    limit: 20,
                   ),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.
@@ -80,61 +80,44 @@ class _FeedWidgetState extends State<FeedWidget> {
                         ),
                       );
                     }
-                    List<CategoriesRecord> rowCategoriesRecordList =
+                    List<CategoriesRecord> dropDownCategoriesRecordList =
                         snapshot.data!;
-                    return SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: List.generate(rowCategoriesRecordList.length,
-                            (rowIndex) {
-                          final rowCategoriesRecord =
-                              rowCategoriesRecordList[rowIndex];
-                          return Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 10.0, 0.0),
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                setState(() {
-                                  FFAppState().currentCategory =
-                                      rowCategoriesRecord.categoryName;
-                                });
-                              },
-                              text: rowCategoriesRecord.categoryName,
-                              options: FFButtonOptions(
-                                height: 40.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    24.0, 0.0, 24.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: FFAppState().currentCategory ==
-                                              rowCategoriesRecord.categoryName
-                                          ? FlutterFlowTheme.of(context).primary
-                                          : FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                      fontSize: 14.0,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                elevation: 0.0,
-                                borderSide: BorderSide(
-                                  color: FFAppState().currentCategory ==
-                                          rowCategoriesRecord.categoryName
-                                      ? FlutterFlowTheme.of(context).primary
-                                      : Color(0x00000000),
-                                  width: 1.0,
-                                ),
-                                borderRadius: BorderRadius.circular(30.0),
-                              ),
-                            ),
-                          );
-                        }),
+                    return FlutterFlowDropDown<String>(
+                      controller: _model.dropDownValueController ??=
+                          FormFieldController<String>(
+                        _model.dropDownValue ??= 'AI',
                       ),
+                      options: dropDownCategoriesRecordList
+                          .map((e) => e.categoryName)
+                          .toList(),
+                      onChanged: (val) async {
+                        setState(() => _model.dropDownValue = val);
+                        setState(() {
+                          FFAppState().currentCategory = _model.dropDownValue!;
+                        });
+                      },
+                      width: MediaQuery.sizeOf(context).width * 0.92,
+                      height: 50.0,
+                      searchHintTextStyle:
+                          FlutterFlowTheme.of(context).labelMedium,
+                      textStyle: FlutterFlowTheme.of(context).bodyMedium,
+                      hintText: 'Please select...',
+                      searchHintText: 'Search for a topic',
+                      icon: Icon(
+                        Icons.keyboard_arrow_down_rounded,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        size: 24.0,
+                      ),
+                      fillColor:
+                          FlutterFlowTheme.of(context).secondaryBackground,
+                      elevation: 2.0,
+                      borderColor: FlutterFlowTheme.of(context).alternate,
+                      borderWidth: 2.0,
+                      borderRadius: 12.0,
+                      margin:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 4.0, 16.0, 4.0),
+                      hidesUnderline: true,
+                      isSearchable: true,
                     );
                   },
                 ),

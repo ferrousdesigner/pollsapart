@@ -758,7 +758,7 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                               style: TextStyle(
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .primaryText,
+                                                        .secondaryBackground,
                                               ),
                                             ),
                                             duration:

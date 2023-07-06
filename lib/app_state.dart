@@ -27,7 +27,7 @@ class FFAppState extends ChangeNotifier {
 
   late SharedPreferences prefs;
 
-  String _currentCategory = '';
+  String _currentCategory = 'AI';
   String get currentCategory => _currentCategory;
   set currentCategory(String _value) {
     _currentCategory = _value;
