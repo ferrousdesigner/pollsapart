@@ -69,7 +69,7 @@ class _AddPollWidgetState extends State<AddPollWidget> {
               ),
               Container(
                 width: double.infinity,
-                height: 753.0,
+                height: 682.0,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
@@ -264,6 +264,15 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                           ),
                                         ),
                                       ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 5.0, 0.0, 0.0),
+                                        child: Text(
+                                          'Option A Image',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                        ),
+                                      ),
                                     ],
                                   ),
                                   Column(
@@ -414,6 +423,15 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                               ),
                                             ],
                                           ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 5.0, 0.0, 0.0),
+                                        child: Text(
+                                          'Option B Image',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
                                         ),
                                       ),
                                     ],
