@@ -35,6 +35,8 @@ class _ButtonPrimaryWidgetState extends State<ButtonPrimaryWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ButtonPrimaryModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

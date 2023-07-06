@@ -39,6 +39,10 @@ class _UpdateProfileWidgetState extends State<UpdateProfileWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => UpdateProfileModel());
+
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'UpdateProfile'});
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -101,6 +105,9 @@ class _UpdateProfileWidgetState extends State<UpdateProfileWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent(
+                              'UPDATE_PROFILE_Stack_0p40v4p8_ON_TAP');
+                          logFirebaseEvent('Stack_upload_media_to_firebase');
                           final selectedMedia =
                               await selectMediaWithSourceBottomSheet(
                             context: context,
@@ -162,6 +169,8 @@ class _UpdateProfileWidgetState extends State<UpdateProfileWidget> {
                               return;
                             }
                           }
+
+                          logFirebaseEvent('Stack_backend_call');
 
                           await currentUserReference!
                               .update(createUsersRecordData(
@@ -284,6 +293,10 @@ class _UpdateProfileWidgetState extends State<UpdateProfileWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () async {
+                          logFirebaseEvent(
+                              'UPDATE_PROFILE_PAGE_SAVE_BTN_ON_TAP');
+                          logFirebaseEvent('Button_backend_call');
+
                           await currentUserReference!
                               .update(createUsersRecordData(
                             displayName:
@@ -292,6 +305,7 @@ class _UpdateProfileWidgetState extends State<UpdateProfileWidget> {
                                 _model.textFieldDoubleModel.textController.text,
                             allowNsfw: _model.switchValue,
                           ));
+                          logFirebaseEvent('Button_show_snack_bar');
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
@@ -306,6 +320,7 @@ class _UpdateProfileWidgetState extends State<UpdateProfileWidget> {
                                   FlutterFlowTheme.of(context).secondary,
                             ),
                           );
+                          logFirebaseEvent('Button_navigate_to');
 
                           context.pushNamed('Feed');
                         },
@@ -336,6 +351,9 @@ class _UpdateProfileWidgetState extends State<UpdateProfileWidget> {
                           child: AuthUserStreamWidget(
                             builder: (context) => FFButtonWidget(
                               onPressed: () async {
+                                logFirebaseEvent(
+                                    'UPDATE_PROFILE_PAGE_BACK_BTN_ON_TAP');
+                                logFirebaseEvent('Button_navigate_back');
                                 context.safePop();
                               },
                               text: 'Back',

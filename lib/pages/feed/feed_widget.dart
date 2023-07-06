@@ -29,6 +29,9 @@ class _FeedWidgetState extends State<FeedWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => FeedModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Feed'});
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -92,6 +95,9 @@ class _FeedWidgetState extends State<FeedWidget> {
                           .toList(),
                       onChanged: (val) async {
                         setState(() => _model.dropDownValue = val);
+                        logFirebaseEvent(
+                            'FEED_DropDown_8q3rxfaj_ON_FORM_WIDGET_SE');
+                        logFirebaseEvent('DropDown_update_app_state');
                         setState(() {
                           FFAppState().currentCategory = _model.dropDownValue!;
                         });

@@ -33,6 +33,10 @@ class _PublicProfileWidgetState extends State<PublicProfileWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PublicProfileModel());
+
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'PublicProfile'});
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

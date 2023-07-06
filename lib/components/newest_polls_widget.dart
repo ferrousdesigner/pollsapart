@@ -33,6 +33,8 @@ class _NewestPollsWidgetState extends State<NewestPollsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => NewestPollsModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -139,6 +141,10 @@ class _NewestPollsWidgetState extends State<NewestPollsWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onDoubleTap: () async {
+                    logFirebaseEvent(
+                        'NEWEST_POLLS_Container_lrr16w5x_ON_DOUBL');
+                    logFirebaseEvent('QuestCard_backend_call');
+
                     await currentUserReference!.update(createUsersRecordData(
                       email: '',
                     ));

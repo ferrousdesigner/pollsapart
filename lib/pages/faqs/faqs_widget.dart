@@ -25,6 +25,9 @@ class _FaqsWidgetState extends State<FaqsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => FaqsModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Faqs'});
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -495,6 +498,8 @@ class _FaqsWidgetState extends State<FaqsWidget> {
                               0.0, 20.0, 0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
+                              logFirebaseEvent('FAQS_PAGE_BACK_BTN_ON_TAP');
+                              logFirebaseEvent('Button_navigate_back');
                               context.safePop();
                             },
                             text: 'Back',

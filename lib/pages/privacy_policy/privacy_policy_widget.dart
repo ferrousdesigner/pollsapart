@@ -24,6 +24,10 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PrivacyPolicyModel());
+
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'PrivacyPolicy'});
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -225,6 +229,9 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
                                   ),
                                   FFButtonWidget(
                                     onPressed: () async {
+                                      logFirebaseEvent(
+                                          'PRIVACY_POLICY_PAGE_BACK_BTN_ON_TAP');
+                                      logFirebaseEvent('Button_navigate_back');
                                       context.safePop();
                                     },
                                     text: 'Back',

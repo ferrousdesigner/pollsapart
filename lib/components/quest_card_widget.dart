@@ -88,6 +88,8 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => QuestCardModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -154,8 +156,12 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      logFirebaseEvent(
+                          'QUEST_CARD_COMP_Column_jurxan94_ON_TAP');
                       if ((currentUserDocument?.pollsAnswered?.toList() ?? [])
                           .contains(widget.docRef)) {
+                        logFirebaseEvent('Column_navigate_to');
+
                         context.pushNamed(
                           'PollMetric',
                           queryParameters: {
@@ -166,17 +172,21 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                           }.withoutNulls,
                         );
                       } else {
+                        logFirebaseEvent('Column_backend_call');
+
                         await widget.docRef!.update({
                           ...createPollsRecordData(
                             modifiedAt: getCurrentTimestamp,
                           ),
                           'option_one_count': FieldValue.increment(1),
                         });
+                        logFirebaseEvent('Column_backend_call');
 
                         await currentUserReference!.update({
                           'polls_answered':
                               FieldValue.arrayUnion([widget.docRef]),
                         });
+                        logFirebaseEvent('Column_navigate_to');
 
                         context.pushNamed(
                           'PollMetric',
@@ -229,8 +239,12 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
+                      logFirebaseEvent(
+                          'QUEST_CARD_COMP_Column_5flxclom_ON_TAP');
                       if ((currentUserDocument?.pollsAnswered?.toList() ?? [])
                           .contains(widget.docRef)) {
+                        logFirebaseEvent('Column_navigate_to');
+
                         context.pushNamed(
                           'PollMetric',
                           queryParameters: {
@@ -241,17 +255,21 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                           }.withoutNulls,
                         );
                       } else {
+                        logFirebaseEvent('Column_backend_call');
+
                         await widget.docRef!.update({
                           ...createPollsRecordData(
                             modifiedAt: getCurrentTimestamp,
                           ),
                           'option_two_count': FieldValue.increment(1),
                         });
+                        logFirebaseEvent('Column_backend_call');
 
                         await currentUserReference!.update({
                           'polls_answered':
                               FieldValue.arrayUnion([widget.docRef]),
                         });
+                        logFirebaseEvent('Column_navigate_to');
 
                         context.pushNamed('Profile');
                       }
@@ -318,22 +336,30 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                                 size: 24.0,
                               ),
                               onPressed: () async {
+                                logFirebaseEvent(
+                                    'QUEST_CARD_keyboard_arrow_down_outlined_');
                                 if ((currentUserDocument?.pollsDownvoted
                                             ?.toList() ??
                                         [])
                                     .contains(widget.docRef)) {
+                                  logFirebaseEvent('IconButton_backend_call');
+
                                   await widget.docRef!.update({
                                     'up_votes': FieldValue.increment(1),
                                   });
+                                  logFirebaseEvent('IconButton_backend_call');
 
                                   await currentUserReference!.update({
                                     'polls_downvoted':
                                         FieldValue.arrayRemove([widget.docRef]),
                                   });
                                 } else {
+                                  logFirebaseEvent('IconButton_backend_call');
+
                                   await widget.docRef!.update({
                                     'up_votes': FieldValue.increment(-(1)),
                                   });
+                                  logFirebaseEvent('IconButton_backend_call');
 
                                   await currentUserReference!.update({
                                     'polls_downvoted':
@@ -373,22 +399,30 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                                   size: 24.0,
                                 ),
                                 onPressed: () async {
+                                  logFirebaseEvent(
+                                      'QUEST_CARD_keyboard_arrow_up_sharp_ICN_O');
                                   if (!(currentUserDocument?.pollsUpvoted
                                               ?.toList() ??
                                           [])
                                       .contains(widget.docRef)) {
+                                    logFirebaseEvent('IconButton_backend_call');
+
                                     await widget.docRef!.update({
                                       'up_votes': FieldValue.increment(1),
                                     });
+                                    logFirebaseEvent('IconButton_backend_call');
 
                                     await currentUserReference!.update({
                                       'polls_upvoted': FieldValue.arrayUnion(
                                           [widget.docRef]),
                                     });
                                   } else {
+                                    logFirebaseEvent('IconButton_backend_call');
+
                                     await widget.docRef!.update({
                                       'up_votes': FieldValue.increment(-(1)),
                                     });
+                                    logFirebaseEvent('IconButton_backend_call');
 
                                     await currentUserReference!.update({
                                       'polls_upvoted': FieldValue.arrayRemove(
@@ -405,32 +439,36 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                     Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Builder(
-                          builder: (context) => Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 10.0, 0.0),
-                            child: FlutterFlowIconButton(
-                              borderRadius: 20.0,
-                              borderWidth: 1.0,
-                              buttonSize: 40.0,
-                              fillColor: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
-                              icon: Icon(
-                                Icons.ios_share,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 20.0,
+                        if (!isWeb)
+                          Builder(
+                            builder: (context) => Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 10.0, 0.0),
+                              child: FlutterFlowIconButton(
+                                borderRadius: 20.0,
+                                borderWidth: 1.0,
+                                buttonSize: 40.0,
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                icon: Icon(
+                                  Icons.ios_share,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  size: 20.0,
+                                ),
+                                onPressed: () async {
+                                  logFirebaseEvent(
+                                      'QUEST_CARD_COMP_ios_share_ICN_ON_TAP');
+                                  logFirebaseEvent('IconButton_share');
+                                  await Share.share(
+                                    functions.getPollLink(widget.docRef!.id)!,
+                                    sharePositionOrigin:
+                                        getWidgetBoundingBox(context),
+                                  );
+                                },
                               ),
-                              onPressed: () async {
-                                await Share.share(
-                                  functions.getPollLink(widget.docRef!.id)!,
-                                  sharePositionOrigin:
-                                      getWidgetBoundingBox(context),
-                                );
-                              },
                             ),
                           ),
-                        ),
                         if (widget.canDelete == true)
                           FlutterFlowIconButton(
                             borderColor: Colors.transparent,
@@ -445,14 +483,20 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                               size: 20.0,
                             ),
                             onPressed: () async {
+                              logFirebaseEvent(
+                                  'QUEST_CARD_COMP_delete_ICN_ON_TAP');
+                              logFirebaseEvent('IconButton_backend_call');
+
                               await widget.docRef!.update(createPollsRecordData(
                                 isDeleted: true,
                               ));
+                              logFirebaseEvent('IconButton_backend_call');
 
                               await currentUserReference!.update({
                                 'polls_created':
                                     FieldValue.arrayRemove([widget.docRef]),
                               });
+                              logFirebaseEvent('IconButton_show_snack_bar');
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(

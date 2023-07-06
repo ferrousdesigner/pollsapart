@@ -26,6 +26,9 @@ class _LoginWidgetState extends State<LoginWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => LoginModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Login'});
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -132,6 +135,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                                                 highlightColor:
                                                     Colors.transparent,
                                                 onTap: () async {
+                                                  logFirebaseEvent(
+                                                      'LOGIN_PAGE_Text_wjbz07no_ON_TAP');
+                                                  logFirebaseEvent(
+                                                      'Text_navigate_to');
+
                                                   context.pushNamed('Terms');
                                                 },
                                                 child: Text(
@@ -177,6 +185,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                                                 highlightColor:
                                                     Colors.transparent,
                                                 onTap: () async {
+                                                  logFirebaseEvent(
+                                                      'LOGIN_PAGE_Text_6zynrcnc_ON_TAP');
+                                                  logFirebaseEvent(
+                                                      'Text_navigate_to');
+
                                                   context.pushNamed(
                                                       'PrivacyPolicy');
                                                 },
@@ -208,6 +221,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       0.0, 20.0, 0.0, 10.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
+                                      logFirebaseEvent(
+                                          'LOGIN_PAGE_LOGIN_WITH_GOOGLE_BTN_ON_TAP');
+                                      logFirebaseEvent('Button_auth');
                                       GoRouter.of(context).prepareAuthEvent();
                                       final user = await authManager
                                           .signInWithGoogle(context);
@@ -217,6 +233,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       if (valueOrDefault<bool>(
                                           currentUserDocument?.isDeleted,
                                           false)) {
+                                        logFirebaseEvent(
+                                            'Button_show_snack_bar');
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(
@@ -236,11 +254,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                                                     .secondary,
                                           ),
                                         );
+                                        logFirebaseEvent('Button_auth');
                                         GoRouter.of(context).prepareAuthEvent();
                                         await authManager.signOut();
                                         GoRouter.of(context)
                                             .clearRedirectLocation();
                                       } else {
+                                        logFirebaseEvent(
+                                            'Button_show_snack_bar');
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(
@@ -260,6 +281,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                                     .secondary,
                                           ),
                                         );
+                                        logFirebaseEvent('Button_navigate_to');
 
                                         context.goNamedAuth(
                                             'Feed', context.mounted);

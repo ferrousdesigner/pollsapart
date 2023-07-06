@@ -27,9 +27,11 @@ class _SignupWidgetState extends State<SignupWidget> {
     super.initState();
     _model = createModel(context, () => SignupModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Signup'});
     _model.emailAddressController ??= TextEditingController();
     _model.passwordController ??= TextEditingController();
     _model.passwordConfirmController ??= TextEditingController();
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -356,6 +358,11 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                 highlightColor:
                                                     Colors.transparent,
                                                 onTap: () async {
+                                                  logFirebaseEvent(
+                                                      'SIGNUP_PAGE_Text_rus7e6sz_ON_TAP');
+                                                  logFirebaseEvent(
+                                                      'Text_navigate_to');
+
                                                   context.pushNamed('Terms');
                                                 },
                                                 child: Text(
@@ -401,6 +408,11 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                 highlightColor:
                                                     Colors.transparent,
                                                 onTap: () async {
+                                                  logFirebaseEvent(
+                                                      'SIGNUP_PAGE_Text_zuzngw92_ON_TAP');
+                                                  logFirebaseEvent(
+                                                      'Text_navigate_to');
+
                                                   context.pushNamed(
                                                       'PrivacyPolicy');
                                                 },
@@ -432,6 +444,9 @@ class _SignupWidgetState extends State<SignupWidget> {
                                       0.0, 20.0, 0.0, 10.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
+                                      logFirebaseEvent(
+                                          'SIGNUP_PAGE_SIGN_UP_BTN_ON_TAP');
+                                      logFirebaseEvent('Button_auth');
                                       GoRouter.of(context).prepareAuthEvent();
                                       if (_model.passwordController.text !=
                                           _model
@@ -456,6 +471,8 @@ class _SignupWidgetState extends State<SignupWidget> {
                                       if (user == null) {
                                         return;
                                       }
+
+                                      logFirebaseEvent('Button_navigate_to');
 
                                       context.pushNamedAuth(
                                           'UpdateProfile', context.mounted);
@@ -509,6 +526,11 @@ class _SignupWidgetState extends State<SignupWidget> {
                                           mouseCursor: SystemMouseCursors.click,
                                           recognizer: TapGestureRecognizer()
                                             ..onTap = () async {
+                                              logFirebaseEvent(
+                                                  'SIGNUP_PAGE_RichTextSpan_sh6gvesw_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'RichTextSpan_navigate_to');
+
                                               context.pushNamed('Login');
                                             },
                                         )

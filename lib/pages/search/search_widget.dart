@@ -24,6 +24,9 @@ class _SearchWidgetState extends State<SearchWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SearchModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Search'});
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -25,6 +25,9 @@ class _MenuWidgetState extends State<MenuWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => MenuModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Menu'});
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -71,6 +74,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent('MENU_PAGE_Row_y67yemgh_ON_TAP');
+                          logFirebaseEvent('Row_navigate_to');
+
                           context.pushNamed('PrivacyPolicy');
                         },
                         child: Row(
@@ -123,6 +129,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent('MENU_PAGE_Row_e8w4gacl_ON_TAP');
+                          logFirebaseEvent('Row_navigate_to');
+
                           context.pushNamed('Terms');
                         },
                         child: Row(
@@ -175,6 +184,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent('MENU_PAGE_Row_cif8dkdl_ON_TAP');
+                          logFirebaseEvent('Row_navigate_to');
+
                           context.pushNamed('CommunityGuidelines');
                         },
                         child: Row(
@@ -227,6 +239,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent('MENU_PAGE_Row_lqy3ukz9_ON_TAP');
+                          logFirebaseEvent('Row_navigate_to');
+
                           context.pushNamed('Faqs');
                         },
                         child: Row(
@@ -279,6 +294,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent('MENU_PAGE_Row_cc1315p2_ON_TAP');
+                          logFirebaseEvent('Row_navigate_to');
+
                           context.pushNamed('ContactUs');
                         },
                         child: Row(
@@ -331,6 +349,9 @@ class _MenuWidgetState extends State<MenuWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent('MENU_PAGE_Row_05adyuvh_ON_TAP');
+                          logFirebaseEvent('Row_navigate_to');
+
                           context.pushNamed('ContactUs');
                         },
                         child: Row(
@@ -382,6 +403,8 @@ class _MenuWidgetState extends State<MenuWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent('MENU_PAGE_Row_rs2i44yn_ON_TAP');
+                          logFirebaseEvent('Row_auth');
                           GoRouter.of(context).prepareAuthEvent();
                           await authManager.signOut();
                           GoRouter.of(context).clearRedirectLocation();
@@ -430,6 +453,8 @@ class _MenuWidgetState extends State<MenuWidget> {
                           EdgeInsetsDirectional.fromSTEB(0.0, 60.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
+                          logFirebaseEvent('MENU_PAGE_BACK_BTN_ON_TAP');
+                          logFirebaseEvent('Button_navigate_back');
                           context.safePop();
                         },
                         text: 'Back',

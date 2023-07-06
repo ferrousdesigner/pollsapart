@@ -29,6 +29,9 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ContactUsModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'ContactUs'});
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -104,6 +107,10 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                         ''))
                             ? null
                             : () async {
+                                logFirebaseEvent(
+                                    'CONTACT_US_PAGE_SUBMIT_BTN_ON_TAP');
+                                logFirebaseEvent('Button_backend_call');
+
                                 await InquiriesRecord.collection
                                     .doc()
                                     .set(createInquiriesRecordData(
@@ -113,6 +120,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                           .textController.text,
                                       userRef: currentUserReference,
                                     ));
+                                logFirebaseEvent('Button_show_snack_bar');
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
@@ -128,6 +136,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                         FlutterFlowTheme.of(context).secondary,
                                   ),
                                 );
+                                logFirebaseEvent('Button_navigate_back');
                                 context.safePop();
                               },
                         text: 'Submit',
@@ -155,6 +164,8 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                             EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
+                            logFirebaseEvent('CONTACT_US_PAGE_BACK_BTN_ON_TAP');
+                            logFirebaseEvent('Button_navigate_back');
                             context.safePop();
                           },
                           text: 'Back',

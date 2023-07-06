@@ -33,6 +33,8 @@ class _TrendingPollsWidgetState extends State<TrendingPollsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TrendingPollsModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -141,6 +143,10 @@ class _TrendingPollsWidgetState extends State<TrendingPollsWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onDoubleTap: () async {
+                    logFirebaseEvent(
+                        'TRENDING_POLLS_Container_dgp5pc3t_ON_DOU');
+                    logFirebaseEvent('QuestCard_backend_call');
+
                     await currentUserReference!.update(createUsersRecordData(
                       email: '',
                     ));

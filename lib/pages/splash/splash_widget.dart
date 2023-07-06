@@ -43,6 +43,10 @@ class _SplashWidgetState extends State<SplashWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => SplashModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Splash'});
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -140,6 +144,9 @@ class _SplashWidgetState extends State<SplashWidget>
                                 0.0, 20.0, 0.0, 10.0),
                             child: FFButtonWidget(
                               onPressed: () async {
+                                logFirebaseEvent(
+                                    'SPLASH_PAGE_LOGIN_WITH_GOOGLE_BTN_ON_TAP');
+                                logFirebaseEvent('Button_auth');
                                 GoRouter.of(context).prepareAuthEvent();
                                 final user =
                                     await authManager.signInWithGoogle(context);
@@ -148,6 +155,7 @@ class _SplashWidgetState extends State<SplashWidget>
                                 }
                                 if (valueOrDefault<bool>(
                                     currentUserDocument?.isDeleted, false)) {
+                                  logFirebaseEvent('Button_show_snack_bar');
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
@@ -164,10 +172,12 @@ class _SplashWidgetState extends State<SplashWidget>
                                               .secondary,
                                     ),
                                   );
+                                  logFirebaseEvent('Button_auth');
                                   GoRouter.of(context).prepareAuthEvent();
                                   await authManager.signOut();
                                   GoRouter.of(context).clearRedirectLocation();
                                 } else {
+                                  logFirebaseEvent('Button_show_snack_bar');
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
@@ -184,6 +194,7 @@ class _SplashWidgetState extends State<SplashWidget>
                                               .secondary,
                                     ),
                                   );
+                                  logFirebaseEvent('Button_navigate_to');
 
                                   context.goNamedAuth('Feed', context.mounted);
                                 }

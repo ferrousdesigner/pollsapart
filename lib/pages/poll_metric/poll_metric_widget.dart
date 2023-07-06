@@ -35,6 +35,9 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PollMetricModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'PollMetric'});
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -386,11 +389,16 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                               size: 24.0,
                                             ),
                                             onPressed: () async {
+                                              logFirebaseEvent(
+                                                  'POLL_METRIC_favorite_sharp_ICN_ON_TAP');
                                               if ((currentUserDocument
                                                           ?.pollsSaved
                                                           ?.toList() ??
                                                       [])
                                                   .contains(widget.pollRef)) {
+                                                logFirebaseEvent(
+                                                    'IconButton_backend_call');
+
                                                 await currentUserReference!
                                                     .update({
                                                   'polls_saved':
@@ -398,12 +406,17 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                                           [widget.pollRef]),
                                                 });
                                               } else {
+                                                logFirebaseEvent(
+                                                    'IconButton_backend_call');
+
                                                 await currentUserReference!
                                                     .update({
                                                   'polls_saved':
                                                       FieldValue.arrayUnion(
                                                           [widget.pollRef]),
                                                 });
+                                                logFirebaseEvent(
+                                                    'IconButton_show_snack_bar');
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(
                                                   SnackBar(
@@ -467,6 +480,10 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'POLL_METRIC_Container_41dkq0wy_ON_TAP');
+                                      logFirebaseEvent('UserCard_navigate_to');
+
                                       context.pushNamed(
                                         'PublicProfile',
                                         queryParameters: {
@@ -520,6 +537,10 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                       size: 24.0,
                                     ),
                                     onPressed: () async {
+                                      logFirebaseEvent(
+                                          'POLL_METRIC_PAGE_chevron_left_ICN_ON_TAP');
+                                      logFirebaseEvent(
+                                          'IconButton_navigate_back');
                                       context.safePop();
                                     },
                                   ),
@@ -529,6 +550,10 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'POLL_METRIC_PAGE_Row_0r8gns4v_ON_TAP');
+                                      logFirebaseEvent('Row_navigate_to');
+
                                       context.pushNamed(
                                         'ReportAbuse',
                                         queryParameters: {

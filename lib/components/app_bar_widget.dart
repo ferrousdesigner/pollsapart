@@ -35,6 +35,8 @@ class _AppBarWidgetState extends State<AppBarWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AppBarModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -101,6 +103,9 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                   size: 24.0,
                 ),
                 onPressed: () async {
+                  logFirebaseEvent('APP_BAR_COMP_menu_rounded_ICN_ON_TAP');
+                  logFirebaseEvent('IconButton_navigate_to');
+
                   context.pushNamed('Menu');
                 },
               ),

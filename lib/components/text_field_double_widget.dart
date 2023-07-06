@@ -37,6 +37,7 @@ class _TextFieldDoubleWidgetState extends State<TextFieldDoubleWidget> {
     _model = createModel(context, () => TextFieldDoubleModel());
 
     _model.textController ??= TextEditingController(text: widget.value);
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

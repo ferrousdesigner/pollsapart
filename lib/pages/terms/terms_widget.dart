@@ -24,6 +24,9 @@ class _TermsWidgetState extends State<TermsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TermsModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Terms'});
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -273,6 +276,9 @@ class _TermsWidgetState extends State<TermsWidget> {
                                   ),
                                   FFButtonWidget(
                                     onPressed: () async {
+                                      logFirebaseEvent(
+                                          'TERMS_PAGE_BACK_BTN_ON_TAP');
+                                      logFirebaseEvent('Button_navigate_back');
                                       context.safePop();
                                     },
                                     text: 'Back',

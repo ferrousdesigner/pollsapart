@@ -25,6 +25,10 @@ class _CommunityGuidelinesWidgetState extends State<CommunityGuidelinesWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CommunityGuidelinesModel());
+
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'CommunityGuidelines'});
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -129,6 +133,10 @@ class _CommunityGuidelinesWidgetState extends State<CommunityGuidelinesWidget> {
                                         0.0, 20.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
+                                        logFirebaseEvent(
+                                            'COMMUNITY_GUIDELINES_BACK_BTN_ON_TAP');
+                                        logFirebaseEvent(
+                                            'Button_navigate_back');
                                         context.safePop();
                                       },
                                       text: 'Back',

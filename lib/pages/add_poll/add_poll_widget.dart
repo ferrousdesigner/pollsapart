@@ -35,6 +35,9 @@ class _AddPollWidgetState extends State<AddPollWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AddPollModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'AddPoll'});
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -144,6 +147,10 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          logFirebaseEvent(
+                                              'ADD_POLL_PAGE_Stack_tqktub3k_ON_TAP');
+                                          logFirebaseEvent(
+                                              'Stack_upload_media_to_firebase');
                                           final selectedMedia =
                                               await selectMediaWithSourceBottomSheet(
                                             context: context,
@@ -301,6 +308,10 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          logFirebaseEvent(
+                                              'ADD_POLL_PAGE_Stack_edx8y0n6_ON_TAP');
+                                          logFirebaseEvent(
+                                              'Stack_upload_media_to_firebase');
                                           final selectedMedia =
                                               await selectMediaWithSourceBottomSheet(
                                             context: context,
@@ -616,6 +627,10 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          logFirebaseEvent(
+                                              'ADD_POLL_PAGE_Text_br51ca0s_ON_TAP');
+                                          logFirebaseEvent('Text_navigate_to');
+
                                           context
                                               .pushNamed('CommunityGuidelines');
                                         },
@@ -667,6 +682,10 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                             _model.dropDownValue != ''))
                                     ? null
                                     : () async {
+                                        logFirebaseEvent(
+                                            'ADD_POLL_PAGE_CREATE_BTN_ON_TAP');
+                                        logFirebaseEvent('Button_backend_call');
+
                                         var pollsRecordReference =
                                             PollsRecord.collection.doc();
                                         await pollsRecordReference
@@ -728,6 +747,7 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                                       _model.dropDownValue,
                                                 ),
                                                 pollsRecordReference);
+                                        logFirebaseEvent('Button_backend_call');
 
                                         await currentUserReference!.update({
                                           'polls_created':
@@ -735,6 +755,8 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                             _model.pollCreated!.reference
                                           ]),
                                         });
+                                        logFirebaseEvent(
+                                            'Button_firestore_query');
                                         _model.chosenCategory =
                                             await queryCategoriesRecordOnce(
                                           queryBuilder: (categoriesRecord) =>
@@ -744,12 +766,15 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                                       _model.dropDownValue),
                                           singleRecord: true,
                                         ).then((s) => s.firstOrNull);
+                                        logFirebaseEvent('Button_backend_call');
 
                                         await _model.chosenCategory!.reference
                                             .update({
                                           'polls_count':
                                               FieldValue.increment(1),
                                         });
+                                        logFirebaseEvent(
+                                            'Button_show_snack_bar');
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(
@@ -768,6 +793,7 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                                     .secondary,
                                           ),
                                         );
+                                        logFirebaseEvent('Button_navigate_to');
 
                                         context.pushNamed('Feed');
 
@@ -800,6 +826,10 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                   0.0, 20.0, 0.0, 0.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
+                                  logFirebaseEvent(
+                                      'ADD_POLL_PAGE_BACK_BTN_ON_TAP');
+                                  logFirebaseEvent('Button_navigate_to');
+
                                   context.pushNamed('Feed');
                                 },
                                 text: 'Back',

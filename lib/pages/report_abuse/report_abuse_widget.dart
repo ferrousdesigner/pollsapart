@@ -35,6 +35,9 @@ class _ReportAbuseWidgetState extends State<ReportAbuseWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ReportAbuseModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'ReportAbuse'});
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -148,6 +151,10 @@ class _ReportAbuseWidgetState extends State<ReportAbuseWidget> {
                                 _model.dropDownValue != ''
                             ? null
                             : () async {
+                                logFirebaseEvent(
+                                    'REPORT_ABUSE_PAGE_REPORT_BTN_ON_TAP');
+                                logFirebaseEvent('Button_backend_call');
+
                                 var reportAbusesRecordReference =
                                     ReportAbusesRecord.createDoc(
                                         widget.poll!.reference);
@@ -167,16 +174,19 @@ class _ReportAbuseWidgetState extends State<ReportAbuseWidget> {
                                               .textController.text,
                                         ),
                                         reportAbusesRecordReference);
+                                logFirebaseEvent('Button_backend_call');
 
                                 await currentUserReference!.update({
                                   'polls_banned': FieldValue.arrayUnion(
                                       [widget.poll!.reference]),
                                 });
+                                logFirebaseEvent('Button_backend_call');
 
                                 await widget.poll!.reference.update({
                                   'report_abuses_count':
                                       FieldValue.increment(1),
                                 });
+                                logFirebaseEvent('Button_show_snack_bar');
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                     content: Text(
@@ -192,6 +202,7 @@ class _ReportAbuseWidgetState extends State<ReportAbuseWidget> {
                                         FlutterFlowTheme.of(context).secondary,
                                   ),
                                 );
+                                logFirebaseEvent('Button_navigate_to');
 
                                 context.pushNamed('Feed');
 
@@ -222,6 +233,9 @@ class _ReportAbuseWidgetState extends State<ReportAbuseWidget> {
                             EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
+                            logFirebaseEvent(
+                                'REPORT_ABUSE_PAGE_BACK_BTN_ON_TAP');
+                            logFirebaseEvent('Button_navigate_back');
                             context.safePop();
                           },
                           text: 'Back',

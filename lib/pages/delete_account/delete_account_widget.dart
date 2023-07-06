@@ -35,6 +35,10 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => DeleteAccountModel());
+
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'DeleteAccount'});
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -248,6 +252,10 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                                           ''))
                               ? null
                               : () async {
+                                  logFirebaseEvent(
+                                      'DELETE_ACCOUNT_DELETE_MY_ACCOUNT_BTN_ON_');
+                                  logFirebaseEvent('Button_backend_call');
+
                                   await currentUserReference!
                                       .update(createUsersRecordData(
                                     isDeleted: false,
@@ -257,6 +265,7 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                                         .textController
                                         .text,
                                   ));
+                                  logFirebaseEvent('Button_show_snack_bar');
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(
                                       content: Text(
@@ -273,6 +282,7 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                                               .secondary,
                                     ),
                                   );
+                                  logFirebaseEvent('Button_navigate_to');
 
                                   context.pushNamed('Login');
                                 },
@@ -303,6 +313,9 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                               0.0, 20.0, 0.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
+                              logFirebaseEvent(
+                                  'DELETE_ACCOUNT_PAGE_BACK_BTN_ON_TAP');
+                              logFirebaseEvent('Button_navigate_back');
                               context.safePop();
                             },
                             text: 'Back',

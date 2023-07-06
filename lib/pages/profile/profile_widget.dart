@@ -29,6 +29,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ProfileModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Profile'});
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -175,6 +178,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                   0.0, 16.0, 0.0, 0.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
+                                  logFirebaseEvent(
+                                      'PROFILE_PAGE_EDIT_PROFILE_BTN_ON_TAP');
+                                  logFirebaseEvent('Button_navigate_to');
+
                                   context.pushNamed(
                                     'UpdateProfile',
                                     queryParameters: {
