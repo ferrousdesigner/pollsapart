@@ -69,7 +69,7 @@ class _AddPollWidgetState extends State<AddPollWidget> {
               ),
               Container(
                 width: double.infinity,
-                height: 689.0,
+                height: 753.0,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
