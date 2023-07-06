@@ -42,3 +42,7 @@ String? getPollLink(String docID) {
   String finalLink = 'poll/' + docID;
   return finalLink;
 }
+
+double? getHeightInPx() {
+  return MediaQueryData.fromWindow(WidgetsBinding.instance!.window).size.height;
+}
