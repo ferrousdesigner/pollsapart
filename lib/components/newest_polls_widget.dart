@@ -167,6 +167,8 @@ class _NewestPollsWidgetState extends State<NewestPollsWidget> {
                       upVotes: listViewPollsRecord.upVotes,
                       isNSFW: listViewPollsRecord.isNsfw,
                       canDelete: false,
+                      createdAt: dateTimeFormat(
+                          'relative', listViewPollsRecord.createdAt),
                     ),
                   ),
                 ),

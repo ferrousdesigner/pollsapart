@@ -359,7 +359,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                             Align(
                               alignment: AlignmentDirectional(1.0, 0.0),
                               child: Text(
-                                'Posted on',
+                                'Posted',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -442,6 +442,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                       alignment: AlignmentDirectional(0.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
@@ -511,49 +512,53 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                                   ),
                             ),
                           ),
-                          FlutterFlowIconButton(
-                            borderRadius: 20.0,
-                            borderWidth: 1.0,
-                            buttonSize: 30.0,
-                            fillColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            icon: Icon(
-                              Icons.thumb_down_outlined,
-                              color: FlutterFlowTheme.of(context).primaryText,
-                              size: 13.0,
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 10.0, 0.0),
+                            child: FlutterFlowIconButton(
+                              borderRadius: 20.0,
+                              borderWidth: 1.0,
+                              buttonSize: 30.0,
+                              fillColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              icon: Icon(
+                                Icons.thumb_down_outlined,
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                size: 13.0,
+                              ),
+                              onPressed: () async {
+                                logFirebaseEvent(
+                                    'QUEST_CARD_thumb_down_outlined_ICN_ON_TA');
+                                if ((currentUserDocument?.pollsDownvoted
+                                            ?.toList() ??
+                                        [])
+                                    .contains(widget.docRef)) {
+                                  logFirebaseEvent('IconButton_backend_call');
+
+                                  await widget.docRef!.update({
+                                    'up_votes': FieldValue.increment(1),
+                                  });
+                                  logFirebaseEvent('IconButton_backend_call');
+
+                                  await currentUserReference!.update({
+                                    'polls_downvoted':
+                                        FieldValue.arrayRemove([widget.docRef]),
+                                  });
+                                } else {
+                                  logFirebaseEvent('IconButton_backend_call');
+
+                                  await widget.docRef!.update({
+                                    'up_votes': FieldValue.increment(-(1)),
+                                  });
+                                  logFirebaseEvent('IconButton_backend_call');
+
+                                  await currentUserReference!.update({
+                                    'polls_downvoted':
+                                        FieldValue.arrayUnion([widget.docRef]),
+                                  });
+                                }
+                              },
                             ),
-                            onPressed: () async {
-                              logFirebaseEvent(
-                                  'QUEST_CARD_thumb_down_outlined_ICN_ON_TA');
-                              if ((currentUserDocument?.pollsDownvoted
-                                          ?.toList() ??
-                                      [])
-                                  .contains(widget.docRef)) {
-                                logFirebaseEvent('IconButton_backend_call');
-
-                                await widget.docRef!.update({
-                                  'up_votes': FieldValue.increment(1),
-                                });
-                                logFirebaseEvent('IconButton_backend_call');
-
-                                await currentUserReference!.update({
-                                  'polls_downvoted':
-                                      FieldValue.arrayRemove([widget.docRef]),
-                                });
-                              } else {
-                                logFirebaseEvent('IconButton_backend_call');
-
-                                await widget.docRef!.update({
-                                  'up_votes': FieldValue.increment(-(1)),
-                                });
-                                logFirebaseEvent('IconButton_backend_call');
-
-                                await currentUserReference!.update({
-                                  'polls_downvoted':
-                                      FieldValue.arrayUnion([widget.docRef]),
-                                });
-                              }
-                            },
                           ),
                         ],
                       ),
