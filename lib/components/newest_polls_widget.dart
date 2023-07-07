@@ -33,8 +33,6 @@ class _NewestPollsWidgetState extends State<NewestPollsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => NewestPollsModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:from_css_color/from_css_color.dart';
+import '/backend/algolia/algolia_manager.dart';
 import 'package:collection/collection.dart';
 
 import '/backend/schema/util/firestore_util.dart';
@@ -140,6 +142,56 @@ class PollsRecord extends FirestoreRecord {
     DocumentReference reference,
   ) =>
       PollsRecord._(reference, mapFromFirestore(data));
+
+  static PollsRecord fromAlgolia(AlgoliaObjectSnapshot snapshot) =>
+      PollsRecord.getDocumentFromData(
+        {
+          'created_at': safeGet(
+            () => DateTime.fromMillisecondsSinceEpoch(
+                snapshot.data['created_at']),
+          ),
+          'modified_at': safeGet(
+            () => DateTime.fromMillisecondsSinceEpoch(
+                snapshot.data['modified_at']),
+          ),
+          'question': snapshot.data['question'],
+          'option_one': snapshot.data['option_one'],
+          'option_two': snapshot.data['option_two'],
+          'option_one_img': snapshot.data['option_one_img'],
+          'option_two_img': snapshot.data['option_two_img'],
+          'option_one_count': snapshot.data['option_one_count']?.round(),
+          'option_two_count': snapshot.data['option_two_count']?.round(),
+          'created_by': safeGet(
+            () => toRef(snapshot.data['created_by']),
+          ),
+          'is_anonymous': snapshot.data['is_anonymous'],
+          'up_votes': snapshot.data['up_votes']?.round(),
+          'is_banned': snapshot.data['is_banned'],
+          'report_abuses_count': snapshot.data['report_abuses_count']?.round(),
+          'is_nsfw': snapshot.data['is_nsfw'],
+          'is_deleted': snapshot.data['is_deleted'],
+          'category': snapshot.data['category'],
+        },
+        PollsRecord.collection.doc(snapshot.objectID),
+      );
+
+  static Future<List<PollsRecord>> search({
+    String? term,
+    FutureOr<LatLng>? location,
+    int? maxResults,
+    double? searchRadiusMeters,
+    bool useCache = false,
+  }) =>
+      FFAlgoliaManager.instance
+          .algoliaQuery(
+            index: 'polls',
+            term: term,
+            maxResults: maxResults,
+            location: location,
+            searchRadiusMeters: searchRadiusMeters,
+            useCache: useCache,
+          )
+          .then((r) => r.map(fromAlgolia).toList());
 
   @override
   String toString() =>

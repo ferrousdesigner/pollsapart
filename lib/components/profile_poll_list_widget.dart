@@ -36,8 +36,6 @@ class _ProfilePollListWidgetState extends State<ProfilePollListWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ProfilePollListModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

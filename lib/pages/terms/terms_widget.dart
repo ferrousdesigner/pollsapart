@@ -26,7 +26,6 @@ class _TermsWidgetState extends State<TermsWidget> {
     _model = createModel(context, () => TermsModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Terms'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

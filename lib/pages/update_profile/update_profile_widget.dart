@@ -42,7 +42,6 @@ class _UpdateProfileWidgetState extends State<UpdateProfileWidget> {
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'UpdateProfile'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -27,7 +27,6 @@ class _MenuWidgetState extends State<MenuWidget> {
     _model = createModel(context, () => MenuModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Menu'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

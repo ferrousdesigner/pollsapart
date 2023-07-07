@@ -37,7 +37,6 @@ class _ReportAbuseWidgetState extends State<ReportAbuseWidget> {
     _model = createModel(context, () => ReportAbuseModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'ReportAbuse'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

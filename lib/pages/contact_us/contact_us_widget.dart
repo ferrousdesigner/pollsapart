@@ -31,7 +31,6 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
     _model = createModel(context, () => ContactUsModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'ContactUs'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

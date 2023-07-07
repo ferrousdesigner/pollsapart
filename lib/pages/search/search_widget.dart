@@ -1,3 +1,5 @@
+import '/backend/backend.dart';
+import '/components/quest_card_widget.dart';
 import '/components/text_field_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -26,7 +28,6 @@ class _SearchWidgetState extends State<SearchWidget> {
     _model = createModel(context, () => SearchModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Search'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -53,16 +54,46 @@ class _SearchWidgetState extends State<SearchWidget> {
               children: [
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+                      EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Align(
-                        alignment: AlignmentDirectional(-1.0, 0.0),
-                        child: Text(
-                          'Search',
-                          style: FlutterFlowTheme.of(context).displayMedium,
-                        ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Align(
+                            alignment: AlignmentDirectional(-1.0, 0.0),
+                            child: Text(
+                              'Search',
+                              style: FlutterFlowTheme.of(context).displayLarge,
+                            ),
+                          ),
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                'Powered by',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                    ),
+                              ),
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(8.0),
+                                child: Image.asset(
+                                  'assets/images/Algolia-logo-blue.png',
+                                  width: 91.0,
+                                  height: 32.0,
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                       Row(
                         mainAxisSize: MainAxisSize.max,
@@ -83,31 +114,131 @@ class _SearchWidgetState extends State<SearchWidget> {
                             ),
                           ),
                           FlutterFlowIconButton(
-                            borderColor: FlutterFlowTheme.of(context).primary,
                             borderRadius: 40.0,
                             borderWidth: 1.0,
                             buttonSize: 50.0,
                             fillColor: FlutterFlowTheme.of(context).primary,
+                            disabledColor:
+                                FlutterFlowTheme.of(context).secondaryText,
                             icon: Icon(
                               Icons.search_sharp,
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
                               size: 24.0,
                             ),
-                            onPressed: () {
-                              print('IconButton pressed ...');
-                            },
+                            onPressed: _model.textFieldModel.textController
+                                            .text ==
+                                        null ||
+                                    _model.textFieldModel.textController.text ==
+                                        ''
+                                ? null
+                                : () async {
+                                    logFirebaseEvent(
+                                        'SEARCH_PAGE_search_sharp_ICN_ON_TAP');
+                                    logFirebaseEvent(
+                                        'IconButton_algolia_search');
+                                    setState(() =>
+                                        _model.algoliaSearchResults = null);
+                                    await PollsRecord.search(
+                                      term: _model
+                                          .textFieldModel.textController.text,
+                                      maxResults: 30,
+                                    )
+                                        .then((r) =>
+                                            _model.algoliaSearchResults = r)
+                                        .onError((_, __) =>
+                                            _model.algoliaSearchResults = [])
+                                        .whenComplete(() => setState(() {}));
+                                  },
                           ),
                         ],
                       ),
-                      ListView(
-                        padding: EdgeInsets.zero,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        children: [],
-                      ),
                     ],
                   ),
+                ),
+                Align(
+                  alignment: AlignmentDirectional(-1.0, 0.0),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 20.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Text(
+                          'Results ',
+                          style: FlutterFlowTheme.of(context).labelLarge,
+                        ),
+                        Text(
+                          '(',
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                        Text(
+                          valueOrDefault<String>(
+                            _model.algoliaSearchResults?.length?.toString(),
+                            '0',
+                          ),
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                        Text(
+                          ')',
+                          style: FlutterFlowTheme.of(context).bodyMedium,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Builder(
+                  builder: (context) {
+                    if (_model.algoliaSearchResults?.map((e) => e).toList() ==
+                        null) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50.0,
+                          height: 50.0,
+                          child: CircularProgressIndicator(
+                            color: FlutterFlowTheme.of(context).primary,
+                          ),
+                        ),
+                      );
+                    }
+                    final results = _model.algoliaSearchResults
+                            ?.map((e) => e)
+                            .toList()
+                            ?.toList() ??
+                        [];
+                    return ListView.builder(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      itemCount: results.length,
+                      itemBuilder: (context, resultsIndex) {
+                        final resultsItem = results[resultsIndex];
+                        return wrapWithModel(
+                          model: _model.questCardModels.getModel(
+                            resultsIndex.toString(),
+                            resultsIndex,
+                          ),
+                          updateCallback: () => setState(() {}),
+                          child: QuestCardWidget(
+                            key: Key(
+                              'Keyqlu_${resultsIndex.toString()}',
+                            ),
+                            question: resultsItem.question,
+                            optionOne: resultsItem.optionOne,
+                            optionTwo: resultsItem.optionTwo,
+                            questionTwoImg: resultsItem.optionTwoImg,
+                            optionOneImg: resultsItem.optionOneImg,
+                            upVotes: resultsItem.upVotes,
+                            isNSFW: resultsItem.isNsfw,
+                            canDelete: false,
+                            docRef: resultsItem.reference,
+                            createdAt: dateTimeFormat(
+                                'relative', resultsItem.createdAt),
+                          ),
+                        );
+                      },
+                    );
+                  },
                 ),
               ],
             ),

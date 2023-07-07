@@ -40,7 +40,6 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
     _model = createModel(context, () => TextFieldModel());
 
     _model.textController ??= TextEditingController(text: widget.value);
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

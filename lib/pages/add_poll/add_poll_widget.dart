@@ -37,7 +37,6 @@ class _AddPollWidgetState extends State<AddPollWidget> {
     _model = createModel(context, () => AddPollModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'AddPoll'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

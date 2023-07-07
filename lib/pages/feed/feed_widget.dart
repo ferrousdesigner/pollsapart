@@ -31,7 +31,6 @@ class _FeedWidgetState extends State<FeedWidget> {
     _model = createModel(context, () => FeedModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Feed'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

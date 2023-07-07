@@ -28,7 +28,6 @@ class _CommunityGuidelinesWidgetState extends State<CommunityGuidelinesWidget> {
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'CommunityGuidelines'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

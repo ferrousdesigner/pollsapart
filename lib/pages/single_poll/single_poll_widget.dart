@@ -34,7 +34,6 @@ class _SinglePollWidgetState extends State<SinglePollWidget> {
     _model = createModel(context, () => SinglePollModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'SinglePoll'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

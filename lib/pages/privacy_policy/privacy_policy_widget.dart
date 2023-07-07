@@ -27,7 +27,6 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget> {
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'PrivacyPolicy'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

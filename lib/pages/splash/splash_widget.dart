@@ -45,8 +45,6 @@ class _SplashWidgetState extends State<SplashWidget>
     _model = createModel(context, () => SplashModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Splash'});
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

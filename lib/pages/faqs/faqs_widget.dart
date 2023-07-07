@@ -27,7 +27,6 @@ class _FaqsWidgetState extends State<FaqsWidget> {
     _model = createModel(context, () => FaqsModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Faqs'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

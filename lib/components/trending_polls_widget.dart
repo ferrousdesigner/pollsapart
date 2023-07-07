@@ -33,8 +33,6 @@ class _TrendingPollsWidgetState extends State<TrendingPollsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TrendingPollsModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -171,6 +169,8 @@ class _TrendingPollsWidgetState extends State<TrendingPollsWidget> {
                       upVotes: listViewPollsRecord.upVotes,
                       isNSFW: listViewPollsRecord.isNsfw,
                       canDelete: false,
+                      createdAt: dateTimeFormat(
+                          'relative', listViewPollsRecord.createdAt),
                     ),
                   ),
                 ),

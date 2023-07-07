@@ -35,8 +35,6 @@ class _ButtonAccentWidgetState extends State<ButtonAccentWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ButtonAccentModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
