@@ -85,6 +85,8 @@ class _ProfilePollListWidgetState extends State<ProfilePollListWidget> {
                   upVotes: questCardPollsRecord.upVotes,
                   isNSFW: questCardPollsRecord.isNsfw,
                   canDelete: widget.canDelete,
+                  createdAt: dateTimeFormat(
+                      'relative', questCardPollsRecord.createdAt),
                 );
               },
             );
