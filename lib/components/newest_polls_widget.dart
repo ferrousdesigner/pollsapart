@@ -171,6 +171,7 @@ class _NewestPollsWidgetState extends State<NewestPollsWidget> {
                         canDelete: false,
                         createdAt: dateTimeFormat(
                             'relative', listViewPollsRecord.createdAt),
+                        createdBy: listViewPollsRecord.createdBy,
                       ),
                     ),
                   ),

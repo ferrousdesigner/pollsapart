@@ -87,6 +87,7 @@ class _ProfilePollListWidgetState extends State<ProfilePollListWidget> {
                   canDelete: widget.canDelete,
                   createdAt: dateTimeFormat(
                       'relative', questCardPollsRecord.createdAt),
+                  createdBy: questCardPollsRecord.createdBy,
                 );
               },
             );
