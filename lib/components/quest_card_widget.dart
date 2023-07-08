@@ -247,7 +247,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                             children: [
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 10.0),
+                                    0.0, 10.0, 0.0, 10.0),
                                 child: Text(
                                   widget.optionTwo,
                                   style:
@@ -348,7 +348,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                             children: [
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 10.0),
+                                    0.0, 10.0, 0.0, 10.0),
                                 child: Text(
                                   widget.optionOne,
                                   style:
