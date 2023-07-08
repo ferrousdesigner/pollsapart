@@ -135,7 +135,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 10.0),
                       child: Container(
-                        width: MediaQuery.sizeOf(context).width * 0.704,
+                        width: MediaQuery.sizeOf(context).width * 0.666,
                         height: 50.0,
                         decoration: BoxDecoration(),
                         alignment: AlignmentDirectional(-1.0, 0.0),
