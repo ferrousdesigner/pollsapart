@@ -135,7 +135,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 10.0),
                       child: Container(
-                        width: MediaQuery.sizeOf(context).width * 0.745,
+                        width: MediaQuery.sizeOf(context).width * 0.704,
                         height: 50.0,
                         decoration: BoxDecoration(),
                         alignment: AlignmentDirectional(-1.0, 0.0),
@@ -143,39 +143,43 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                           alignment: AlignmentDirectional(-1.0, -1.0),
                           child: Text(
                             widget.question,
-                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .displayMedium
+                                .override(
+                                  fontFamily: 'Barlow Condensed',
+                                  fontSize: 26.0,
+                                ),
                           ),
                         ),
                       ),
                     ),
-                    if (!isWeb)
-                      Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: Builder(
-                          builder: (context) => FlutterFlowIconButton(
-                            borderRadius: 20.0,
-                            borderWidth: 1.0,
-                            buttonSize: 30.0,
-                            fillColor:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                            icon: Icon(
-                              Icons.ios_share,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              size: 13.0,
-                            ),
-                            onPressed: () async {
-                              logFirebaseEvent(
-                                  'QUEST_CARD_COMP_ios_share_ICN_ON_TAP');
-                              logFirebaseEvent('IconButton_share');
-                              await Share.share(
-                                functions.getPollLink(widget.docRef!.id)!,
-                                sharePositionOrigin:
-                                    getWidgetBoundingBox(context),
-                              );
-                            },
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Align(
+                          alignment: AlignmentDirectional(1.0, 0.0),
+                          child: Text(
+                            'Posted',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 8.0,
+                                ),
                           ),
                         ),
-                      ),
+                        Text(
+                          widget.createdAt!,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 10.0,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -349,89 +353,55 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(1.0, 0.0),
-                              child: Text(
-                                'Posted',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 8.0,
-                                    ),
-                              ),
-                            ),
-                            Text(
-                              widget.createdAt!,
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    fontSize: 10.0,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                            ),
-                          ],
-                        ),
-                        if (widget.canDelete == true)
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                10.0, 0.0, 0.0, 0.0),
-                            child: FlutterFlowIconButton(
-                              borderColor: Colors.transparent,
-                              borderRadius: 20.0,
-                              borderWidth: 1.0,
-                              buttonSize: 30.0,
-                              fillColor: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
-                              icon: Icon(
-                                Icons.delete,
-                                color: FlutterFlowTheme.of(context).error,
-                                size: 14.0,
-                              ),
-                              onPressed: () async {
-                                logFirebaseEvent(
-                                    'QUEST_CARD_COMP_delete_ICN_ON_TAP');
-                                logFirebaseEvent('IconButton_backend_call');
-
-                                await widget.docRef!
-                                    .update(createPollsRecordData(
-                                  isDeleted: true,
-                                ));
-                                logFirebaseEvent('IconButton_backend_call');
-
-                                await currentUserReference!.update({
-                                  'polls_created':
-                                      FieldValue.arrayRemove([widget.docRef]),
-                                });
-                                logFirebaseEvent('IconButton_show_snack_bar');
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Poll deleted successfully',
-                                      style: GoogleFonts.getFont(
-                                        'Poppins',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                      ),
-                                    ),
-                                    duration: Duration(milliseconds: 4000),
-                                    backgroundColor:
-                                        FlutterFlowTheme.of(context).secondary,
-                                  ),
-                                );
-                              },
-                            ),
+                    if (widget.canDelete == true)
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                        child: FlutterFlowIconButton(
+                          borderColor: Colors.transparent,
+                          borderRadius: 20.0,
+                          borderWidth: 1.0,
+                          buttonSize: 40.0,
+                          fillColor:
+                              FlutterFlowTheme.of(context).primaryBackground,
+                          icon: Icon(
+                            Icons.delete,
+                            color: FlutterFlowTheme.of(context).error,
+                            size: 14.0,
                           ),
-                      ],
-                    ),
+                          onPressed: () async {
+                            logFirebaseEvent(
+                                'QUEST_CARD_COMP_delete_ICN_ON_TAP');
+                            logFirebaseEvent('IconButton_backend_call');
+
+                            await widget.docRef!.update(createPollsRecordData(
+                              isDeleted: true,
+                            ));
+                            logFirebaseEvent('IconButton_backend_call');
+
+                            await currentUserReference!.update({
+                              'polls_created':
+                                  FieldValue.arrayRemove([widget.docRef]),
+                            });
+                            logFirebaseEvent('IconButton_show_snack_bar');
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Poll deleted successfully',
+                                  style: GoogleFonts.getFont(
+                                    'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                  ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).secondary,
+                              ),
+                            );
+                          },
+                        ),
+                      ),
                     Container(
                       width: 120.0,
                       height: 40.0,
@@ -514,7 +484,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 10.0, 0.0),
+                                0.0, 0.0, 5.0, 0.0),
                             child: FlutterFlowIconButton(
                               borderRadius: 20.0,
                               borderWidth: 1.0,
@@ -563,6 +533,39 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                         ],
                       ),
                     ),
+                    if (!isWeb)
+                      Align(
+                        alignment: AlignmentDirectional(0.0, 0.0),
+                        child: Builder(
+                          builder: (context) => Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                10.0, 0.0, 0.0, 0.0),
+                            child: FlutterFlowIconButton(
+                              borderRadius: 20.0,
+                              borderWidth: 1.0,
+                              buttonSize: 40.0,
+                              fillColor: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                              icon: Icon(
+                                Icons.ios_share,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 13.0,
+                              ),
+                              onPressed: () async {
+                                logFirebaseEvent(
+                                    'QUEST_CARD_COMP_ios_share_ICN_ON_TAP');
+                                logFirebaseEvent('IconButton_share');
+                                await Share.share(
+                                  functions.getPollLink(widget.docRef!.id)!,
+                                  sharePositionOrigin:
+                                      getWidgetBoundingBox(context),
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
                   ],
                 ),
               ),
