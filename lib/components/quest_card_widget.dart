@@ -58,10 +58,10 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         MoveEffect(
-          curve: Curves.easeOut,
+          curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(-40.0, 0.0),
+          begin: Offset(40.0, 0.0),
           end: Offset(0.0, 0.0),
         ),
       ],
@@ -70,10 +70,10 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         MoveEffect(
-          curve: Curves.easeInOut,
+          curve: Curves.easeOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(40.0, 0.0),
+          begin: Offset(-40.0, 0.0),
           end: Offset(0.0, 0.0),
         ),
       ],
@@ -109,7 +109,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
         borderRadius: BorderRadius.circular(20.0),
         child: Container(
           width: MediaQuery.sizeOf(context).width * 1.0,
-          height: 280.0,
+          height: 320.0,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
             boxShadow: [
@@ -185,170 +185,208 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
               ),
               Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      logFirebaseEvent(
-                          'QUEST_CARD_COMP_Column_jurxan94_ON_TAP');
-                      if ((currentUserDocument?.pollsAnswered?.toList() ?? [])
-                          .contains(widget.docRef)) {
-                        logFirebaseEvent('Column_navigate_to');
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 10.0, 0.0),
+                    child: Container(
+                      width: MediaQuery.sizeOf(context).width * 0.45,
+                      height: 165.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).primaryBackground,
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            10.0, 10.0, 10.0, 10.0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            logFirebaseEvent(
+                                'QUEST_CARD_COMP_Column_5flxclom_ON_TAP');
+                            if ((currentUserDocument?.pollsAnswered?.toList() ??
+                                    [])
+                                .contains(widget.docRef)) {
+                              logFirebaseEvent('Column_navigate_to');
 
-                        context.pushNamed(
-                          'PollMetric',
-                          queryParameters: {
-                            'pollRef': serializeParam(
-                              widget.docRef,
-                              ParamType.DocumentReference,
-                            ),
-                          }.withoutNulls,
-                        );
-                      } else {
-                        logFirebaseEvent('Column_backend_call');
+                              context.pushNamed(
+                                'PollMetric',
+                                queryParameters: {
+                                  'pollRef': serializeParam(
+                                    widget.docRef,
+                                    ParamType.DocumentReference,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            } else {
+                              logFirebaseEvent('Column_backend_call');
 
-                        await widget.docRef!.update({
-                          ...createPollsRecordData(
-                            modifiedAt: getCurrentTimestamp,
-                          ),
-                          'option_one_count': FieldValue.increment(1),
-                        });
-                        logFirebaseEvent('Column_backend_call');
+                              await widget.docRef!.update({
+                                ...createPollsRecordData(
+                                  modifiedAt: getCurrentTimestamp,
+                                ),
+                                'option_two_count': FieldValue.increment(1),
+                              });
+                              logFirebaseEvent('Column_backend_call');
 
-                        await currentUserReference!.update({
-                          'polls_answered':
-                              FieldValue.arrayUnion([widget.docRef]),
-                        });
-                        logFirebaseEvent('Column_navigate_to');
+                              await currentUserReference!.update({
+                                'polls_answered':
+                                    FieldValue.arrayUnion([widget.docRef]),
+                              });
+                              logFirebaseEvent('Column_navigate_to');
 
-                        context.pushNamed(
-                          'PollMetric',
-                          queryParameters: {
-                            'pollRef': serializeParam(
-                              widget.docRef,
-                              ParamType.DocumentReference,
-                            ),
-                          }.withoutNulls,
-                        );
-                      }
-                    },
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 10.0),
-                          child: Text(
-                            widget.optionOne,
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                        ),
-                        Hero(
-                          tag: valueOrDefault<String>(
-                            widget.optionOneImg,
-                            'https://firebasestorage.googleapis.com/v0/b/binosophy.appspot.com/o/assets%2FPollsapart%20Default.png?alt=media&token=44294253-c963-4676-838a-9b08e98b0d08',
-                          ),
-                          transitionOnUserGestures: true,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(16.0),
-                            child: Image.network(
-                              valueOrDefault<String>(
-                                widget.optionOneImg,
-                                'https://firebasestorage.googleapis.com/v0/b/binosophy.appspot.com/o/assets%2FPollsapart%20Default.png?alt=media&token=44294253-c963-4676-838a-9b08e98b0d08',
+                              context.pushNamed('Profile');
+                            }
+                          },
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 10.0),
+                                child: Text(
+                                  widget.optionTwo,
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
                               ),
-                              width: MediaQuery.sizeOf(context).width * 0.4,
-                              height: 100.0,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ).animateOnPageLoad(
-                      animationsMap['columnOnPageLoadAnimation1']!),
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      logFirebaseEvent(
-                          'QUEST_CARD_COMP_Column_5flxclom_ON_TAP');
-                      if ((currentUserDocument?.pollsAnswered?.toList() ?? [])
-                          .contains(widget.docRef)) {
-                        logFirebaseEvent('Column_navigate_to');
-
-                        context.pushNamed(
-                          'PollMetric',
-                          queryParameters: {
-                            'pollRef': serializeParam(
-                              widget.docRef,
-                              ParamType.DocumentReference,
-                            ),
-                          }.withoutNulls,
-                        );
-                      } else {
-                        logFirebaseEvent('Column_backend_call');
-
-                        await widget.docRef!.update({
-                          ...createPollsRecordData(
-                            modifiedAt: getCurrentTimestamp,
-                          ),
-                          'option_two_count': FieldValue.increment(1),
-                        });
-                        logFirebaseEvent('Column_backend_call');
-
-                        await currentUserReference!.update({
-                          'polls_answered':
-                              FieldValue.arrayUnion([widget.docRef]),
-                        });
-                        logFirebaseEvent('Column_navigate_to');
-
-                        context.pushNamed('Profile');
-                      }
-                    },
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 10.0),
-                          child: Text(
-                            widget.optionTwo,
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                        ),
-                        Hero(
-                          tag: valueOrDefault<String>(
-                            widget.questionTwoImg,
-                            'https://firebasestorage.googleapis.com/v0/b/binosophy.appspot.com/o/assets%2FPollsapart%20Default.png?alt=media&token=44294253-c963-4676-838a-9b08e98b0d08',
-                          ),
-                          transitionOnUserGestures: true,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(6.0),
-                            child: Image.network(
-                              valueOrDefault<String>(
-                                widget.questionTwoImg,
-                                'https://firebasestorage.googleapis.com/v0/b/binosophy.appspot.com/o/assets%2FPollsapart%20Default.png?alt=media&token=44294253-c963-4676-838a-9b08e98b0d08',
+                              Hero(
+                                tag: valueOrDefault<String>(
+                                  widget.questionTwoImg,
+                                  'https://firebasestorage.googleapis.com/v0/b/binosophy.appspot.com/o/assets%2FPollsapart%20Default.png?alt=media&token=44294253-c963-4676-838a-9b08e98b0d08',
+                                ),
+                                transitionOnUserGestures: true,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                  child: Image.network(
+                                    valueOrDefault<String>(
+                                      widget.questionTwoImg,
+                                      'https://firebasestorage.googleapis.com/v0/b/binosophy.appspot.com/o/assets%2FPollsapart%20Default.png?alt=media&token=44294253-c963-4676-838a-9b08e98b0d08',
+                                    ),
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    height: 115.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                               ),
-                              width: MediaQuery.sizeOf(context).width * 0.4,
-                              height: 100.0,
-                              fit: BoxFit.cover,
-                            ),
+                            ],
                           ),
-                        ),
-                      ],
+                        ).animateOnPageLoad(
+                            animationsMap['columnOnPageLoadAnimation1']!),
+                      ),
                     ),
-                  ).animateOnPageLoad(
-                      animationsMap['columnOnPageLoadAnimation2']!),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
+                    child: Container(
+                      width: MediaQuery.sizeOf(context).width * 0.45,
+                      height: 165.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).primaryBackground,
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            10.0, 10.0, 10.0, 10.0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            logFirebaseEvent(
+                                'QUEST_CARD_COMP_Column_jurxan94_ON_TAP');
+                            if ((currentUserDocument?.pollsAnswered?.toList() ??
+                                    [])
+                                .contains(widget.docRef)) {
+                              logFirebaseEvent('Column_navigate_to');
+
+                              context.pushNamed(
+                                'PollMetric',
+                                queryParameters: {
+                                  'pollRef': serializeParam(
+                                    widget.docRef,
+                                    ParamType.DocumentReference,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            } else {
+                              logFirebaseEvent('Column_backend_call');
+
+                              await widget.docRef!.update({
+                                ...createPollsRecordData(
+                                  modifiedAt: getCurrentTimestamp,
+                                ),
+                                'option_one_count': FieldValue.increment(1),
+                              });
+                              logFirebaseEvent('Column_backend_call');
+
+                              await currentUserReference!.update({
+                                'polls_answered':
+                                    FieldValue.arrayUnion([widget.docRef]),
+                              });
+                              logFirebaseEvent('Column_navigate_to');
+
+                              context.pushNamed(
+                                'PollMetric',
+                                queryParameters: {
+                                  'pollRef': serializeParam(
+                                    widget.docRef,
+                                    ParamType.DocumentReference,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            }
+                          },
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 10.0),
+                                child: Text(
+                                  widget.optionOne,
+                                  style:
+                                      FlutterFlowTheme.of(context).bodyMedium,
+                                ),
+                              ),
+                              Hero(
+                                tag: valueOrDefault<String>(
+                                  widget.optionOneImg,
+                                  'https://firebasestorage.googleapis.com/v0/b/binosophy.appspot.com/o/assets%2FPollsapart%20Default.png?alt=media&token=44294253-c963-4676-838a-9b08e98b0d08',
+                                ),
+                                transitionOnUserGestures: true,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                  child: Image.network(
+                                    valueOrDefault<String>(
+                                      widget.optionOneImg,
+                                      'https://firebasestorage.googleapis.com/v0/b/binosophy.appspot.com/o/assets%2FPollsapart%20Default.png?alt=media&token=44294253-c963-4676-838a-9b08e98b0d08',
+                                    ),
+                                    width:
+                                        MediaQuery.sizeOf(context).width * 1.0,
+                                    height: 115.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ).animateOnPageLoad(
+                            animationsMap['columnOnPageLoadAnimation2']!),
+                      ),
+                    ),
+                  ),
                 ],
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
