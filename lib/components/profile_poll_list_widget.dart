@@ -49,51 +49,54 @@ class _ProfilePollListWidgetState extends State<ProfilePollListWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Builder(
-      builder: (context) {
-        final pollList = widget.pollRefList!.toList();
-        return ListView.builder(
-          padding: EdgeInsets.zero,
-          scrollDirection: Axis.vertical,
-          itemCount: pollList.length,
-          itemBuilder: (context, pollListIndex) {
-            final pollListItem = pollList[pollListIndex];
-            return StreamBuilder<PollsRecord>(
-              stream: PollsRecord.getDocument(pollListItem),
-              builder: (context, snapshot) {
-                // Customize what your widget looks like when it's loading.
-                if (!snapshot.hasData) {
-                  return Center(
-                    child: SizedBox(
-                      width: 50.0,
-                      height: 50.0,
-                      child: CircularProgressIndicator(
-                        color: FlutterFlowTheme.of(context).primary,
+    return Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 0.0),
+      child: Builder(
+        builder: (context) {
+          final pollList = widget.pollRefList!.toList();
+          return ListView.builder(
+            padding: EdgeInsets.zero,
+            scrollDirection: Axis.vertical,
+            itemCount: pollList.length,
+            itemBuilder: (context, pollListIndex) {
+              final pollListItem = pollList[pollListIndex];
+              return StreamBuilder<PollsRecord>(
+                stream: PollsRecord.getDocument(pollListItem),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50.0,
+                        height: 50.0,
+                        child: CircularProgressIndicator(
+                          color: FlutterFlowTheme.of(context).primary,
+                        ),
                       ),
-                    ),
+                    );
+                  }
+                  final questCardPollsRecord = snapshot.data!;
+                  return QuestCardWidget(
+                    key: Key('Keyf5j_${pollListIndex}_of_${pollList.length}'),
+                    question: questCardPollsRecord.question,
+                    optionOne: questCardPollsRecord.optionOne,
+                    optionTwo: questCardPollsRecord.optionTwo,
+                    questionTwoImg: questCardPollsRecord.optionOneImg,
+                    optionOneImg: questCardPollsRecord.optionTwoImg,
+                    docRef: questCardPollsRecord.reference,
+                    upVotes: questCardPollsRecord.upVotes,
+                    isNSFW: questCardPollsRecord.isNsfw,
+                    canDelete: widget.canDelete,
+                    createdAt: dateTimeFormat(
+                        'relative', questCardPollsRecord.createdAt),
+                    createdBy: questCardPollsRecord.createdBy,
                   );
-                }
-                final questCardPollsRecord = snapshot.data!;
-                return QuestCardWidget(
-                  key: Key('Keyf5j_${pollListIndex}_of_${pollList.length}'),
-                  question: questCardPollsRecord.question,
-                  optionOne: questCardPollsRecord.optionOne,
-                  optionTwo: questCardPollsRecord.optionTwo,
-                  questionTwoImg: questCardPollsRecord.optionOneImg,
-                  optionOneImg: questCardPollsRecord.optionTwoImg,
-                  docRef: questCardPollsRecord.reference,
-                  upVotes: questCardPollsRecord.upVotes,
-                  isNSFW: questCardPollsRecord.isNsfw,
-                  canDelete: widget.canDelete,
-                  createdAt: dateTimeFormat(
-                      'relative', questCardPollsRecord.createdAt),
-                  createdBy: questCardPollsRecord.createdBy,
-                );
-              },
-            );
-          },
-        );
-      },
+                },
+              );
+            },
+          );
+        },
+      ),
     );
   }
 }

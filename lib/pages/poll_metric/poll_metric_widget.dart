@@ -207,27 +207,19 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 15.0),
-                                      child: Hero(
-                                        tag: valueOrDefault<String>(
-                                          pollMetricPollsRecord.optionTwoImg,
-                                          'https://firebasestorage.googleapis.com/v0/b/binosophy.appspot.com/o/assets%2FPollsapart%20Default.png?alt=media&token=44294253-c963-4676-838a-9b08e98b0d08',
-                                        ),
-                                        transitionOnUserGestures: true,
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(16.0),
-                                          child: Image.network(
-                                            valueOrDefault<String>(
-                                              pollMetricPollsRecord
-                                                  .optionTwoImg,
-                                              'https://firebasestorage.googleapis.com/v0/b/binosophy.appspot.com/o/assets%2FPollsapart%20Default.png?alt=media&token=44294253-c963-4676-838a-9b08e98b0d08',
-                                            ),
-                                            width: MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.4,
-                                            height: 150.0,
-                                            fit: BoxFit.cover,
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(16.0),
+                                        child: Image.network(
+                                          valueOrDefault<String>(
+                                            pollMetricPollsRecord.optionTwoImg,
+                                            'https://firebasestorage.googleapis.com/v0/b/binosophy.appspot.com/o/assets%2FPollsapart%20Default.png?alt=media&token=44294253-c963-4676-838a-9b08e98b0d08',
                                           ),
+                                          width:
+                                              MediaQuery.sizeOf(context).width *
+                                                  0.4,
+                                          height: 150.0,
+                                          fit: BoxFit.cover,
                                         ),
                                       ),
                                     ),

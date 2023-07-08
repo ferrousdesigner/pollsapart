@@ -172,18 +172,6 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Align(
-                                      alignment: AlignmentDirectional(1.0, 0.0),
-                                      child: Text(
-                                        'Poll by',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              fontSize: 8.0,
-                                            ),
-                                      ),
-                                    ),
                                     Text(
                                       rowUsersRecord.displayName,
                                       style: FlutterFlowTheme.of(context)
@@ -194,36 +182,36 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                                             fontWeight: FontWeight.normal,
                                           ),
                                     ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(1.0, 0.0),
+                                          child: Text(
+                                            'Asked',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  fontSize: 8.0,
+                                                ),
+                                          ),
+                                        ),
+                                        Text(
+                                          widget.createdAt!,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                fontSize: 8.0,
+                                                fontWeight: FontWeight.w300,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
                                   ],
                                 ),
-                              ),
-                            ],
-                          ),
-                          Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Align(
-                                alignment: AlignmentDirectional(1.0, 0.0),
-                                child: Text(
-                                  'Posted',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        fontSize: 8.0,
-                                      ),
-                                ),
-                              ),
-                              Text(
-                                widget.createdAt!,
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 10.0,
-                                      fontWeight: FontWeight.normal,
-                                    ),
                               ),
                             ],
                           ),
