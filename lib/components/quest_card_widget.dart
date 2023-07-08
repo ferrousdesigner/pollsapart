@@ -61,7 +61,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(40.0, 0.0),
+          begin: Offset(0.0, 20.0),
           end: Offset(0.0, 0.0),
         ),
       ],
@@ -73,7 +73,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
           curve: Curves.easeOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(-40.0, 0.0),
+          begin: Offset(0.0, 20.0),
           end: Offset(0.0, 0.0),
         ),
       ],
@@ -191,7 +191,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                     padding:
                         EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 10.0, 0.0),
                     child: Container(
-                      width: MediaQuery.sizeOf(context).width * 0.45,
+                      width: MediaQuery.sizeOf(context).width * 0.4,
                       height: 165.0,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).primaryBackground,
@@ -267,9 +267,8 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                                       widget.questionTwoImg,
                                       'https://firebasestorage.googleapis.com/v0/b/binosophy.appspot.com/o/assets%2FPollsapart%20Default.png?alt=media&token=44294253-c963-4676-838a-9b08e98b0d08',
                                     ),
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 1.0,
-                                    height: 115.0,
+                                    width: 130.0,
+                                    height: 96.0,
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -285,7 +284,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
                     child: Container(
-                      width: MediaQuery.sizeOf(context).width * 0.45,
+                      width: MediaQuery.sizeOf(context).width * 0.4,
                       height: 165.0,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).primaryBackground,
@@ -369,9 +368,8 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                                       widget.optionOneImg,
                                       'https://firebasestorage.googleapis.com/v0/b/binosophy.appspot.com/o/assets%2FPollsapart%20Default.png?alt=media&token=44294253-c963-4676-838a-9b08e98b0d08',
                                     ),
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 1.0,
-                                    height: 115.0,
+                                    width: 130.0,
+                                    height: 101.0,
                                     fit: BoxFit.cover,
                                   ),
                                 ),
