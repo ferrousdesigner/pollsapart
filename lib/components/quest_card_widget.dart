@@ -111,7 +111,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
         borderRadius: BorderRadius.circular(20.0),
         child: Container(
           width: MediaQuery.sizeOf(context).width * 1.0,
-          height: 380.0,
+          height: 390.0,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).secondaryBackground,
             boxShadow: [
