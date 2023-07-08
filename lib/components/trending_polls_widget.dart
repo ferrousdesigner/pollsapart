@@ -49,7 +49,7 @@ class _TrendingPollsWidgetState extends State<TrendingPollsWidget> {
     return Align(
       alignment: AlignmentDirectional(0.0, -1.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
         child: PagedListView<DocumentSnapshot<Object?>?, PollsRecord>(
           pagingController: () {
             final Query<Object?> Function(Query<Object?>) queryBuilder =
