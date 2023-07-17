@@ -106,8 +106,8 @@ class _SplashWidgetState extends State<SplashWidget>
                             child: Image.asset(
                               'assets/images/Group_19.png',
                               width: MediaQuery.sizeOf(context).width * 1.0,
-                              height: 444.0,
-                              fit: BoxFit.cover,
+                              height: 291.0,
+                              fit: BoxFit.contain,
                             ),
                           ),
                         ).animateOnPageLoad(
