@@ -70,7 +70,7 @@ class _SplashWidgetState extends State<SplashWidget>
             children: [
               Container(
                 width: double.infinity,
-                height: MediaQuery.sizeOf(context).height * 1.0,
+                height: MediaQuery.sizeOf(context).height,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).primaryBackground,
                 ),
@@ -88,8 +88,8 @@ class _SplashWidgetState extends State<SplashWidget>
                             borderRadius: BorderRadius.circular(8.0),
                             child: Image.asset(
                               'assets/images/Favicon_Pollsapart.png',
-                              width: 100.0,
-                              height: 100.0,
+                              width: 60.0,
+                              height: 60.0,
                               fit: BoxFit.contain,
                             ),
                           ),
@@ -106,7 +106,7 @@ class _SplashWidgetState extends State<SplashWidget>
                             child: Image.asset(
                               'assets/images/Group_19.png',
                               width: MediaQuery.sizeOf(context).width * 1.0,
-                              height: 318.0,
+                              height: 444.0,
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -117,7 +117,7 @@ class _SplashWidgetState extends State<SplashWidget>
                         alignment: AlignmentDirectional(0.0, 0.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 40.0, 20.0, 0.0),
+                              20.0, 10.0, 20.0, 0.0),
                           child: Text(
                             'Pollsapart',
                             style: FlutterFlowTheme.of(context)
