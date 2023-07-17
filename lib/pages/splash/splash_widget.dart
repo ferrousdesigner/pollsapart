@@ -98,17 +98,13 @@ class _SplashWidgetState extends State<SplashWidget>
                       Padding(
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-                        child: Hero(
-                          tag: 'Test',
-                          transitionOnUserGestures: true,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(0.0),
-                            child: Image.asset(
-                              'assets/images/Group_19.png',
-                              width: MediaQuery.sizeOf(context).width * 1.0,
-                              height: 291.0,
-                              fit: BoxFit.contain,
-                            ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(0.0),
+                          child: Image.asset(
+                            'assets/images/Group_19.png',
+                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            height: 291.0,
+                            fit: BoxFit.contain,
                           ),
                         ).animateOnPageLoad(
                             animationsMap['imageOnPageLoadAnimation']!),
