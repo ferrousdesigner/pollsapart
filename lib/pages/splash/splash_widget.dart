@@ -74,153 +74,176 @@ class _SplashWidgetState extends State<SplashWidget>
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).primaryBackground,
                 ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-                      child: Hero(
-                        tag: 'Test',
-                        transitionOnUserGestures: true,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(0.0),
-                          child: Image.asset(
-                            'assets/images/Group_19.png',
-                            width: MediaQuery.sizeOf(context).width * 1.0,
-                            height: 413.0,
-                            fit: BoxFit.cover,
+                child: Align(
+                  alignment: AlignmentDirectional(0.0, 0.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional(0.0, 0.0),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 40.0, 0.0, 0.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.asset(
+                              'assets/images/Favicon_Pollsapart.png',
+                              width: 100.0,
+                              height: 100.0,
+                              fit: BoxFit.contain,
+                            ),
                           ),
                         ),
-                      ).animateOnPageLoad(
-                          animationsMap['imageOnPageLoadAnimation']!),
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional(-1.0, 0.0),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            40.0, 20.0, 0.0, 0.0),
-                        child: Text(
-                          'Pollsapart',
-                          style: FlutterFlowTheme.of(context)
-                              .displayLarge
-                              .override(
-                                fontFamily: 'Barlow Condensed',
-                                fontWeight: FontWeight.normal,
-                              ),
+                      ),
+                      Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+                        child: Hero(
+                          tag: 'Test',
+                          transitionOnUserGestures: true,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(0.0),
+                            child: Image.asset(
+                              'assets/images/Group_19.png',
+                              width: MediaQuery.sizeOf(context).width * 1.0,
+                              height: 318.0,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ).animateOnPageLoad(
+                            animationsMap['imageOnPageLoadAnimation']!),
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional(0.0, 0.0),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              20.0, 40.0, 20.0, 0.0),
+                          child: Text(
+                            'Pollsapart',
+                            style: FlutterFlowTheme.of(context)
+                                .displayLarge
+                                .override(
+                                  fontFamily: 'Barlow Condensed',
+                                  fontWeight: FontWeight.normal,
+                                ),
+                          ),
                         ),
                       ),
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional(-1.0, 0.0),
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            40.0, 10.0, 40.0, 0.0),
-                        child: Text(
-                          'Create simple polls to see what’s on people minds',
-                          style: FlutterFlowTheme.of(context)
-                              .titleMedium
-                              .override(
-                                fontFamily: 'Poppins',
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                fontSize: 16.0,
-                              ),
+                      Align(
+                        alignment: AlignmentDirectional(0.0, 0.0),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              20.0, 10.0, 20.0, 0.0),
+                          child: Text(
+                            'Create simple polls to see what’s on people minds',
+                            textAlign: TextAlign.center,
+                            style: FlutterFlowTheme.of(context)
+                                .titleMedium
+                                .override(
+                                  fontFamily: 'Poppins',
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  fontSize: 16.0,
+                                ),
+                          ),
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 0.0),
-                      child: Container(
-                        width: double.infinity,
-                        height: 100.0,
-                        decoration: BoxDecoration(),
-                        child: Align(
-                          alignment: AlignmentDirectional(0.0, -1.0),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 20.0, 0.0, 10.0),
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                logFirebaseEvent(
-                                    'SPLASH_PAGE_LOGIN_WITH_GOOGLE_BTN_ON_TAP');
-                                logFirebaseEvent('Button_auth');
-                                GoRouter.of(context).prepareAuthEvent();
-                                final user =
-                                    await authManager.signInWithGoogle(context);
-                                if (user == null) {
-                                  return;
-                                }
-                                if (valueOrDefault<bool>(
-                                    currentUserDocument?.isDeleted, false)) {
-                                  logFirebaseEvent('Button_show_snack_bar');
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'Account deleted.  Please try a different emai.',
-                                        style: GoogleFonts.getFont(
-                                          'Poppins',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                        ),
-                                      ),
-                                      duration: Duration(milliseconds: 4000),
-                                      backgroundColor:
-                                          FlutterFlowTheme.of(context)
-                                              .secondary,
-                                    ),
-                                  );
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            40.0, 0.0, 40.0, 0.0),
+                        child: Container(
+                          width: double.infinity,
+                          height: 100.0,
+                          decoration: BoxDecoration(),
+                          child: Align(
+                            alignment: AlignmentDirectional(0.0, -1.0),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 20.0, 0.0, 10.0),
+                              child: FFButtonWidget(
+                                onPressed: () async {
+                                  logFirebaseEvent(
+                                      'SPLASH_PAGE_LOGIN_WITH_GOOGLE_BTN_ON_TAP');
                                   logFirebaseEvent('Button_auth');
                                   GoRouter.of(context).prepareAuthEvent();
-                                  await authManager.signOut();
-                                  GoRouter.of(context).clearRedirectLocation();
-                                } else {
-                                  logFirebaseEvent('Button_show_snack_bar');
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        'Login successful',
-                                        style: GoogleFonts.getFont(
-                                          'Poppins',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
+                                  final user = await authManager
+                                      .signInWithGoogle(context);
+                                  if (user == null) {
+                                    return;
+                                  }
+                                  if (valueOrDefault<bool>(
+                                      currentUserDocument?.isDeleted, false)) {
+                                    logFirebaseEvent('Button_show_snack_bar');
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Account deleted.  Please try a different emai.',
+                                          style: GoogleFonts.getFont(
+                                            'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
                                         ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondary,
                                       ),
-                                      duration: Duration(milliseconds: 4000),
-                                      backgroundColor:
-                                          FlutterFlowTheme.of(context)
-                                              .secondary,
-                                    ),
-                                  );
-                                  logFirebaseEvent('Button_navigate_to');
+                                    );
+                                    logFirebaseEvent('Button_auth');
+                                    GoRouter.of(context).prepareAuthEvent();
+                                    await authManager.signOut();
+                                    GoRouter.of(context)
+                                        .clearRedirectLocation();
+                                  } else {
+                                    logFirebaseEvent('Button_show_snack_bar');
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          'Login successful',
+                                          style: GoogleFonts.getFont(
+                                            'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                        ),
+                                        duration: Duration(milliseconds: 4000),
+                                        backgroundColor:
+                                            FlutterFlowTheme.of(context)
+                                                .secondary,
+                                      ),
+                                    );
+                                    logFirebaseEvent('Button_navigate_to');
 
-                                  context.goNamedAuth('Feed', context.mounted);
-                                }
-                              },
-                              text: 'Login with Google',
-                              options: FFButtonOptions(
-                                width: double.infinity,
-                                height: 50.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).primary,
-                                textStyle:
-                                    FlutterFlowTheme.of(context).bodySmall,
-                                elevation: 0.0,
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
+                                    context.goNamedAuth(
+                                        'Feed', context.mounted);
+                                  }
+                                },
+                                text: 'Login with Google',
+                                options: FFButtonOptions(
+                                  width: double.infinity,
+                                  height: 50.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  textStyle:
+                                      FlutterFlowTheme.of(context).bodySmall,
+                                  elevation: 0.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(30.0),
                                 ),
-                                borderRadius: BorderRadius.circular(30.0),
                               ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],

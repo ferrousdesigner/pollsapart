@@ -452,8 +452,11 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                         width: 50.0,
                                         height: 50.0,
                                         child: CircularProgressIndicator(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                          ),
                                         ),
                                       ),
                                     );
@@ -751,7 +754,7 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                         await currentUserReference!.update({
                                           'polls_created':
                                               FieldValue.arrayUnion([
-                                            _model.pollCreated!.reference
+                                            _model.pollCreated?.reference
                                           ]),
                                         });
                                         logFirebaseEvent(

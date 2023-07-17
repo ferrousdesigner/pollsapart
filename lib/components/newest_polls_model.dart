@@ -15,9 +15,10 @@ class NewestPollsModel extends FlutterFlowModel {
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for ListView widget.
-  PagingController<DocumentSnapshot?, PollsRecord>? pagingController;
-  Query? pagingQuery;
-  List<StreamSubscription?> streamSubscriptions = [];
+
+  PagingController<DocumentSnapshot?, PollsRecord>? listViewPagingController;
+  Query? listViewPagingQuery;
+  List<StreamSubscription?> listViewStreamSubscriptions = [];
 
   // Models for QuestCard dynamic component.
   late FlutterFlowDynamicModels<QuestCardModel> questCardModels;
@@ -29,11 +30,44 @@ class NewestPollsModel extends FlutterFlowModel {
   }
 
   void dispose() {
-    streamSubscriptions.forEach((s) => s?.cancel());
+    listViewStreamSubscriptions.forEach((s) => s?.cancel());
+    listViewPagingController?.dispose();
+
     questCardModels.dispose();
   }
 
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
+
+  PagingController<DocumentSnapshot?, PollsRecord> setListViewController(
+    Query query, {
+    DocumentReference<Object?>? parent,
+  }) {
+    listViewPagingController ??= _createListViewController(query, parent);
+    if (listViewPagingQuery != query) {
+      listViewPagingQuery = query;
+      listViewPagingController?.refresh();
+    }
+    return listViewPagingController!;
+  }
+
+  PagingController<DocumentSnapshot?, PollsRecord> _createListViewController(
+    Query query,
+    DocumentReference<Object?>? parent,
+  ) {
+    final controller =
+        PagingController<DocumentSnapshot?, PollsRecord>(firstPageKey: null);
+    return controller
+      ..addPageRequestListener(
+        (nextPageMarker) => queryPollsRecordPage(
+          queryBuilder: (_) => listViewPagingQuery ??= query,
+          nextPageMarker: nextPageMarker,
+          streamSubscriptions: listViewStreamSubscriptions,
+          controller: controller,
+          pageSize: 5,
+          isStream: true,
+        ),
+      );
+  }
 }

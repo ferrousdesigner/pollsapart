@@ -177,7 +177,7 @@ class _ReportAbuseWidgetState extends State<ReportAbuseWidget> {
 
                                 await currentUserReference!.update({
                                   'polls_banned': FieldValue.arrayUnion(
-                                      [widget.poll!.reference]),
+                                      [widget.poll?.reference]),
                                 });
                                 logFirebaseEvent('Button_backend_call');
 
