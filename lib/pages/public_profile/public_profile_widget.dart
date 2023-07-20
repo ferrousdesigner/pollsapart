@@ -212,7 +212,7 @@ class _PublicProfileWidgetState extends State<PublicProfileWidget> {
                                           0.0, 0.0, 8.0, 0.0),
                                       child: FaIcon(
                                         FontAwesomeIcons.pen,
-                                        size: 20.0,
+                                        size: 12.0,
                                       ),
                                     ),
                                     Tab(
@@ -228,6 +228,7 @@ class _PublicProfileWidgetState extends State<PublicProfileWidget> {
                                           0.0, 0.0, 8.0, 0.0),
                                       child: Icon(
                                         Icons.thumbs_up_down,
+                                        size: 15.0,
                                       ),
                                     ),
                                     Tab(
@@ -259,6 +260,7 @@ class _PublicProfileWidgetState extends State<PublicProfileWidget> {
                                     child: ProfilePollListWidget(
                                       pollRefList: publicProfileUsersRecord
                                           .pollsAnswered,
+                                      canDelete: false,
                                     ),
                                   ),
                                 ),

@@ -86,7 +86,8 @@ class _FaqsWidgetState extends State<FaqsWidget> {
                               Expanded(
                                 child: Container(
                                   width: double.infinity,
-                                  color: Colors.white,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                   child: ExpandableNotifier(
                                     initialExpanded: false,
                                     child: ExpandablePanel(
@@ -118,7 +119,9 @@ class _FaqsWidgetState extends State<FaqsWidget> {
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Poppins',
-                                                  color: Color(0x8A000000),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
                                                 ),
                                           ),
                                         ),
@@ -169,7 +172,8 @@ class _FaqsWidgetState extends State<FaqsWidget> {
                               Expanded(
                                 child: Container(
                                   width: double.infinity,
-                                  color: Colors.white,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                   child: ExpandableNotifier(
                                     initialExpanded: false,
                                     child: ExpandablePanel(
@@ -201,7 +205,9 @@ class _FaqsWidgetState extends State<FaqsWidget> {
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Poppins',
-                                                  color: Color(0x8A000000),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
                                                 ),
                                           ),
                                         ),
@@ -252,7 +258,8 @@ class _FaqsWidgetState extends State<FaqsWidget> {
                               Expanded(
                                 child: Container(
                                   width: double.infinity,
-                                  color: Colors.white,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                   child: ExpandableNotifier(
                                     initialExpanded: false,
                                     child: ExpandablePanel(
@@ -284,7 +291,9 @@ class _FaqsWidgetState extends State<FaqsWidget> {
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Poppins',
-                                                  color: Color(0x8A000000),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
                                                 ),
                                           ),
                                         ),
@@ -335,7 +344,8 @@ class _FaqsWidgetState extends State<FaqsWidget> {
                               Expanded(
                                 child: Container(
                                   width: double.infinity,
-                                  color: Colors.white,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                   child: ExpandableNotifier(
                                     initialExpanded: false,
                                     child: ExpandablePanel(
@@ -367,7 +377,9 @@ class _FaqsWidgetState extends State<FaqsWidget> {
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Poppins',
-                                                  color: Color(0x8A000000),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
                                                 ),
                                           ),
                                         ),
@@ -418,7 +430,8 @@ class _FaqsWidgetState extends State<FaqsWidget> {
                               Expanded(
                                 child: Container(
                                   width: double.infinity,
-                                  color: Colors.white,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
                                   child: ExpandableNotifier(
                                     initialExpanded: false,
                                     child: ExpandablePanel(
@@ -450,7 +463,9 @@ class _FaqsWidgetState extends State<FaqsWidget> {
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Poppins',
-                                                  color: Color(0x8A000000),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
                                                 ),
                                           ),
                                         ),

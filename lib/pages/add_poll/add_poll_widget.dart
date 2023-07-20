@@ -1,15 +1,12 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/firebase_storage/storage.dart';
 import '/components/text_field_double_widget.dart';
 import '/components/text_field_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/flutter_flow/upload_data.dart';
 import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
@@ -99,7 +96,7 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                               ],
                             ),
                             Form(
-                              key: _model.formKey5,
+                              key: _model.formKey3,
                               autovalidateMode: AutovalidateMode.always,
                               child: wrapWithModel(
                                 model: _model.textFieldDoubleModel,
@@ -132,146 +129,10 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                           child: TextFieldWidget(
                                             hint: 'Example: iOS',
                                             label: 'Option A',
-                                            isDisabled: false,
+                                            value: 'Yes',
+                                            isDisabled: true,
                                           ),
                                         ),
-                                      ),
-                                    ),
-                                    Form(
-                                      key: _model.formKey4,
-                                      autovalidateMode: AutovalidateMode.always,
-                                      child: InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          logFirebaseEvent(
-                                              'ADD_POLL_PAGE_Stack_tqktub3k_ON_TAP');
-                                          logFirebaseEvent(
-                                              'Stack_upload_media_to_firebase');
-                                          final selectedMedia =
-                                              await selectMediaWithSourceBottomSheet(
-                                            context: context,
-                                            maxWidth: 200.00,
-                                            maxHeight: 200.00,
-                                            imageQuality: 100,
-                                            allowPhoto: true,
-                                          );
-                                          if (selectedMedia != null &&
-                                              selectedMedia.every((m) =>
-                                                  validateFileFormat(
-                                                      m.storagePath,
-                                                      context))) {
-                                            setState(() =>
-                                                _model.isDataUploading1 = true);
-                                            var selectedUploadedFiles =
-                                                <FFUploadedFile>[];
-
-                                            var downloadUrls = <String>[];
-                                            try {
-                                              selectedUploadedFiles =
-                                                  selectedMedia
-                                                      .map(
-                                                          (m) => FFUploadedFile(
-                                                                name: m
-                                                                    .storagePath
-                                                                    .split('/')
-                                                                    .last,
-                                                                bytes: m.bytes,
-                                                                height: m
-                                                                    .dimensions
-                                                                    ?.height,
-                                                                width: m
-                                                                    .dimensions
-                                                                    ?.width,
-                                                                blurHash:
-                                                                    m.blurHash,
-                                                              ))
-                                                      .toList();
-
-                                              downloadUrls = (await Future.wait(
-                                                selectedMedia.map(
-                                                  (m) async => await uploadData(
-                                                      m.storagePath, m.bytes),
-                                                ),
-                                              ))
-                                                  .where((u) => u != null)
-                                                  .map((u) => u!)
-                                                  .toList();
-                                            } finally {
-                                              _model.isDataUploading1 = false;
-                                            }
-                                            if (selectedUploadedFiles.length ==
-                                                    selectedMedia.length &&
-                                                downloadUrls.length ==
-                                                    selectedMedia.length) {
-                                              setState(() {
-                                                _model.uploadedLocalFile1 =
-                                                    selectedUploadedFiles.first;
-                                                _model.uploadedFileUrl1 =
-                                                    downloadUrls.first;
-                                              });
-                                            } else {
-                                              setState(() {});
-                                              return;
-                                            }
-                                          }
-                                        },
-                                        child: Stack(
-                                          alignment:
-                                              AlignmentDirectional(0.0, 0.0),
-                                          children: [
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  0.0, 0.0),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(15.0),
-                                                child: Image.network(
-                                                  valueOrDefault<String>(
-                                                    _model.uploadedFileUrl1,
-                                                    'https://firebasestorage.googleapis.com/v0/b/binosophy.appspot.com/o/assets%2FPollsapart%20Default.png?alt=media&token=44294253-c963-4676-838a-9b08e98b0d08',
-                                                  ),
-                                                  width:
-                                                      MediaQuery.sizeOf(context)
-                                                              .width *
-                                                          0.42,
-                                                  height: 150.0,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                            FlutterFlowIconButton(
-                                              borderColor: Colors.transparent,
-                                              borderRadius: 20.0,
-                                              borderWidth: 1.0,
-                                              buttonSize: 40.0,
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBackground,
-                                              icon: Icon(
-                                                Icons.upload_rounded,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                size: 24.0,
-                                              ),
-                                              onPressed: () {
-                                                print('IconButton pressed ...');
-                                              },
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 5.0, 0.0, 0.0),
-                                      child: Text(
-                                        'Option A Image',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
                                       ),
                                     ),
                                   ],
@@ -293,142 +154,10 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                           child: TextFieldWidget(
                                             hint: 'Example: Android',
                                             label: 'Option B',
+                                            value: 'No',
                                             isDisabled: false,
                                           ),
                                         ),
-                                      ),
-                                    ),
-                                    Form(
-                                      key: _model.formKey3,
-                                      autovalidateMode: AutovalidateMode.always,
-                                      child: InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          logFirebaseEvent(
-                                              'ADD_POLL_PAGE_Stack_edx8y0n6_ON_TAP');
-                                          logFirebaseEvent(
-                                              'Stack_upload_media_to_firebase');
-                                          final selectedMedia =
-                                              await selectMediaWithSourceBottomSheet(
-                                            context: context,
-                                            maxWidth: 200.00,
-                                            maxHeight: 200.00,
-                                            imageQuality: 100,
-                                            allowPhoto: true,
-                                          );
-                                          if (selectedMedia != null &&
-                                              selectedMedia.every((m) =>
-                                                  validateFileFormat(
-                                                      m.storagePath,
-                                                      context))) {
-                                            setState(() =>
-                                                _model.isDataUploading2 = true);
-                                            var selectedUploadedFiles =
-                                                <FFUploadedFile>[];
-
-                                            var downloadUrls = <String>[];
-                                            try {
-                                              selectedUploadedFiles =
-                                                  selectedMedia
-                                                      .map(
-                                                          (m) => FFUploadedFile(
-                                                                name: m
-                                                                    .storagePath
-                                                                    .split('/')
-                                                                    .last,
-                                                                bytes: m.bytes,
-                                                                height: m
-                                                                    .dimensions
-                                                                    ?.height,
-                                                                width: m
-                                                                    .dimensions
-                                                                    ?.width,
-                                                                blurHash:
-                                                                    m.blurHash,
-                                                              ))
-                                                      .toList();
-
-                                              downloadUrls = (await Future.wait(
-                                                selectedMedia.map(
-                                                  (m) async => await uploadData(
-                                                      m.storagePath, m.bytes),
-                                                ),
-                                              ))
-                                                  .where((u) => u != null)
-                                                  .map((u) => u!)
-                                                  .toList();
-                                            } finally {
-                                              _model.isDataUploading2 = false;
-                                            }
-                                            if (selectedUploadedFiles.length ==
-                                                    selectedMedia.length &&
-                                                downloadUrls.length ==
-                                                    selectedMedia.length) {
-                                              setState(() {
-                                                _model.uploadedLocalFile2 =
-                                                    selectedUploadedFiles.first;
-                                                _model.uploadedFileUrl2 =
-                                                    downloadUrls.first;
-                                              });
-                                            } else {
-                                              setState(() {});
-                                              return;
-                                            }
-                                          }
-                                        },
-                                        child: Stack(
-                                          alignment:
-                                              AlignmentDirectional(0.0, 0.0),
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(15.0),
-                                              child: Image.network(
-                                                valueOrDefault<String>(
-                                                  _model.uploadedFileUrl2,
-                                                  'https://firebasestorage.googleapis.com/v0/b/binosophy.appspot.com/o/assets%2FPollsapart%20Default.png?alt=media&token=44294253-c963-4676-838a-9b08e98b0d08',
-                                                ),
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        0.42,
-                                                height: 150.0,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                            FlutterFlowIconButton(
-                                              borderColor: Colors.transparent,
-                                              borderRadius: 20.0,
-                                              borderWidth: 1.0,
-                                              buttonSize: 40.0,
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              icon: Icon(
-                                                Icons.upload_rounded,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                size: 24.0,
-                                              ),
-                                              onPressed: () {
-                                                print('IconButton pressed ...');
-                                              },
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 5.0, 0.0, 0.0),
-                                      child: Text(
-                                        'Option B Image',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
                                       ),
                                     ),
                                   ],
@@ -676,10 +405,6 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                             _model.textFieldModel2
                                                     .textController.text !=
                                                 '') &&
-                                        (_model.uploadedFileUrl1 != null &&
-                                            _model.uploadedFileUrl1 != '') &&
-                                        (_model.uploadedFileUrl2 != null &&
-                                            _model.uploadedFileUrl2 != '') &&
                                         (_model.dropDownValue != null &&
                                             _model.dropDownValue != ''))
                                     ? null
@@ -700,8 +425,6 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                               .textController.text,
                                           optionTwo: _model.textFieldModel2
                                               .textController.text,
-                                          optionOneImg: _model.uploadedFileUrl1,
-                                          optionTwoImg: _model.uploadedFileUrl2,
                                           optionOneCount: 0,
                                           optionTwoCount: 0,
                                           createdBy: currentUserReference,
@@ -731,10 +454,6 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                                       .textFieldModel2
                                                       .textController
                                                       .text,
-                                                  optionOneImg:
-                                                      _model.uploadedFileUrl1,
-                                                  optionTwoImg:
-                                                      _model.uploadedFileUrl2,
                                                   optionOneCount: 0,
                                                   optionTwoCount: 0,
                                                   createdBy:
