@@ -131,7 +131,7 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                               fontFamily: 'Poppins',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .primary,
+                                                      .secondaryText,
                                               fontSize: 12.0,
                                               fontWeight: FontWeight.w500,
                                             ),
