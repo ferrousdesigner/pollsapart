@@ -239,11 +239,13 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                                   replacement: '…',
                                 ),
                                 textAlign: TextAlign.start,
+                                maxLines: 2,
                                 style: FlutterFlowTheme.of(context)
                                     .displayMedium
                                     .override(
                                       fontFamily: 'Barlow Condensed',
                                       fontSize: 26.0,
+                                      lineHeight: 1.3,
                                     ),
                               ),
                             ),
