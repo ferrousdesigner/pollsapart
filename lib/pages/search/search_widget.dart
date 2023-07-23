@@ -128,38 +128,27 @@ class _SearchWidgetState extends State<SearchWidget> {
                             borderWidth: 1.0,
                             buttonSize: 50.0,
                             fillColor: FlutterFlowTheme.of(context).primary,
-                            disabledColor:
-                                FlutterFlowTheme.of(context).secondaryText,
                             icon: Icon(
                               Icons.search_sharp,
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
                               size: 24.0,
                             ),
-                            onPressed: _model.textFieldModel.textController
-                                            .text ==
-                                        null ||
-                                    _model.textFieldModel.textController.text ==
-                                        ''
-                                ? null
-                                : () async {
-                                    logFirebaseEvent(
-                                        'SEARCH_PAGE_search_sharp_ICN_ON_TAP');
-                                    logFirebaseEvent(
-                                        'IconButton_algolia_search');
-                                    setState(() =>
-                                        _model.algoliaSearchResults = null);
-                                    await PollsRecord.search(
-                                      term: _model
-                                          .textFieldModel.textController.text,
-                                      maxResults: 30,
-                                    )
-                                        .then((r) =>
-                                            _model.algoliaSearchResults = r)
-                                        .onError((_, __) =>
-                                            _model.algoliaSearchResults = [])
-                                        .whenComplete(() => setState(() {}));
-                                  },
+                            onPressed: () async {
+                              logFirebaseEvent(
+                                  'SEARCH_PAGE_search_sharp_ICN_ON_TAP');
+                              logFirebaseEvent('IconButton_algolia_search');
+                              setState(
+                                  () => _model.algoliaSearchResults = null);
+                              await PollsRecord.search(
+                                term: _model.textFieldModel.textController.text,
+                                maxResults: 30,
+                              )
+                                  .then((r) => _model.algoliaSearchResults = r)
+                                  .onError((_, __) =>
+                                      _model.algoliaSearchResults = [])
+                                  .whenComplete(() => setState(() {}));
+                            },
                           ),
                         ],
                       ),
