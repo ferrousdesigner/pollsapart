@@ -25,6 +25,7 @@ class QuestCardWidget extends StatefulWidget {
     this.createdAt,
     this.createdBy,
     this.isDeleted,
+    this.isAnonymous,
   })  : this.question = question ?? 'Question Text',
         this.optionOne = optionOne ?? 'Option One',
         this.optionTwo = optionTwo ?? 'Option Two',
@@ -41,6 +42,7 @@ class QuestCardWidget extends StatefulWidget {
   final String? createdAt;
   final DocumentReference? createdBy;
   final bool? isDeleted;
+  final bool? isAnonymous;
 
   @override
   _QuestCardWidgetState createState() => _QuestCardWidgetState();
@@ -97,33 +99,33 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  if (!widget.isDeleted!)
+                  if (!widget.isAnonymous!)
                     Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-                      child: FutureBuilder<UsersRecord>(
-                        future: UsersRecord.getDocumentOnce(widget.createdBy!),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
-                                child: CircularProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                    FlutterFlowTheme.of(context).primary,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          StreamBuilder<UsersRecord>(
+                            stream: UsersRecord.getDocument(widget.createdBy!),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: CircularProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                        FlutterFlowTheme.of(context).primary,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                            );
-                          }
-                          final rowUsersRecord = snapshot.data!;
-                          return Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
+                                );
+                              }
+                              final rowUsersRecord = snapshot.data!;
+                              return Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
@@ -200,10 +202,10 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                                     ),
                                   ),
                                 ],
-                              ),
-                            ],
-                          );
-                        },
+                              );
+                            },
+                          ),
+                        ],
                       ),
                     ),
                   Padding(

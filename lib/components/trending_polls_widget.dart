@@ -138,7 +138,8 @@ class _TrendingPollsWidgetState extends State<TrendingPollsWidget> {
                         createdAt: dateTimeFormat(
                             'relative', listViewPollsRecord.createdAt),
                         createdBy: listViewPollsRecord.createdBy,
-                        isDeleted: false,
+                        isDeleted: listViewPollsRecord.isDeleted,
+                        isAnonymous: listViewPollsRecord.isAnonymous,
                       ),
                     ),
                   ),
