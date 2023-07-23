@@ -43,16 +43,6 @@ class PollsRecord extends FirestoreRecord {
   String get optionTwo => _optionTwo ?? '';
   bool hasOptionTwo() => _optionTwo != null;
 
-  // "option_one_img" field.
-  String? _optionOneImg;
-  String get optionOneImg => _optionOneImg ?? '';
-  bool hasOptionOneImg() => _optionOneImg != null;
-
-  // "option_two_img" field.
-  String? _optionTwoImg;
-  String get optionTwoImg => _optionTwoImg ?? '';
-  bool hasOptionTwoImg() => _optionTwoImg != null;
-
   // "option_one_count" field.
   int? _optionOneCount;
   int get optionOneCount => _optionOneCount ?? 0;
@@ -109,8 +99,6 @@ class PollsRecord extends FirestoreRecord {
     _question = snapshotData['question'] as String?;
     _optionOne = snapshotData['option_one'] as String?;
     _optionTwo = snapshotData['option_two'] as String?;
-    _optionOneImg = snapshotData['option_one_img'] as String?;
-    _optionTwoImg = snapshotData['option_two_img'] as String?;
     _optionOneCount = castToType<int>(snapshotData['option_one_count']);
     _optionTwoCount = castToType<int>(snapshotData['option_two_count']);
     _createdBy = snapshotData['created_by'] as DocumentReference?;
@@ -157,8 +145,6 @@ class PollsRecord extends FirestoreRecord {
           'question': snapshot.data['question'],
           'option_one': snapshot.data['option_one'],
           'option_two': snapshot.data['option_two'],
-          'option_one_img': snapshot.data['option_one_img'],
-          'option_two_img': snapshot.data['option_two_img'],
           'option_one_count': snapshot.data['option_one_count']?.round(),
           'option_two_count': snapshot.data['option_two_count']?.round(),
           'created_by': safeGet(
@@ -212,8 +198,6 @@ Map<String, dynamic> createPollsRecordData({
   String? question,
   String? optionOne,
   String? optionTwo,
-  String? optionOneImg,
-  String? optionTwoImg,
   int? optionOneCount,
   int? optionTwoCount,
   DocumentReference? createdBy,
@@ -232,8 +216,6 @@ Map<String, dynamic> createPollsRecordData({
       'question': question,
       'option_one': optionOne,
       'option_two': optionTwo,
-      'option_one_img': optionOneImg,
-      'option_two_img': optionTwoImg,
       'option_one_count': optionOneCount,
       'option_two_count': optionTwoCount,
       'created_by': createdBy,
@@ -260,8 +242,6 @@ class PollsRecordDocumentEquality implements Equality<PollsRecord> {
         e1?.question == e2?.question &&
         e1?.optionOne == e2?.optionOne &&
         e1?.optionTwo == e2?.optionTwo &&
-        e1?.optionOneImg == e2?.optionOneImg &&
-        e1?.optionTwoImg == e2?.optionTwoImg &&
         e1?.optionOneCount == e2?.optionOneCount &&
         e1?.optionTwoCount == e2?.optionTwoCount &&
         e1?.createdBy == e2?.createdBy &&
@@ -281,8 +261,6 @@ class PollsRecordDocumentEquality implements Equality<PollsRecord> {
         e?.question,
         e?.optionOne,
         e?.optionTwo,
-        e?.optionOneImg,
-        e?.optionTwoImg,
         e?.optionOneCount,
         e?.optionTwoCount,
         e?.createdBy,

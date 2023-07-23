@@ -93,8 +93,6 @@ class _SinglePollWidgetState extends State<SinglePollWidget> {
                           question: questCardPollsRecord.question,
                           optionOne: questCardPollsRecord.optionOne,
                           optionTwo: questCardPollsRecord.optionTwo,
-                          questionTwoImg: questCardPollsRecord.optionTwoImg,
-                          optionOneImg: questCardPollsRecord.optionOneImg,
                           upVotes: questCardPollsRecord.upVotes,
                           isNSFW: questCardPollsRecord.isNsfw,
                           canDelete: false,

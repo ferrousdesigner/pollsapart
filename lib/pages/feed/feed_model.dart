@@ -17,27 +17,27 @@ class FeedModel extends FlutterFlowModel {
   final unfocusNode = FocusNode();
   // Model for AppBar component.
   late AppBarModel appBarModel;
+  // Model for NewestPolls component.
+  late NewestPollsModel newestPollsModel;
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
   // Model for TrendingPolls component.
   late TrendingPollsModel trendingPollsModel;
-  // Model for NewestPolls component.
-  late NewestPollsModel newestPollsModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
     appBarModel = createModel(context, () => AppBarModel());
-    trendingPollsModel = createModel(context, () => TrendingPollsModel());
     newestPollsModel = createModel(context, () => NewestPollsModel());
+    trendingPollsModel = createModel(context, () => TrendingPollsModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     appBarModel.dispose();
-    trendingPollsModel.dispose();
     newestPollsModel.dispose();
+    trendingPollsModel.dispose();
   }
 
   /// Action blocks are added here.

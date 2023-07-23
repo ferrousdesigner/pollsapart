@@ -72,6 +72,16 @@ class _FeedWidgetState extends State<FeedWidget> {
                         child: TabBarView(
                           children: [
                             KeepAliveWidgetWrapper(
+                              builder: (context) => Align(
+                                alignment: AlignmentDirectional(0.0, -1.0),
+                                child: wrapWithModel(
+                                  model: _model.newestPollsModel,
+                                  updateCallback: () => setState(() {}),
+                                  child: NewestPollsWidget(),
+                                ),
+                              ),
+                            ),
+                            KeepAliveWidgetWrapper(
                               builder: (context) => SingleChildScrollView(
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -181,16 +191,6 @@ class _FeedWidgetState extends State<FeedWidget> {
                                 ),
                               ),
                             ),
-                            KeepAliveWidgetWrapper(
-                              builder: (context) => Align(
-                                alignment: AlignmentDirectional(0.0, -1.0),
-                                child: wrapWithModel(
-                                  model: _model.newestPollsModel,
-                                  updateCallback: () => setState(() {}),
-                                  child: NewestPollsWidget(),
-                                ),
-                              ),
-                            ),
                           ],
                         ),
                       ),
@@ -213,13 +213,13 @@ class _FeedWidgetState extends State<FeedWidget> {
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 8.0, 0.0),
-                                  child: Icon(
-                                    Icons.trending_up,
+                                  child: FaIcon(
+                                    FontAwesomeIcons.clock,
                                     size: 20.0,
                                   ),
                                 ),
                                 Tab(
-                                  text: 'Trending',
+                                  text: 'Newest',
                                 ),
                               ],
                             ),
@@ -229,13 +229,13 @@ class _FeedWidgetState extends State<FeedWidget> {
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 8.0, 0.0),
-                                  child: FaIcon(
-                                    FontAwesomeIcons.clock,
+                                  child: Icon(
+                                    Icons.trending_up,
                                     size: 20.0,
                                   ),
                                 ),
                                 Tab(
-                                  text: 'Newest',
+                                  text: 'Trending',
                                 ),
                               ],
                             ),

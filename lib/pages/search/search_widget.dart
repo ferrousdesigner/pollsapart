@@ -67,10 +67,14 @@ class _SearchWidgetState extends State<SearchWidget> {
                           children: [
                             Align(
                               alignment: AlignmentDirectional(-1.0, 0.0),
-                              child: Text(
-                                'Search',
-                                style:
-                                    FlutterFlowTheme.of(context).displayLarge,
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 10.0),
+                                child: Text(
+                                  'Search',
+                                  style:
+                                      FlutterFlowTheme.of(context).displayLarge,
+                                ),
                               ),
                             ),
                             Column(
@@ -84,6 +88,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                         fontFamily: 'Poppins',
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryText,
+                                        fontSize: 11.0,
                                       ),
                                 ),
                                 ClipRRect(
@@ -235,14 +240,14 @@ class _SearchWidgetState extends State<SearchWidget> {
                               question: resultsItem.question,
                               optionOne: resultsItem.optionOne,
                               optionTwo: resultsItem.optionTwo,
-                              questionTwoImg: resultsItem.optionTwoImg,
-                              optionOneImg: resultsItem.optionOneImg,
                               upVotes: resultsItem.upVotes,
                               isNSFW: resultsItem.isNsfw,
                               canDelete: false,
                               docRef: resultsItem.reference,
                               createdAt: dateTimeFormat(
                                   'relative', resultsItem.createdAt),
+                              isDeleted: resultsItem.isDeleted,
+                              createdBy: resultsItem.createdBy,
                             ),
                           );
                         },

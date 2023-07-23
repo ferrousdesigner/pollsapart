@@ -131,8 +131,6 @@ class _TrendingPollsWidgetState extends State<TrendingPollsWidget> {
                         question: listViewPollsRecord.question,
                         optionOne: listViewPollsRecord.optionOne,
                         optionTwo: listViewPollsRecord.optionTwo,
-                        questionTwoImg: listViewPollsRecord.optionTwoImg,
-                        optionOneImg: listViewPollsRecord.optionOneImg,
                         docRef: listViewPollsRecord.reference,
                         upVotes: listViewPollsRecord.upVotes,
                         isNSFW: listViewPollsRecord.isNsfw,

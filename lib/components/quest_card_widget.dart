@@ -21,8 +21,6 @@ class QuestCardWidget extends StatefulWidget {
     String? question,
     String? optionOne,
     String? optionTwo,
-    this.questionTwoImg,
-    this.optionOneImg,
     required this.docRef,
     this.upVotes,
     bool? isNSFW,
@@ -39,8 +37,6 @@ class QuestCardWidget extends StatefulWidget {
   final String question;
   final String optionOne;
   final String optionTwo;
-  final String? questionTwoImg;
-  final String? optionOneImg;
   final DocumentReference? docRef;
   final int? upVotes;
   final bool isNSFW;

@@ -83,8 +83,6 @@ class _ProfilePollListWidgetState extends State<ProfilePollListWidget> {
                     question: questCardPollsRecord.question,
                     optionOne: questCardPollsRecord.optionOne,
                     optionTwo: questCardPollsRecord.optionTwo,
-                    questionTwoImg: questCardPollsRecord.optionOneImg,
-                    optionOneImg: questCardPollsRecord.optionTwoImg,
                     docRef: questCardPollsRecord.reference,
                     upVotes: questCardPollsRecord.upVotes,
                     isNSFW: questCardPollsRecord.isNsfw,

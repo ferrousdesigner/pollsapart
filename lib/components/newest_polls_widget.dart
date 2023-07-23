@@ -129,8 +129,6 @@ class _NewestPollsWidgetState extends State<NewestPollsWidget> {
                         question: listViewPollsRecord.question,
                         optionOne: listViewPollsRecord.optionOne,
                         optionTwo: listViewPollsRecord.optionTwo,
-                        questionTwoImg: listViewPollsRecord.optionOneImg,
-                        optionOneImg: listViewPollsRecord.optionTwoImg,
                         docRef: listViewPollsRecord.reference,
                         upVotes: listViewPollsRecord.upVotes,
                         isNSFW: listViewPollsRecord.isNsfw,

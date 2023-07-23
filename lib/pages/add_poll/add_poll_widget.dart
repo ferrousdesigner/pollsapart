@@ -171,7 +171,6 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                 stream: queryCategoriesRecord(
                                   queryBuilder: (categoriesRecord) =>
                                       categoriesRecord.orderBy('category_name'),
-                                  limit: 20,
                                 ),
                                 builder: (context, snapshot) {
                                   // Customize what your widget looks like when it's loading.
