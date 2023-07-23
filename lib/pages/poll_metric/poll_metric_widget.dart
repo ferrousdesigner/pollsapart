@@ -157,7 +157,15 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
                                                 center: Text(
-                                                  '40%',
+                                                  formatNumber(
+                                                    functions.getPercentage(
+                                                        pollMetricPollsRecord
+                                                            .optionOneCount,
+                                                        pollMetricPollsRecord
+                                                            .optionTwoCount),
+                                                    formatType:
+                                                        FormatType.percent,
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .headlineSmall
@@ -246,7 +254,15 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                                               context)
                                                           .secondaryBackground,
                                                   center: Text(
-                                                    '50%',
+                                                    formatNumber(
+                                                      functions.getPercentage(
+                                                          pollMetricPollsRecord
+                                                              .optionTwoCount,
+                                                          pollMetricPollsRecord
+                                                              .optionOneCount),
+                                                      formatType:
+                                                          FormatType.percent,
+                                                    ),
                                                     textAlign: TextAlign.start,
                                                     style: FlutterFlowTheme.of(
                                                             context)

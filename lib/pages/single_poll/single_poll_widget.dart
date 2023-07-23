@@ -97,6 +97,7 @@ class _SinglePollWidgetState extends State<SinglePollWidget> {
                           isNSFW: questCardPollsRecord.isNsfw,
                           canDelete: false,
                           docRef: widget.pollRef!,
+                          isDeleted: false,
                         ),
                       );
                     },
