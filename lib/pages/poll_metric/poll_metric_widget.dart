@@ -98,7 +98,7 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                         children: [
                           Container(
                             width: double.infinity,
-                            height: 355.0,
+                            height: 418.0,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
@@ -121,7 +121,47 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                     alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 0.0, 30.0),
+                                          0.0, 0.0, 0.0, 12.0),
+                                      child: Container(
+                                        width: 100.0,
+                                        height: 30.0,
+                                        constraints: BoxConstraints(
+                                          minWidth: 100.0,
+                                          maxWidth:
+                                              MediaQuery.sizeOf(context).width *
+                                                  1.0,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryBackground,
+                                          borderRadius:
+                                              BorderRadius.circular(30.0),
+                                        ),
+                                        child: Align(
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          child: Text(
+                                            pollMetricPollsRecord.category,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  fontSize: 12.0,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 10.0),
                                       child: Text(
                                         pollMetricPollsRecord.question,
                                         style: FlutterFlowTheme.of(context)
