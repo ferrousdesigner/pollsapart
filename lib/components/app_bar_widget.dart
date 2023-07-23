@@ -72,22 +72,6 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                     fit: BoxFit.contain,
                   ),
                 ),
-                Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                    child: Text(
-                      'Pollsapart',
-                      style:
-                          FlutterFlowTheme.of(context).displayMedium.override(
-                                fontFamily: 'Barlow Condensed',
-                                fontSize: 24.0,
-                                fontWeight: FontWeight.normal,
-                                lineHeight: 1.0,
-                              ),
-                    ),
-                  ),
-                ),
               ],
             ),
             if (widget.showRightIcon ?? true)

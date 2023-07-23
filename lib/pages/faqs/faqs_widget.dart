@@ -155,6 +155,8 @@ class _FaqsWidgetState extends State<FaqsWidget> {
                                             ExpandablePanelHeaderAlignment
                                                 .center,
                                         hasIcon: true,
+                                        iconColor: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                       ),
                                     ),
                                   ),
@@ -241,6 +243,8 @@ class _FaqsWidgetState extends State<FaqsWidget> {
                                             ExpandablePanelHeaderAlignment
                                                 .center,
                                         hasIcon: true,
+                                        iconColor: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                       ),
                                     ),
                                   ),
@@ -327,6 +331,8 @@ class _FaqsWidgetState extends State<FaqsWidget> {
                                             ExpandablePanelHeaderAlignment
                                                 .center,
                                         hasIcon: true,
+                                        iconColor: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                       ),
                                     ),
                                   ),
@@ -413,6 +419,8 @@ class _FaqsWidgetState extends State<FaqsWidget> {
                                             ExpandablePanelHeaderAlignment
                                                 .center,
                                         hasIcon: true,
+                                        iconColor: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                       ),
                                     ),
                                   ),
@@ -499,6 +507,8 @@ class _FaqsWidgetState extends State<FaqsWidget> {
                                             ExpandablePanelHeaderAlignment
                                                 .center,
                                         hasIcon: true,
+                                        iconColor: FlutterFlowTheme.of(context)
+                                            .primaryText,
                                       ),
                                     ),
                                   ),

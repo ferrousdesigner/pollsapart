@@ -265,6 +265,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                       0.0, 0.0, 6.0, 0.0),
                                   child: Icon(
                                     Icons.thumbs_up_down,
+                                    size: 18.0,
                                   ),
                                 ),
                                 Tab(
