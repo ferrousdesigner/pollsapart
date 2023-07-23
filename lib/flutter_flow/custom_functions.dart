@@ -44,5 +44,5 @@ String? getPollLink(String docID) {
 }
 
 double? getHeightInPx(bool isAnonymous) {
-  return isAnonymous ? 300 : 362;
+  return isAnonymous ? 320 : 362;
 }

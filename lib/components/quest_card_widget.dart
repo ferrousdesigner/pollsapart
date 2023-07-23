@@ -105,7 +105,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                   if (!widget.isAnonymous!)
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 15.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -213,7 +213,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                     ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 10.0),
+                        EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 10.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -221,9 +221,9 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 10.0),
+                              0.0, 0.0, 50.0, 10.0),
                           child: Container(
-                            width: MediaQuery.sizeOf(context).width * 0.923,
+                            width: MediaQuery.sizeOf(context).width * 0.882,
                             height: double.infinity,
                             constraints: BoxConstraints(
                               minHeight: 30.0,
