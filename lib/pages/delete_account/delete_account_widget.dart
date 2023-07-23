@@ -156,7 +156,7 @@ class _DeleteAccountWidgetState extends State<DeleteAccountWidget> {
                               0.0, 0.0, 0.0, 40.0),
                           child: Container(
                             width: double.infinity,
-                            height: 165.0,
+                            height: 179.0,
                             decoration: BoxDecoration(
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
