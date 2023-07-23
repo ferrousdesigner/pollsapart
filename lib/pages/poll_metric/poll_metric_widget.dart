@@ -105,7 +105,7 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                               boxShadow: [
                                 BoxShadow(
                                   blurRadius: 15.0,
-                                  color: Color(0x33000000),
+                                  color: Color(0x1D000000),
                                   offset: Offset(0.0, 10.0),
                                 )
                               ],
@@ -128,7 +128,7 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                             .displayLarge
                                             .override(
                                               fontFamily: 'Barlow Condensed',
-                                              fontSize: 36.0,
+                                              fontSize: 32.0,
                                             ),
                                       ),
                                     ),
@@ -196,7 +196,7 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                                         backgroundColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .secondaryBackground,
+                                                                .primaryBackground,
                                                         center: Text(
                                                           formatNumber(
                                                             functions.getPercentage(
@@ -311,7 +311,7 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                                           backgroundColor:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .secondaryBackground,
+                                                                  .primaryBackground,
                                                           center: Text(
                                                             formatNumber(
                                                               functions.getPercentage(
@@ -551,32 +551,96 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  FlutterFlowIconButton(
-                                    borderRadius: 20.0,
-                                    borderWidth: 1.0,
-                                    buttonSize: 40.0,
-                                    fillColor: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    icon: Icon(
-                                      Icons.chevron_left,
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      size: 24.0,
-                                    ),
-                                    onPressed: () async {
+                                  InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
                                       logFirebaseEvent(
-                                          'POLL_METRIC_PAGE_chevron_left_ICN_ON_TAP');
-                                      logFirebaseEvent(
-                                          'IconButton_navigate_back');
-                                      context.safePop();
+                                          'POLL_METRIC_PAGE_Row_0r8gns4v_ON_TAP');
+                                      logFirebaseEvent('Row_navigate_to');
+
+                                      context.pushNamed(
+                                        'ReportAbuse',
+                                        queryParameters: {
+                                          'poll': serializeParam(
+                                            pollMetricPollsRecord,
+                                            ParamType.Document,
+                                          ),
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          'poll': pollMetricPollsRecord,
+                                        },
+                                      );
                                     },
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            FlutterFlowIconButton(
+                                              borderRadius: 20.0,
+                                              borderWidth: 1.0,
+                                              buttonSize: 40.0,
+                                              fillColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              icon: Icon(
+                                                Icons.report,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                                size: 24.0,
+                                              ),
+                                              onPressed: () {
+                                                print('IconButton pressed ...');
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  8.0, 0.0, 0.0, 0.0),
+                                          child: Text(
+                                            'Report Abuse',
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelSmall,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                   Expanded(
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
+                                      mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
+                                        FlutterFlowIconButton(
+                                          borderRadius: 20.0,
+                                          borderWidth: 1.0,
+                                          buttonSize: 40.0,
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          icon: Icon(
+                                            Icons.chevron_left,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 24.0,
+                                          ),
+                                          onPressed: () async {
+                                            logFirebaseEvent(
+                                                'POLL_METRIC_PAGE_chevron_left_ICN_ON_TAP');
+                                            logFirebaseEvent(
+                                                'IconButton_navigate_back');
+                                            context.safePop();
+                                          },
+                                        ),
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
@@ -659,70 +723,6 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                                 }
                                               },
                                             ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      logFirebaseEvent(
-                                          'POLL_METRIC_PAGE_Row_0r8gns4v_ON_TAP');
-                                      logFirebaseEvent('Row_navigate_to');
-
-                                      context.pushNamed(
-                                        'ReportAbuse',
-                                        queryParameters: {
-                                          'poll': serializeParam(
-                                            pollMetricPollsRecord,
-                                            ParamType.Document,
-                                          ),
-                                        }.withoutNulls,
-                                        extra: <String, dynamic>{
-                                          'poll': pollMetricPollsRecord,
-                                        },
-                                      );
-                                    },
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            FlutterFlowIconButton(
-                                              borderRadius: 20.0,
-                                              borderWidth: 1.0,
-                                              buttonSize: 40.0,
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              icon: Icon(
-                                                Icons.report,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                size: 24.0,
-                                              ),
-                                              onPressed: () {
-                                                print('IconButton pressed ...');
-                                              },
-                                            ),
-                                          ],
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  8.0, 0.0, 0.0, 0.0),
-                                          child: Text(
-                                            'Report Abuse',
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelSmall,
                                           ),
                                         ),
                                       ],
