@@ -237,6 +237,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                   'relative', resultsItem.createdAt),
                               isDeleted: resultsItem.isDeleted,
                               createdBy: resultsItem.createdBy,
+                              isAnonymous: resultsItem.isAnonymous,
                             ),
                           );
                         },
