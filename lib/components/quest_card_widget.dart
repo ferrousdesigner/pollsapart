@@ -492,54 +492,64 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     5.0, 0.0, 0.0, 0.0),
-                                child: FlutterFlowIconButton(
-                                  borderRadius: 20.0,
-                                  borderWidth: 1.0,
-                                  buttonSize: 30.0,
-                                  fillColor: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  icon: Icon(
-                                    Icons.thumb_up_off_alt,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 14.0,
+                                child: AuthUserStreamWidget(
+                                  builder: (context) => FlutterFlowIconButton(
+                                    borderRadius: 20.0,
+                                    borderWidth: 1.0,
+                                    buttonSize: 30.0,
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    icon: Icon(
+                                      Icons.thumb_up_off_alt,
+                                      color: (currentUserDocument?.pollsUpvoted
+                                                      ?.toList() ??
+                                                  [])
+                                              .contains(widget.docRef)
+                                          ? FlutterFlowTheme.of(context).primary
+                                          : FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                      size: 14.0,
+                                    ),
+                                    onPressed: () async {
+                                      logFirebaseEvent(
+                                          'QUEST_CARD_thumb_up_off_alt_ICN_ON_TAP');
+                                      if (!(currentUserDocument?.pollsUpvoted
+                                                  ?.toList() ??
+                                              [])
+                                          .contains(widget.docRef)) {
+                                        logFirebaseEvent(
+                                            'IconButton_backend_call');
+
+                                        await widget.docRef!.update({
+                                          'up_votes': FieldValue.increment(1),
+                                        });
+                                        logFirebaseEvent(
+                                            'IconButton_backend_call');
+
+                                        await currentUserReference!.update({
+                                          'polls_upvoted':
+                                              FieldValue.arrayUnion(
+                                                  [widget.docRef]),
+                                        });
+                                      } else {
+                                        logFirebaseEvent(
+                                            'IconButton_backend_call');
+
+                                        await widget.docRef!.update({
+                                          'up_votes':
+                                              FieldValue.increment(-(1)),
+                                        });
+                                        logFirebaseEvent(
+                                            'IconButton_backend_call');
+
+                                        await currentUserReference!.update({
+                                          'polls_upvoted':
+                                              FieldValue.arrayRemove(
+                                                  [widget.docRef]),
+                                        });
+                                      }
+                                    },
                                   ),
-                                  onPressed: () async {
-                                    logFirebaseEvent(
-                                        'QUEST_CARD_thumb_up_off_alt_ICN_ON_TAP');
-                                    if (!(currentUserDocument?.pollsUpvoted
-                                                ?.toList() ??
-                                            [])
-                                        .contains(widget.docRef)) {
-                                      logFirebaseEvent(
-                                          'IconButton_backend_call');
-
-                                      await widget.docRef!.update({
-                                        'up_votes': FieldValue.increment(1),
-                                      });
-                                      logFirebaseEvent(
-                                          'IconButton_backend_call');
-
-                                      await currentUserReference!.update({
-                                        'polls_upvoted': FieldValue.arrayUnion(
-                                            [widget.docRef]),
-                                      });
-                                    } else {
-                                      logFirebaseEvent(
-                                          'IconButton_backend_call');
-
-                                      await widget.docRef!.update({
-                                        'up_votes': FieldValue.increment(-(1)),
-                                      });
-                                      logFirebaseEvent(
-                                          'IconButton_backend_call');
-
-                                      await currentUserReference!.update({
-                                        'polls_upvoted': FieldValue.arrayRemove(
-                                            [widget.docRef]),
-                                      });
-                                    }
-                                  },
                                 ),
                               ),
                               Padding(
@@ -565,56 +575,65 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 5.0, 0.0),
-                                child: FlutterFlowIconButton(
-                                  borderRadius: 20.0,
-                                  borderWidth: 1.0,
-                                  buttonSize: 30.0,
-                                  fillColor: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  icon: Icon(
-                                    Icons.thumb_down_outlined,
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    size: 13.0,
+                                child: AuthUserStreamWidget(
+                                  builder: (context) => FlutterFlowIconButton(
+                                    borderRadius: 20.0,
+                                    borderWidth: 1.0,
+                                    buttonSize: 30.0,
+                                    fillColor: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    icon: Icon(
+                                      Icons.thumb_down_outlined,
+                                      color: (currentUserDocument
+                                                      ?.pollsDownvoted
+                                                      ?.toList() ??
+                                                  [])
+                                              .contains(widget.docRef)
+                                          ? FlutterFlowTheme.of(context).primary
+                                          : FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                      size: 13.0,
+                                    ),
+                                    onPressed: () async {
+                                      logFirebaseEvent(
+                                          'QUEST_CARD_thumb_down_outlined_ICN_ON_TA');
+                                      if ((currentUserDocument?.pollsDownvoted
+                                                  ?.toList() ??
+                                              [])
+                                          .contains(widget.docRef)) {
+                                        logFirebaseEvent(
+                                            'IconButton_backend_call');
+
+                                        await widget.docRef!.update({
+                                          'up_votes': FieldValue.increment(1),
+                                        });
+                                        logFirebaseEvent(
+                                            'IconButton_backend_call');
+
+                                        await currentUserReference!.update({
+                                          'polls_downvoted':
+                                              FieldValue.arrayRemove(
+                                                  [widget.docRef]),
+                                        });
+                                      } else {
+                                        logFirebaseEvent(
+                                            'IconButton_backend_call');
+
+                                        await widget.docRef!.update({
+                                          'up_votes':
+                                              FieldValue.increment(-(1)),
+                                        });
+                                        logFirebaseEvent(
+                                            'IconButton_backend_call');
+
+                                        await currentUserReference!.update({
+                                          'polls_downvoted':
+                                              FieldValue.arrayUnion(
+                                                  [widget.docRef]),
+                                        });
+                                      }
+                                    },
                                   ),
-                                  onPressed: () async {
-                                    logFirebaseEvent(
-                                        'QUEST_CARD_thumb_down_outlined_ICN_ON_TA');
-                                    if ((currentUserDocument?.pollsDownvoted
-                                                ?.toList() ??
-                                            [])
-                                        .contains(widget.docRef)) {
-                                      logFirebaseEvent(
-                                          'IconButton_backend_call');
-
-                                      await widget.docRef!.update({
-                                        'up_votes': FieldValue.increment(1),
-                                      });
-                                      logFirebaseEvent(
-                                          'IconButton_backend_call');
-
-                                      await currentUserReference!.update({
-                                        'polls_downvoted':
-                                            FieldValue.arrayRemove(
-                                                [widget.docRef]),
-                                      });
-                                    } else {
-                                      logFirebaseEvent(
-                                          'IconButton_backend_call');
-
-                                      await widget.docRef!.update({
-                                        'up_votes': FieldValue.increment(-(1)),
-                                      });
-                                      logFirebaseEvent(
-                                          'IconButton_backend_call');
-
-                                      await currentUserReference!.update({
-                                        'polls_downvoted':
-                                            FieldValue.arrayUnion(
-                                                [widget.docRef]),
-                                      });
-                                    }
-                                  },
                                 ),
                               ),
                             ],

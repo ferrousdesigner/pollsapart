@@ -43,6 +43,6 @@ String? getPollLink(String docID) {
   return finalLink;
 }
 
-double? getHeightInPx() {
-  return MediaQueryData.fromWindow(WidgetsBinding.instance!.window).size.height;
+double? getHeightInPx(bool isAnonymous) {
+  return isAnonymous ? 300 : 362;
 }
