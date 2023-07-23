@@ -1,14 +1,11 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
@@ -49,36 +46,8 @@ class QuestCardWidget extends StatefulWidget {
   _QuestCardWidgetState createState() => _QuestCardWidgetState();
 }
 
-class _QuestCardWidgetState extends State<QuestCardWidget>
-    with TickerProviderStateMixin {
+class _QuestCardWidgetState extends State<QuestCardWidget> {
   late QuestCardModel _model;
-
-  final animationsMap = {
-    'columnOnPageLoadAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 20.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-    'columnOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: Offset(0.0, 20.0),
-          end: Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-  };
 
   @override
   void setState(VoidCallback callback) {
@@ -284,68 +253,65 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             15.0, 0.0, 15.0, 0.0),
-                        child: Container(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          height: 60.0,
-                          decoration: BoxDecoration(
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                10.0, 10.0, 10.0, 10.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                logFirebaseEvent(
-                                    'QUEST_CARD_COMP_Column_jurxan94_ON_TAP');
-                                if ((currentUserDocument?.pollsAnswered
-                                            ?.toList() ??
-                                        [])
-                                    .contains(widget.docRef)) {
-                                  logFirebaseEvent('Column_navigate_to');
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            logFirebaseEvent(
+                                'QUEST_CARD_Container_99t1mwrm_ON_TAP');
+                            if ((currentUserDocument?.pollsAnswered?.toList() ??
+                                    [])
+                                .contains(widget.docRef)) {
+                              logFirebaseEvent('Container_navigate_to');
 
-                                  context.pushNamed(
-                                    'PollMetric',
-                                    queryParameters: {
-                                      'pollRef': serializeParam(
-                                        widget.docRef,
-                                        ParamType.DocumentReference,
-                                      ),
-                                    }.withoutNulls,
-                                  );
-                                } else {
-                                  logFirebaseEvent('Column_backend_call');
+                              context.pushNamed(
+                                'PollMetric',
+                                queryParameters: {
+                                  'pollRef': serializeParam(
+                                    widget.docRef,
+                                    ParamType.DocumentReference,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            } else {
+                              logFirebaseEvent('Container_navigate_to');
 
-                                  await widget.docRef!.update({
-                                    ...createPollsRecordData(
-                                      modifiedAt: getCurrentTimestamp,
-                                    ),
-                                    'option_one_count': FieldValue.increment(1),
-                                  });
-                                  logFirebaseEvent('Column_backend_call');
+                              context.pushNamed(
+                                'PollMetric',
+                                queryParameters: {
+                                  'pollRef': serializeParam(
+                                    widget.docRef,
+                                    ParamType.DocumentReference,
+                                  ),
+                                }.withoutNulls,
+                              );
 
-                                  await currentUserReference!.update({
-                                    'polls_answered':
-                                        FieldValue.arrayUnion([widget.docRef]),
-                                  });
-                                  logFirebaseEvent('Column_navigate_to');
+                              logFirebaseEvent('Container_backend_call');
 
-                                  context.pushNamed(
-                                    'PollMetric',
-                                    queryParameters: {
-                                      'pollRef': serializeParam(
-                                        widget.docRef,
-                                        ParamType.DocumentReference,
-                                      ),
-                                    }.withoutNulls,
-                                  );
-                                }
-                              },
+                              await widget.docRef!.update({
+                                'option_one_count': FieldValue.increment(1),
+                              });
+                              logFirebaseEvent('Container_backend_call');
+
+                              await currentUserReference!.update({
+                                'polls_answered':
+                                    FieldValue.arrayUnion([widget.docRef]),
+                              });
+                            }
+                          },
+                          child: Container(
+                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            height: 60.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 10.0, 10.0, 10.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -364,68 +330,72 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                                   ),
                                 ],
                               ),
-                            ).animateOnPageLoad(
-                                animationsMap['columnOnPageLoadAnimation1']!),
+                            ),
                           ),
                         ),
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             15.0, 15.0, 15.0, 0.0),
-                        child: Container(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          height: 60.0,
-                          decoration: BoxDecoration(
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                10.0, 10.0, 10.0, 10.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                logFirebaseEvent(
-                                    'QUEST_CARD_COMP_Column_5flxclom_ON_TAP');
-                                if ((currentUserDocument?.pollsAnswered
-                                            ?.toList() ??
-                                        [])
-                                    .contains(widget.docRef)) {
-                                  logFirebaseEvent('Column_navigate_to');
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            logFirebaseEvent(
+                                'QUEST_CARD_Container_kbkdditx_ON_TAP');
+                            if ((currentUserDocument?.pollsAnswered?.toList() ??
+                                    [])
+                                .contains(widget.docRef)) {
+                              logFirebaseEvent('Container_navigate_to');
 
-                                  context.pushNamed(
-                                    'PollMetric',
-                                    queryParameters: {
-                                      'pollRef': serializeParam(
-                                        widget.docRef,
-                                        ParamType.DocumentReference,
-                                      ),
-                                    }.withoutNulls,
-                                  );
-                                } else {
-                                  logFirebaseEvent('Column_backend_call');
+                              context.pushNamed(
+                                'PollMetric',
+                                queryParameters: {
+                                  'pollRef': serializeParam(
+                                    widget.docRef,
+                                    ParamType.DocumentReference,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            } else {
+                              logFirebaseEvent('Container_navigate_to');
 
-                                  await widget.docRef!.update({
-                                    ...createPollsRecordData(
-                                      modifiedAt: getCurrentTimestamp,
-                                    ),
-                                    'option_two_count': FieldValue.increment(1),
-                                  });
-                                  logFirebaseEvent('Column_backend_call');
+                              context.pushNamed(
+                                'PollMetric',
+                                queryParameters: {
+                                  'pollRef': serializeParam(
+                                    widget.docRef,
+                                    ParamType.DocumentReference,
+                                  ),
+                                }.withoutNulls,
+                              );
 
-                                  await currentUserReference!.update({
-                                    'polls_answered':
-                                        FieldValue.arrayUnion([widget.docRef]),
-                                  });
-                                  logFirebaseEvent('Column_navigate_to');
+                              logFirebaseEvent('Container_backend_call');
 
-                                  context.pushNamed('Profile');
-                                }
-                              },
+                              await widget.docRef!.update({
+                                'option_two_count': FieldValue.increment(1),
+                              });
+                              logFirebaseEvent('Container_backend_call');
+
+                              await currentUserReference!.update({
+                                'polls_answered':
+                                    FieldValue.arrayUnion([widget.docRef]),
+                              });
+                            }
+                          },
+                          child: Container(
+                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            height: 60.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 10.0, 10.0, 10.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -441,8 +411,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget>
                                   ),
                                 ],
                               ),
-                            ).animateOnPageLoad(
-                                animationsMap['columnOnPageLoadAnimation2']!),
+                            ),
                           ),
                         ),
                       ),
