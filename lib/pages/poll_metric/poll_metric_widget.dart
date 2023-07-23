@@ -96,368 +96,381 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Align(
-                            alignment: AlignmentDirectional(-1.0, 0.0),
-                            child: Text(
-                              pollMetricPollsRecord.question,
-                              style:
-                                  FlutterFlowTheme.of(context).headlineMedium,
+                          Container(
+                            width: double.infinity,
+                            height: 355.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 15.0,
+                                  color: Color(0x33000000),
+                                  offset: Offset(0.0, 10.0),
+                                )
+                              ],
+                              borderRadius: BorderRadius.circular(12.0),
                             ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 20.0, 0.0, 20.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      pollMetricPollsRecord.optionOne,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                    ),
-                                    Padding(
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 20.0, 20.0, 20.0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Align(
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
+                                    child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 10.0, 0.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Expanded(
-                                            child: Align(
-                                              alignment: AlignmentDirectional(
-                                                  -1.0, 0.0),
-                                              child: LinearPercentIndicator(
-                                                percent: valueOrDefault<double>(
-                                                  functions.getPercentage(
-                                                      valueOrDefault<int>(
-                                                        pollMetricPollsRecord
-                                                            .optionOneCount,
-                                                        0,
-                                                      ),
-                                                      valueOrDefault<int>(
-                                                        pollMetricPollsRecord
-                                                            .optionTwoCount,
-                                                        0,
-                                                      )),
-                                                  0.0,
-                                                ),
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        0.72,
-                                                lineHeight: 30.0,
-                                                animation: true,
-                                                progressColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                backgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                center: Text(
-                                                  formatNumber(
-                                                    functions.getPercentage(
-                                                        pollMetricPollsRecord
-                                                            .optionOneCount,
-                                                        pollMetricPollsRecord
-                                                            .optionTwoCount),
-                                                    formatType:
-                                                        FormatType.percent,
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .headlineSmall
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 18.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                ),
-                                                barRadius:
-                                                    Radius.circular(10.0),
-                                                padding: EdgeInsets.zero,
-                                              ),
+                                          0.0, 0.0, 0.0, 30.0),
+                                      child: Text(
+                                        pollMetricPollsRecord.question,
+                                        style: FlutterFlowTheme.of(context)
+                                            .displayLarge
+                                            .override(
+                                              fontFamily: 'Barlow Condensed',
+                                              fontSize: 36.0,
                                             ),
-                                          ),
-                                          Text(
-                                            formatNumber(
-                                              pollMetricPollsRecord
-                                                  .optionOneCount,
-                                              formatType: FormatType.compact,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .headlineMedium
-                                                .override(
-                                                  fontFamily: 'Poppins',
-                                                  fontSize: 18.0,
-                                                ),
-                                          ),
-                                        ],
                                       ),
                                     ),
-                                  ],
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 20.0, 0.0, 0.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        pollMetricPollsRecord.optionTwo,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 0.0),
-                                        child: Row(
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 20.0, 0.0, 20.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Column(
                                           mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
-                                            Expanded(
-                                              child: Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: LinearPercentIndicator(
-                                                  percent:
-                                                      valueOrDefault<double>(
-                                                    functions.getPercentage(
-                                                        valueOrDefault<int>(
-                                                          pollMetricPollsRecord
-                                                              .optionTwoCount,
-                                                          0,
-                                                        ),
-                                                        valueOrDefault<int>(
-                                                          pollMetricPollsRecord
-                                                              .optionOneCount,
-                                                          0,
-                                                        )),
-                                                    0.0,
-                                                  ),
-                                                  width:
-                                                      MediaQuery.sizeOf(context)
-                                                              .width *
-                                                          0.72,
-                                                  lineHeight: 30.0,
-                                                  animation: true,
-                                                  progressColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primary,
-                                                  backgroundColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryBackground,
-                                                  center: Text(
-                                                    formatNumber(
-                                                      functions.getPercentage(
-                                                          pollMetricPollsRecord
-                                                              .optionTwoCount,
-                                                          pollMetricPollsRecord
-                                                              .optionOneCount),
-                                                      formatType:
-                                                          FormatType.percent,
-                                                    ),
-                                                    textAlign: TextAlign.start,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .headlineSmall
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          fontSize: 18.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                                  ),
-                                                  barRadius:
-                                                      Radius.circular(10.0),
-                                                  padding: EdgeInsets.zero,
-                                                ),
-                                              ),
-                                            ),
                                             Text(
-                                              formatNumber(
-                                                pollMetricPollsRecord
-                                                    .optionTwoCount,
-                                                formatType: FormatType.compact,
-                                              ),
+                                              pollMetricPollsRecord.optionOne,
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .headlineSmall
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 18.0,
+                                                      .bodyMedium,
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 10.0, 0.0, 0.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Expanded(
+                                                    child: Align(
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              -1.0, 0.0),
+                                                      child:
+                                                          LinearPercentIndicator(
+                                                        percent: valueOrDefault<
+                                                            double>(
+                                                          functions
+                                                              .getPercentage(
+                                                                  valueOrDefault<
+                                                                      int>(
+                                                                    pollMetricPollsRecord
+                                                                        .optionOneCount,
+                                                                    0,
+                                                                  ),
+                                                                  valueOrDefault<
+                                                                      int>(
+                                                                    pollMetricPollsRecord
+                                                                        .optionTwoCount,
+                                                                    0,
+                                                                  )),
+                                                          0.0,
+                                                        ),
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.64,
+                                                        lineHeight: 30.0,
+                                                        animation: true,
+                                                        progressColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        backgroundColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryBackground,
+                                                        center: Text(
+                                                          formatNumber(
+                                                            functions.getPercentage(
+                                                                pollMetricPollsRecord
+                                                                    .optionOneCount,
+                                                                pollMetricPollsRecord
+                                                                    .optionTwoCount),
+                                                            formatType:
+                                                                FormatType
+                                                                    .percent,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .headlineSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                fontSize: 18.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                              ),
+                                                        ),
+                                                        barRadius:
+                                                            Radius.circular(
+                                                                30.0),
+                                                        padding:
+                                                            EdgeInsets.zero,
                                                       ),
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    formatNumber(
+                                                      pollMetricPollsRecord
+                                                          .optionOneCount,
+                                                      formatType:
+                                                          FormatType.compact,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .headlineMedium
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          fontSize: 16.0,
+                                                        ),
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           ],
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 10.0, 0.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 30.0, 0.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 30.0, 0.0),
-                                        child: Text(
-                                          'Total Votes',
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelMedium,
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment:
-                                            AlignmentDirectional(-1.0, 0.0),
-                                        child: Text(
-                                          valueOrDefault<String>(
-                                            formatNumber(
-                                              functions.getTotal(
-                                                  pollMetricPollsRecord
-                                                      .optionOneCount
-                                                      .toDouble(),
-                                                  pollMetricPollsRecord
-                                                      .optionTwoCount
-                                                      .toDouble()),
-                                              formatType: FormatType.compact,
-                                            ),
-                                            '0',
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Posted on',
-                                      style: FlutterFlowTheme.of(context)
-                                          .labelMedium,
-                                    ),
-                                    Text(
-                                      dateTimeFormat('yMMMd',
-                                          pollMetricPollsRecord.createdAt!),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                    ),
-                                  ],
-                                ),
-                                Expanded(
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            30.0, 0.0, 0.0, 0.0),
-                                        child: AuthUserStreamWidget(
-                                          builder: (context) =>
-                                              FlutterFlowIconButton(
-                                            borderRadius: 20.0,
-                                            borderWidth: 1.0,
-                                            buttonSize: 40.0,
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                            icon: Icon(
-                                              Icons.favorite_sharp,
-                                              color: (currentUserDocument
-                                                              ?.pollsSaved
-                                                              ?.toList() ??
-                                                          [])
-                                                      .contains(widget.pollRef)
-                                                  ? FlutterFlowTheme.of(context)
-                                                      .error
-                                                  : FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 24.0,
-                                            ),
-                                            onPressed: () async {
-                                              logFirebaseEvent(
-                                                  'POLL_METRIC_favorite_sharp_ICN_ON_TAP');
-                                              if ((currentUserDocument
-                                                          ?.pollsSaved
-                                                          ?.toList() ??
-                                                      [])
-                                                  .contains(widget.pollRef)) {
-                                                logFirebaseEvent(
-                                                    'IconButton_backend_call');
-
-                                                await currentUserReference!
-                                                    .update({
-                                                  'polls_saved':
-                                                      FieldValue.arrayRemove(
-                                                          [widget.pollRef]),
-                                                });
-                                              } else {
-                                                logFirebaseEvent(
-                                                    'IconButton_backend_call');
-
-                                                await currentUserReference!
-                                                    .update({
-                                                  'polls_saved':
-                                                      FieldValue.arrayUnion(
-                                                          [widget.pollRef]),
-                                                });
-                                                logFirebaseEvent(
-                                                    'IconButton_show_snack_bar');
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(
-                                                  SnackBar(
-                                                    content: Text(
-                                                      'Poll saved!',
-                                                      style:
-                                                          GoogleFonts.getFont(
-                                                        'Poppins',
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .primaryBackground,
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 20.0, 0.0, 0.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                pollMetricPollsRecord.optionTwo,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium,
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 10.0, 0.0, 0.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Expanded(
+                                                      child: Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0.0, 0.0),
+                                                        child:
+                                                            LinearPercentIndicator(
+                                                          percent:
+                                                              valueOrDefault<
+                                                                  double>(
+                                                            functions
+                                                                .getPercentage(
+                                                                    valueOrDefault<
+                                                                        int>(
+                                                                      pollMetricPollsRecord
+                                                                          .optionTwoCount,
+                                                                      0,
+                                                                    ),
+                                                                    valueOrDefault<
+                                                                        int>(
+                                                                      pollMetricPollsRecord
+                                                                          .optionOneCount,
+                                                                      0,
+                                                                    )),
+                                                            0.0,
+                                                          ),
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  0.64,
+                                                          lineHeight: 30.0,
+                                                          animation: true,
+                                                          progressColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .primary,
+                                                          backgroundColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .secondaryBackground,
+                                                          center: Text(
+                                                            formatNumber(
+                                                              functions.getPercentage(
+                                                                  pollMetricPollsRecord
+                                                                      .optionTwoCount,
+                                                                  pollMetricPollsRecord
+                                                                      .optionOneCount),
+                                                              formatType:
+                                                                  FormatType
+                                                                      .percent,
+                                                            ),
+                                                            textAlign:
+                                                                TextAlign.start,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .headlineSmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  fontSize:
+                                                                      18.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                ),
+                                                          ),
+                                                          barRadius:
+                                                              Radius.circular(
+                                                                  30.0),
+                                                          padding:
+                                                              EdgeInsets.zero,
+                                                        ),
                                                       ),
                                                     ),
-                                                    duration: Duration(
-                                                        milliseconds: 4000),
-                                                    backgroundColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .secondary,
-                                                  ),
-                                                );
-                                              }
-                                            },
+                                                    Text(
+                                                      formatNumber(
+                                                        pollMetricPollsRecord
+                                                            .optionTwoCount,
+                                                        formatType:
+                                                            FormatType.compact,
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .headlineSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                fontSize: 16.0,
+                                                              ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ],
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 10.0, 0.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 30.0, 0.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 30.0, 0.0),
+                                                child: Text(
+                                                  'Total Votes',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                      ),
+                                                ),
+                                              ),
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    -1.0, 0.0),
+                                                child: Text(
+                                                  valueOrDefault<String>(
+                                                    formatNumber(
+                                                      functions.getTotal(
+                                                          pollMetricPollsRecord
+                                                              .optionOneCount
+                                                              .toDouble(),
+                                                          pollMetricPollsRecord
+                                                              .optionTwoCount
+                                                              .toDouble()),
+                                                      formatType:
+                                                          FormatType.compact,
+                                                    ),
+                                                    '0',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                              'Posted on',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .labelMedium
+                                                  .override(
+                                                    fontFamily: 'Poppins',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                            ),
+                                            Text(
+                                              dateTimeFormat(
+                                                  'yMMMd',
+                                                  pollMetricPollsRecord
+                                                      .createdAt!),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           if (valueOrDefault<bool>(
@@ -557,6 +570,99 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                           'IconButton_navigate_back');
                                       context.safePop();
                                     },
+                                  ),
+                                  Expanded(
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  15.0, 0.0, 15.0, 0.0),
+                                          child: AuthUserStreamWidget(
+                                            builder: (context) =>
+                                                FlutterFlowIconButton(
+                                              borderRadius: 20.0,
+                                              borderWidth: 1.0,
+                                              buttonSize: 40.0,
+                                              fillColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              icon: Icon(
+                                                Icons.favorite_sharp,
+                                                color: (currentUserDocument
+                                                                ?.pollsSaved
+                                                                ?.toList() ??
+                                                            [])
+                                                        .contains(
+                                                            widget.pollRef)
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .error
+                                                    : FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                size: 24.0,
+                                              ),
+                                              onPressed: () async {
+                                                logFirebaseEvent(
+                                                    'POLL_METRIC_favorite_sharp_ICN_ON_TAP');
+                                                if ((currentUserDocument
+                                                            ?.pollsSaved
+                                                            ?.toList() ??
+                                                        [])
+                                                    .contains(widget.pollRef)) {
+                                                  logFirebaseEvent(
+                                                      'IconButton_backend_call');
+
+                                                  await currentUserReference!
+                                                      .update({
+                                                    'polls_saved':
+                                                        FieldValue.arrayRemove(
+                                                            [widget.pollRef]),
+                                                  });
+                                                } else {
+                                                  logFirebaseEvent(
+                                                      'IconButton_backend_call');
+
+                                                  await currentUserReference!
+                                                      .update({
+                                                    'polls_saved':
+                                                        FieldValue.arrayUnion(
+                                                            [widget.pollRef]),
+                                                  });
+                                                  logFirebaseEvent(
+                                                      'IconButton_show_snack_bar');
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    SnackBar(
+                                                      content: Text(
+                                                        'Poll saved!',
+                                                        style:
+                                                            GoogleFonts.getFont(
+                                                          'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryBackground,
+                                                        ),
+                                                      ),
+                                                      duration: Duration(
+                                                          milliseconds: 4000),
+                                                      backgroundColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondary,
+                                                    ),
+                                                  );
+                                                }
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                   InkWell(
                                     splashColor: Colors.transparent,

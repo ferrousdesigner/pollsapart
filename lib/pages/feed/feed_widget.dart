@@ -163,11 +163,11 @@ class _FeedWidgetState extends State<FeedWidget> {
                                             fillColor:
                                                 FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
-                                            elevation: 2.0,
+                                            elevation: 0.0,
                                             borderColor:
                                                 FlutterFlowTheme.of(context)
-                                                    .alternate,
-                                            borderWidth: 2.0,
+                                                    .secondaryBackground,
+                                            borderWidth: 0.0,
                                             borderRadius: 12.0,
                                             margin:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -215,7 +215,7 @@ class _FeedWidgetState extends State<FeedWidget> {
                                       0.0, 0.0, 8.0, 0.0),
                                   child: FaIcon(
                                     FontAwesomeIcons.clock,
-                                    size: 20.0,
+                                    size: 16.0,
                                   ),
                                 ),
                                 Tab(
