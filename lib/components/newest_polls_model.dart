@@ -18,7 +18,6 @@ class NewestPollsModel extends FlutterFlowModel {
 
   PagingController<DocumentSnapshot?, PollsRecord>? listViewPagingController;
   Query? listViewPagingQuery;
-  List<StreamSubscription?> listViewStreamSubscriptions = [];
 
   // Models for QuestCard dynamic component.
   late FlutterFlowDynamicModels<QuestCardModel> questCardModels;
@@ -30,7 +29,6 @@ class NewestPollsModel extends FlutterFlowModel {
   }
 
   void dispose() {
-    listViewStreamSubscriptions.forEach((s) => s?.cancel());
     listViewPagingController?.dispose();
 
     questCardModels.dispose();
@@ -63,10 +61,9 @@ class NewestPollsModel extends FlutterFlowModel {
         (nextPageMarker) => queryPollsRecordPage(
           queryBuilder: (_) => listViewPagingQuery ??= query,
           nextPageMarker: nextPageMarker,
-          streamSubscriptions: listViewStreamSubscriptions,
           controller: controller,
           pageSize: 5,
-          isStream: true,
+          isStream: false,
         ),
       );
   }
