@@ -6,7 +6,6 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'faqs_model.dart';
 export 'faqs_model.dart';
 
@@ -72,15 +71,9 @@ class _FaqsWidgetState extends State<FaqsWidget> {
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 50.0),
-                            child: GradientText(
+                            child: Text(
                               'FAQs',
                               style: FlutterFlowTheme.of(context).displayLarge,
-                              colors: [
-                                Color(0xFFF12711),
-                                FlutterFlowTheme.of(context).primary
-                              ],
-                              gradientDirection: GradientDirection.ltr,
-                              gradientType: GradientType.linear,
                             ),
                           ),
                         ),

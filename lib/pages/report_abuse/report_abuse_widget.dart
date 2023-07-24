@@ -11,7 +11,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'report_abuse_model.dart';
 export 'report_abuse_model.dart';
 
@@ -78,15 +77,9 @@ class _ReportAbuseWidgetState extends State<ReportAbuseWidget> {
                     children: [
                       Align(
                         alignment: AlignmentDirectional(-1.0, 0.0),
-                        child: GradientText(
+                        child: Text(
                           'Report Abuse',
                           style: FlutterFlowTheme.of(context).displayLarge,
-                          colors: [
-                            Color(0xFFF12711),
-                            FlutterFlowTheme.of(context).primary
-                          ],
-                          gradientDirection: GradientDirection.ltr,
-                          gradientType: GradientType.linear,
                         ),
                       ),
                       Align(

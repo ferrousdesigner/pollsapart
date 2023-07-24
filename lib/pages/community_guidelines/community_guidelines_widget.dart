@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'community_guidelines_model.dart';
 export 'community_guidelines_model.dart';
 
@@ -78,16 +77,10 @@ class _CommunityGuidelinesWidgetState extends State<CommunityGuidelinesWidget> {
                                 children: [
                                   Align(
                                     alignment: AlignmentDirectional(-1.0, 0.0),
-                                    child: GradientText(
+                                    child: Text(
                                       'Community Guidelines',
                                       style: FlutterFlowTheme.of(context)
                                           .displayLarge,
-                                      colors: [
-                                        Color(0xFFF12711),
-                                        FlutterFlowTheme.of(context).primary
-                                      ],
-                                      gradientDirection: GradientDirection.ltr,
-                                      gradientType: GradientType.linear,
                                     ),
                                   ),
                                   Align(

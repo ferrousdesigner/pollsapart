@@ -52,7 +52,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
       width: MediaQuery.sizeOf(context).width * 1.0,
       height: 60.0,
       decoration: BoxDecoration(
-        color: FlutterFlowTheme.of(context).secondaryBackground,
+        color: FlutterFlowTheme.of(context).primaryBackground,
       ),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
