@@ -2,6 +2,7 @@ import '/backend/backend.dart';
 import '/components/app_bar_widget.dart';
 import '/components/newest_polls_widget.dart';
 import '/components/trending_polls_widget.dart';
+import '/flutter_flow/flutter_flow_ad_banner.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
