@@ -63,11 +63,14 @@ class _FeedWidgetState extends State<FeedWidget> {
                   showRightIcon: false,
                 ),
               ),
-              FlutterFlowAdBanner(
-                width: MediaQuery.sizeOf(context).width * 1.0,
-                height: 50.0,
-                showsTestAd: true,
-                iOSAdUnitID: 'ca-app-pub-6283076109028810/9726106035',
+              Opacity(
+                opacity: 0.0,
+                child: FlutterFlowAdBanner(
+                  width: MediaQuery.sizeOf(context).width * 1.0,
+                  height: 0.0,
+                  showsTestAd: true,
+                  iOSAdUnitID: 'ca-app-pub-6283076109028810/9726106035',
+                ),
               ),
               Expanded(
                 child: DefaultTabController(

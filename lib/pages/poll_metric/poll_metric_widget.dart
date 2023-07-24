@@ -100,8 +100,6 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                             width: double.infinity,
                             height: 418.0,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
                               boxShadow: [
                                 BoxShadow(
                                   blurRadius: 15.0,
@@ -109,6 +107,15 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                   offset: Offset(0.0, 10.0),
                                 )
                               ],
+                              gradient: LinearGradient(
+                                colors: [
+                                  Color(0xFFF12711),
+                                  FlutterFlowTheme.of(context).primary
+                                ],
+                                stops: [0.0, 1.0],
+                                begin: AlignmentDirectional(1.0, -1.0),
+                                end: AlignmentDirectional(-1.0, 1.0),
+                              ),
                               borderRadius: BorderRadius.circular(12.0),
                             ),
                             child: Padding(
@@ -131,7 +138,7 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                               fontFamily: 'Poppins',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryText,
+                                                      .alternate,
                                               fontSize: 12.0,
                                               fontWeight: FontWeight.w500,
                                             ),
@@ -149,7 +156,10 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                             .displayLarge
                                             .override(
                                               fontFamily: 'Poppins',
-                                              fontSize: 32.0,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              fontSize: 26.0,
                                             ),
                                       ),
                                     ),
@@ -217,7 +227,7 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                                         backgroundColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primaryBackground,
+                                                                .info,
                                                         center: Text(
                                                           formatNumber(
                                                             functions.getPercentage(
@@ -261,6 +271,9 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                                         .headlineMedium
                                                         .override(
                                                           fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
                                                           fontSize: 16.0,
                                                         ),
                                                   ),
@@ -383,6 +396,9 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Poppins',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
                                                                 fontSize: 16.0,
                                                               ),
                                                     ),
@@ -423,10 +439,9 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                                       .labelMedium
                                                       .override(
                                                         fontFamily: 'Poppins',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
                                                         fontWeight:
                                                             FontWeight.w600,
                                                       ),
@@ -452,7 +467,13 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
-                                                      .bodyMedium,
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                      ),
                                                 ),
                                               ),
                                             ],
@@ -472,7 +493,7 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                                     fontFamily: 'Poppins',
                                                     color: FlutterFlowTheme.of(
                                                             context)
-                                                        .primaryText,
+                                                        .secondaryBackground,
                                                     fontWeight: FontWeight.w600,
                                                   ),
                                             ),
@@ -483,7 +504,13 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                                       .createdAt!),
                                               style:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                      ),
                                             ),
                                           ],
                                         ),

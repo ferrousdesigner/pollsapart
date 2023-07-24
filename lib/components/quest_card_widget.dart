@@ -323,8 +323,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                             width: MediaQuery.sizeOf(context).width * 1.0,
                             height: 60.0,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
+                              color: Color(0x45F1F4F8),
                               borderRadius: BorderRadius.circular(20.0),
                             ),
                             child: Padding(
@@ -342,7 +341,14 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                                       child: Text(
                                         widget.optionOne,
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              fontWeight: FontWeight.w600,
+                                            ),
                                       ),
                                     ),
                                   ),
@@ -407,8 +413,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                             width: MediaQuery.sizeOf(context).width * 1.0,
                             height: 60.0,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
+                              color: Color(0x45F1F4F8),
                               borderRadius: BorderRadius.circular(20.0),
                             ),
                             child: Padding(
@@ -424,7 +429,13 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                                     child: Text(
                                       widget.optionTwo,
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            fontWeight: FontWeight.w600,
+                                          ),
                                     ),
                                   ),
                                 ],
@@ -496,8 +507,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                           width: 120.0,
                           height: 40.0,
                           decoration: BoxDecoration(
-                            color:
-                                FlutterFlowTheme.of(context).primaryBackground,
+                            color: Color(0x45F1F4F8),
                             borderRadius: BorderRadius.circular(30.0),
                           ),
                           alignment: AlignmentDirectional(0.0, 0.0),
@@ -584,6 +594,8 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                                       .labelMedium
                                       .override(
                                         fontFamily: 'Poppins',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondary,
                                         fontSize: 10.0,
                                       ),
                                 ),
