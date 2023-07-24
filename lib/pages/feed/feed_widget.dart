@@ -63,6 +63,12 @@ class _FeedWidgetState extends State<FeedWidget> {
                   showRightIcon: false,
                 ),
               ),
+              FlutterFlowAdBanner(
+                width: MediaQuery.sizeOf(context).width * 1.0,
+                height: 50.0,
+                showsTestAd: true,
+                iOSAdUnitID: 'ca-app-pub-6283076109028810/9726106035',
+              ),
               Expanded(
                 child: DefaultTabController(
                   length: 2,
@@ -73,35 +79,13 @@ class _FeedWidgetState extends State<FeedWidget> {
                         child: TabBarView(
                           children: [
                             KeepAliveWidgetWrapper(
-                              builder: (context) => Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  FlutterFlowAdBanner(
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 1.0,
-                                    height: 50.0,
-                                    showsTestAd: true,
-                                    iOSAdUnitID:
-                                        'ca-app-pub-6283076109028810/9726106035',
-                                  ),
-                                  SingleChildScrollView(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Align(
-                                          alignment:
-                                              AlignmentDirectional(0.0, -1.0),
-                                          child: wrapWithModel(
-                                            model: _model.newestPollsModel,
-                                            updateCallback: () =>
-                                                setState(() {}),
-                                            child: NewestPollsWidget(),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
+                              builder: (context) => Align(
+                                alignment: AlignmentDirectional(0.0, -1.0),
+                                child: wrapWithModel(
+                                  model: _model.newestPollsModel,
+                                  updateCallback: () => setState(() {}),
+                                  child: NewestPollsWidget(),
+                                ),
                               ),
                             ),
                             KeepAliveWidgetWrapper(
