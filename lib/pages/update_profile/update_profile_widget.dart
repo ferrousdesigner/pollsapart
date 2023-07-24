@@ -13,6 +13,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'update_profile_model.dart';
 export 'update_profile_model.dart';
 
@@ -82,9 +83,15 @@ class _UpdateProfileWidgetState extends State<UpdateProfileWidget> {
                     children: [
                       Align(
                         alignment: AlignmentDirectional(-1.0, 0.0),
-                        child: Text(
+                        child: GradientText(
                           'Your profile',
                           style: FlutterFlowTheme.of(context).displayLarge,
+                          colors: [
+                            Color(0xFFF12711),
+                            FlutterFlowTheme.of(context).primary
+                          ],
+                          gradientDirection: GradientDirection.ltr,
+                          gradientType: GradientType.linear,
                         ),
                       ),
                       Align(

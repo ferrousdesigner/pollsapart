@@ -49,7 +49,7 @@ class _NewestPollsWidgetState extends State<NewestPollsWidget> {
     return Align(
       alignment: AlignmentDirectional(0.0, -1.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
         child: PagedListView<DocumentSnapshot<Object?>?, PollsRecord>(
           pagingController: _model.setListViewController(
             PollsRecord.collection.orderBy('created_at', descending: true),

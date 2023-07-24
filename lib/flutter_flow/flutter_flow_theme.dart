@@ -184,9 +184,9 @@ class ThemeTypography extends Typography {
   String get displayLargeFamily => 'Poppins';
   TextStyle get displayLarge => GoogleFonts.getFont(
         'Poppins',
-        color: theme.primaryText,
+        color: theme.primary,
         fontWeight: FontWeight.w600,
-        fontSize: 44.0,
+        fontSize: 32.0,
       );
   String get displayMediumFamily => 'Poppins';
   TextStyle get displayMedium => GoogleFonts.getFont(

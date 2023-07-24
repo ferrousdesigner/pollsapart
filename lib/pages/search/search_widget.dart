@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'search_model.dart';
 export 'search_model.dart';
 
@@ -70,10 +71,16 @@ class _SearchWidgetState extends State<SearchWidget> {
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 10.0),
-                                child: Text(
+                                child: GradientText(
                                   'Search',
                                   style:
                                       FlutterFlowTheme.of(context).displayLarge,
+                                  colors: [
+                                    Color(0xFFF12711),
+                                    FlutterFlowTheme.of(context).primary
+                                  ],
+                                  gradientDirection: GradientDirection.ltr,
+                                  gradientType: GradientType.linear,
                                 ),
                               ),
                             ),

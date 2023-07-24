@@ -177,9 +177,16 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                           children: [
                                             Text(
                                               pollMetricPollsRecord.optionOne,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Poppins',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
                                             ),
                                             Padding(
                                               padding: EdgeInsetsDirectional
@@ -223,11 +230,9 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                                         progressColor:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primary,
+                                                                .secondaryBackground,
                                                         backgroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .info,
+                                                            Color(0x45F1F4F8),
                                                         center: Text(
                                                           formatNumber(
                                                             functions.getPercentage(
@@ -295,7 +300,15 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                                 pollMetricPollsRecord.optionTwo,
                                                 style:
                                                     FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
                                               ),
                                               Padding(
                                                 padding: EdgeInsetsDirectional
@@ -341,11 +354,9 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                                           progressColor:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .primary,
+                                                                  .secondaryBackground,
                                                           backgroundColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .primaryBackground,
+                                                              Color(0x45F1F4F8),
                                                           center: Text(
                                                             formatNumber(
                                                               functions.getPercentage(
