@@ -148,7 +148,7 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                         style: FlutterFlowTheme.of(context)
                                             .displayLarge
                                             .override(
-                                              fontFamily: 'Barlow Condensed',
+                                              fontFamily: 'Poppins',
                                               fontSize: 32.0,
                                             ),
                                       ),

@@ -243,8 +243,9 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                                 style: FlutterFlowTheme.of(context)
                                     .displayMedium
                                     .override(
-                                      fontFamily: 'Barlow Condensed',
+                                      fontFamily: 'Poppins',
                                       fontSize: 26.0,
+                                      fontWeight: FontWeight.w500,
                                       lineHeight: 1.3,
                                     ),
                               ),
