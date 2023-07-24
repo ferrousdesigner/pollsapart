@@ -87,7 +87,6 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
               362.0,
             ),
             decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).secondaryBackground,
               boxShadow: [
                 BoxShadow(
                   blurRadius: 20.0,
@@ -95,6 +94,15 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                   offset: Offset(0.0, 2.0),
                 )
               ],
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xFFF12711),
+                  FlutterFlowTheme.of(context).primary
+                ],
+                stops: [0.0, 1.0],
+                begin: AlignmentDirectional(1.0, -1.0),
+                end: AlignmentDirectional(-1.0, 1.0),
+              ),
               borderRadius: BorderRadius.circular(20.0),
             ),
             child: Padding(
@@ -244,7 +252,9 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                                     .displayMedium
                                     .override(
                                       fontFamily: 'Poppins',
-                                      fontSize: 26.0,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      fontSize: 24.0,
                                       fontWeight: FontWeight.w500,
                                       lineHeight: 1.3,
                                     ),
