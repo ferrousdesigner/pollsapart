@@ -159,7 +159,8 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
-                                              fontSize: 26.0,
+                                              fontSize: 22.0,
+                                              lineHeight: 1.3,
                                             ),
                                       ),
                                     ),
