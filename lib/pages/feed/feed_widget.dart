@@ -150,9 +150,8 @@ class _FeedWidgetState extends State<FeedWidget> {
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .bodyMedium,
-                                            hintText: 'Please select...',
-                                            searchHintText:
-                                                'Search for a topic',
+                                            hintText: 'Select a topic',
+                                            searchHintText: 'Select a topic',
                                             icon: Icon(
                                               Icons.keyboard_arrow_down_rounded,
                                               color:
@@ -163,12 +162,12 @@ class _FeedWidgetState extends State<FeedWidget> {
                                             fillColor:
                                                 FlutterFlowTheme.of(context)
                                                     .secondaryBackground,
-                                            elevation: 0.0,
+                                            elevation: 2.0,
                                             borderColor:
                                                 FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                            borderWidth: 0.0,
-                                            borderRadius: 12.0,
+                                                    .primary,
+                                            borderWidth: 1.0,
+                                            borderRadius: 20.0,
                                             margin:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 4.0, 16.0, 4.0),
