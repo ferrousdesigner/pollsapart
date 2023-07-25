@@ -113,7 +113,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                     alignment: AlignmentDirectional(-1.0, 0.0),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 10.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 10.0),
                       child: Text(
                         widget.category!,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -126,7 +126,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 10.0),
+                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 10.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -219,7 +219,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                             }
                           },
                           child: Container(
-                            width: MediaQuery.sizeOf(context).width * 0.419,
+                            width: MediaQuery.sizeOf(context).width * 0.38,
                             height: 60.0,
                             decoration: BoxDecoration(
                               color: Color(0x45F1F4F8),
@@ -305,7 +305,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                             }
                           },
                           child: Container(
-                            width: MediaQuery.sizeOf(context).width * 0.45,
+                            width: MediaQuery.sizeOf(context).width * 0.38,
                             height: 60.0,
                             decoration: BoxDecoration(
                               color: Color(0x45F1F4F8),
@@ -348,7 +348,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(20.0, 15.0, 20.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
