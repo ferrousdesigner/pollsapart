@@ -65,44 +65,52 @@ class _SinglePollWidgetState extends State<SinglePollWidget> {
                   showRightIcon: false,
                 ),
               ),
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  StreamBuilder<PollsRecord>(
-                    stream: PollsRecord.getDocument(widget.pollRef!),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                FlutterFlowTheme.of(context).primary,
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    StreamBuilder<PollsRecord>(
+                      stream: PollsRecord.getDocument(widget.pollRef!),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  FlutterFlowTheme.of(context).primary,
+                                ),
                               ),
                             ),
+                          );
+                        }
+                        final questCardPollsRecord = snapshot.data!;
+                        return wrapWithModel(
+                          model: _model.questCardModel,
+                          updateCallback: () => setState(() {}),
+                          child: QuestCardWidget(
+                            question: questCardPollsRecord.question,
+                            optionOne: questCardPollsRecord.optionOne,
+                            optionTwo: questCardPollsRecord.optionTwo,
+                            upVotes: questCardPollsRecord.upVotes,
+                            isNSFW: questCardPollsRecord.isNsfw,
+                            canDelete: false,
+                            docRef: widget.pollRef!,
+                            createdAt: dateTimeFormat(
+                                'relative', questCardPollsRecord.createdAt),
+                            isDeleted: questCardPollsRecord.isDeleted,
+                            isAnonymous: questCardPollsRecord.isAnonymous,
+                            category: questCardPollsRecord.category,
+                            createdBy: questCardPollsRecord.createdBy,
                           ),
                         );
-                      }
-                      final questCardPollsRecord = snapshot.data!;
-                      return wrapWithModel(
-                        model: _model.questCardModel,
-                        updateCallback: () => setState(() {}),
-                        child: QuestCardWidget(
-                          question: questCardPollsRecord.question,
-                          optionOne: questCardPollsRecord.optionOne,
-                          optionTwo: questCardPollsRecord.optionTwo,
-                          upVotes: questCardPollsRecord.upVotes,
-                          isNSFW: questCardPollsRecord.isNsfw,
-                          canDelete: false,
-                          docRef: widget.pollRef!,
-                          isDeleted: false,
-                        ),
-                      );
-                    },
-                  ),
-                ],
+                      },
+                    ),
+                  ],
+                ),
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(20.0, 30.0, 20.0, 0.0),
