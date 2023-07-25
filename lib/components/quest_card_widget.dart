@@ -118,7 +118,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                         widget.category!,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Poppins',
-                              color: Colors.white,
+                              color: Color(0xAFFFFFFF),
                               fontWeight: FontWeight.w600,
                             ),
                       ),
@@ -132,52 +132,40 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 50.0, 10.0),
-                          child: Container(
-                            width: MediaQuery.sizeOf(context).width * 0.882,
-                            height: double.infinity,
-                            constraints: BoxConstraints(
-                              minHeight: 30.0,
-                              maxHeight: 70.0,
-                            ),
-                            decoration: BoxDecoration(),
-                            alignment: AlignmentDirectional(-1.0, 0.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Align(
-                                  alignment: AlignmentDirectional(-1.0, -1.0),
-                                  child: Text(
-                                    widget.question.maybeHandleOverflow(
-                                      maxChars: 200,
-                                      replacement: '…',
-                                    ),
-                                    textAlign: TextAlign.start,
-                                    maxLines: 2,
-                                    style: FlutterFlowTheme.of(context)
-                                        .displayMedium
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          fontSize: 24.0,
-                                          letterSpacing: 1.2,
-                                          fontWeight: FontWeight.w500,
-                                          lineHeight: 1.3,
-                                        ),
+                        Container(
+                          width: 349.0,
+                          height: 148.0,
+                          decoration: BoxDecoration(),
+                          child: Align(
+                            alignment: AlignmentDirectional(-1.0, -1.0),
+                            child: Text(
+                              widget.question.maybeHandleOverflow(
+                                maxChars: 200,
+                                replacement: '…',
+                              ),
+                              textAlign: TextAlign.start,
+                              maxLines: 2,
+                              style: FlutterFlowTheme.of(context)
+                                  .displayMedium
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    fontSize: 32.0,
+                                    letterSpacing: 1.2,
+                                    fontWeight: FontWeight.bold,
+                                    lineHeight: 1.3,
                                   ),
-                                ),
-                              ],
                             ),
                           ),
                         ),
                       ],
                     ),
                   ),
-                  Column(
+                  Row(
                     mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -231,7 +219,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                             }
                           },
                           child: Container(
-                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            width: MediaQuery.sizeOf(context).width * 0.419,
                             height: 60.0,
                             decoration: BoxDecoration(
                               color: Color(0x45F1F4F8),
@@ -245,7 +233,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Align(
-                                    alignment: AlignmentDirectional(-1.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           10.0, 10.0, 10.0, 10.0),
@@ -270,8 +258,8 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            15.0, 15.0, 15.0, 0.0),
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -321,7 +309,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                             }
                           },
                           child: Container(
-                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            width: MediaQuery.sizeOf(context).width * 0.45,
                             height: 60.0,
                             decoration: BoxDecoration(
                               color: Color(0x45F1F4F8),
@@ -334,19 +322,23 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 10.0, 10.0, 10.0),
-                                    child: Text(
-                                      widget.optionTwo,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            fontWeight: FontWeight.w600,
-                                          ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 10.0, 10.0, 10.0),
+                                      child: Text(
+                                        widget.optionTwo,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                      ),
                                     ),
                                   ),
                                 ],
