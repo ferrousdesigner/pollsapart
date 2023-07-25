@@ -90,7 +90,11 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                   child: Text(
                                     'Create a poll',
                                     style: FlutterFlowTheme.of(context)
-                                        .displayLarge,
+                                        .displayLarge
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          lineHeight: 1.2,
+                                        ),
                                   ),
                                 ),
                               ],

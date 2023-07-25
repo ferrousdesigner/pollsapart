@@ -73,7 +73,12 @@ class _FaqsWidgetState extends State<FaqsWidget> {
                                 0.0, 0.0, 0.0, 50.0),
                             child: Text(
                               'FAQs',
-                              style: FlutterFlowTheme.of(context).displayLarge,
+                              style: FlutterFlowTheme.of(context)
+                                  .displayLarge
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    lineHeight: 1.2,
+                                  ),
                             ),
                           ),
                         ),

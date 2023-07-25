@@ -73,7 +73,12 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                         alignment: AlignmentDirectional(-1.0, 0.0),
                         child: Text(
                           'Contact Us',
-                          style: FlutterFlowTheme.of(context).displayLarge,
+                          style: FlutterFlowTheme.of(context)
+                              .displayLarge
+                              .override(
+                                fontFamily: 'Poppins',
+                                lineHeight: 1.2,
+                              ),
                         ),
                       ),
                       wrapWithModel(

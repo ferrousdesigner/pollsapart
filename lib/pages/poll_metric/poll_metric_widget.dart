@@ -116,7 +116,7 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                 begin: AlignmentDirectional(1.0, -1.0),
                                 end: AlignmentDirectional(-1.0, 1.0),
                               ),
-                              borderRadius: BorderRadius.circular(12.0),
+                              borderRadius: BorderRadius.circular(30.0),
                             ),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(

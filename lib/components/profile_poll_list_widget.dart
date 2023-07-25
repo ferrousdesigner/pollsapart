@@ -92,6 +92,7 @@ class _ProfilePollListWidgetState extends State<ProfilePollListWidget> {
                     createdBy: questCardPollsRecord.createdBy,
                     isDeleted: questCardPollsRecord.isDeleted,
                     isAnonymous: questCardPollsRecord.isAnonymous,
+                    category: questCardPollsRecord.category,
                   );
                 },
               );

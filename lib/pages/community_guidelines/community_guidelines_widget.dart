@@ -80,7 +80,11 @@ class _CommunityGuidelinesWidgetState extends State<CommunityGuidelinesWidget> {
                                     child: Text(
                                       'Community Guidelines',
                                       style: FlutterFlowTheme.of(context)
-                                          .displayLarge,
+                                          .displayLarge
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            lineHeight: 1.2,
+                                          ),
                                     ),
                                   ),
                                   Align(

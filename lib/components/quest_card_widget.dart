@@ -26,6 +26,7 @@ class QuestCardWidget extends StatefulWidget {
     this.createdBy,
     this.isDeleted,
     this.isAnonymous,
+    this.category,
   })  : this.question = question ?? 'Question Text',
         this.optionOne = optionOne ?? 'Option One',
         this.optionTwo = optionTwo ?? 'Option Two',
@@ -43,6 +44,7 @@ class QuestCardWidget extends StatefulWidget {
   final DocumentReference? createdBy;
   final bool? isDeleted;
   final bool? isAnonymous;
+  final String? category;
 
   @override
   _QuestCardWidgetState createState() => _QuestCardWidgetState();
@@ -82,10 +84,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
           borderRadius: BorderRadius.circular(20.0),
           child: Container(
             width: MediaQuery.sizeOf(context).width * 1.0,
-            height: valueOrDefault<double>(
-              functions.getHeightInPx(widget.isAnonymous!),
-              362.0,
-            ),
+            height: 345.0,
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
@@ -110,115 +109,21 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  if (!widget.isAnonymous!)
-                    Padding(
+                  Align(
+                    alignment: AlignmentDirectional(-1.0, 0.0),
+                    child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 10.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          StreamBuilder<UsersRecord>(
-                            stream: UsersRecord.getDocument(widget.createdBy!),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context).primary,
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              }
-                              final rowUsersRecord = snapshot.data!;
-                              return Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 5.0, 0.0),
-                                    child: Container(
-                                      width: 30.0,
-                                      height: 30.0,
-                                      clipBehavior: Clip.antiAlias,
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: Image.network(
-                                        rowUsersRecord.photoUrl,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        5.0, 0.0, 0.0, 0.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          rowUsersRecord.displayName,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                fontSize: 10.0,
-                                                fontWeight: FontWeight.normal,
-                                              ),
-                                        ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Align(
-                                              alignment: AlignmentDirectional(
-                                                  1.0, 0.0),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 3.0, 0.0),
-                                                child: Text(
-                                                  'Asked',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 8.0,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                            Text(
-                                              widget.createdAt!,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 8.0,
-                                                        fontWeight:
-                                                            FontWeight.w300,
-                                                      ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              );
-                            },
-                          ),
-                        ],
+                          EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 10.0),
+                      child: Text(
+                        widget.category!,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Poppins',
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
                       ),
                     ),
+                  ),
                   Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 10.0),
@@ -239,26 +144,32 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                             ),
                             decoration: BoxDecoration(),
                             alignment: AlignmentDirectional(-1.0, 0.0),
-                            child: Align(
-                              alignment: AlignmentDirectional(-1.0, -1.0),
-                              child: Text(
-                                widget.question.maybeHandleOverflow(
-                                  maxChars: 200,
-                                  replacement: '…',
-                                ),
-                                textAlign: TextAlign.start,
-                                maxLines: 2,
-                                style: FlutterFlowTheme.of(context)
-                                    .displayMedium
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      fontSize: 24.0,
-                                      fontWeight: FontWeight.w500,
-                                      lineHeight: 1.3,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Align(
+                                  alignment: AlignmentDirectional(-1.0, -1.0),
+                                  child: Text(
+                                    widget.question.maybeHandleOverflow(
+                                      maxChars: 200,
+                                      replacement: '…',
                                     ),
-                              ),
+                                    textAlign: TextAlign.start,
+                                    maxLines: 2,
+                                    style: FlutterFlowTheme.of(context)
+                                        .displayMedium
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          fontSize: 24.0,
+                                          letterSpacing: 1.2,
+                                          fontWeight: FontWeight.w500,
+                                          lineHeight: 1.3,
+                                        ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),

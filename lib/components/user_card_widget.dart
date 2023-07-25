@@ -72,7 +72,7 @@ class _UserCardWidgetState extends State<UserCardWidget> {
               offset: Offset(0.0, 20.0),
             )
           ],
-          borderRadius: BorderRadius.circular(15.0),
+          borderRadius: BorderRadius.circular(30.0),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.max,

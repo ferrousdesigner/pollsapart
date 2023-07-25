@@ -140,6 +140,7 @@ class _TrendingPollsWidgetState extends State<TrendingPollsWidget> {
                         createdBy: listViewPollsRecord.createdBy,
                         isDeleted: listViewPollsRecord.isDeleted,
                         isAnonymous: listViewPollsRecord.isAnonymous,
+                        category: listViewPollsRecord.category,
                       ),
                     ),
                   ),

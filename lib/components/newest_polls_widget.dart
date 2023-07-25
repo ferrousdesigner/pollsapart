@@ -138,6 +138,7 @@ class _NewestPollsWidgetState extends State<NewestPollsWidget> {
                         createdBy: listViewPollsRecord.createdBy,
                         isDeleted: listViewPollsRecord.isDeleted,
                         isAnonymous: listViewPollsRecord.isAnonymous,
+                        category: listViewPollsRecord.category,
                       ),
                     ),
                   ),
