@@ -140,18 +140,18 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                             alignment: AlignmentDirectional(-1.0, -1.0),
                             child: Text(
                               widget.question.maybeHandleOverflow(
-                                maxChars: 200,
+                                maxChars: 100,
                                 replacement: '…',
                               ),
                               textAlign: TextAlign.start,
-                              maxLines: 2,
+                              maxLines: 3,
                               style: FlutterFlowTheme.of(context)
                                   .displayMedium
                                   .override(
                                     fontFamily: 'Poppins',
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
-                                    fontSize: 32.0,
+                                    fontSize: 28.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     lineHeight: 1.3,
