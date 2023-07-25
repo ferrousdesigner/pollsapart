@@ -152,7 +152,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     fontSize: 32.0,
-                                    letterSpacing: 1.2,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     lineHeight: 1.3,
                                   ),
@@ -230,25 +230,21 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                                   10.0, 10.0, 10.0, 10.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Align(
                                     alignment: AlignmentDirectional(0.0, 0.0),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10.0, 10.0, 10.0, 10.0),
-                                      child: Text(
-                                        widget.optionOne,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                      ),
+                                    child: Text(
+                                      widget.optionOne,
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            fontWeight: FontWeight.w600,
+                                          ),
                                     ),
                                   ),
                                 ],
@@ -320,13 +316,14 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                                   10.0, 10.0, 10.0, 10.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Align(
                                     alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          10.0, 10.0, 10.0, 10.0),
+                                          10.0, 0.0, 10.0, 0.0),
                                       child: Text(
                                         widget.optionTwo,
                                         style: FlutterFlowTheme.of(context)
