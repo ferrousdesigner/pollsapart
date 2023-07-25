@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -138,7 +139,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                           decoration: BoxDecoration(),
                           child: Align(
                             alignment: AlignmentDirectional(-1.0, -1.0),
-                            child: Text(
+                            child: AutoSizeText(
                               widget.question.maybeHandleOverflow(
                                 maxChars: 100,
                                 replacement: '…',
