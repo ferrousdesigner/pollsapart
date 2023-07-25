@@ -134,7 +134,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          width: 349.0,
+                          width: 323.0,
                           height: 148.0,
                           decoration: BoxDecoration(),
                           child: Align(
