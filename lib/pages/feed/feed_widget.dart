@@ -82,112 +82,106 @@ class _FeedWidgetState extends State<FeedWidget> {
                               ),
                             ),
                             KeepAliveWidgetWrapper(
-                              builder: (context) => SingleChildScrollView(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 15.0, 0.0, 0.0),
-                                      child:
-                                          FutureBuilder<List<CategoriesRecord>>(
-                                        future: queryCategoriesRecordOnce(
-                                          queryBuilder: (categoriesRecord) =>
-                                              categoriesRecord
-                                                  .orderBy('category_name'),
-                                        ),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                child:
-                                                    CircularProgressIndicator(
-                                                  valueColor:
-                                                      AlwaysStoppedAnimation<
-                                                          Color>(
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                  ),
+                              builder: (context) => Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 15.0, 0.0, 0.0),
+                                    child:
+                                        FutureBuilder<List<CategoriesRecord>>(
+                                      future: queryCategoriesRecordOnce(
+                                        queryBuilder: (categoriesRecord) =>
+                                            categoriesRecord
+                                                .orderBy('category_name'),
+                                      ),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
                                                 ),
                                               ),
-                                            );
-                                          }
-                                          List<CategoriesRecord>
-                                              dropDownCategoriesRecordList =
-                                              snapshot.data!;
-                                          return FlutterFlowDropDown<String>(
-                                            controller: _model
-                                                    .dropDownValueController ??=
-                                                FormFieldController<String>(
-                                              _model.dropDownValue ??= 'AI',
                                             ),
-                                            options:
-                                                dropDownCategoriesRecordList
-                                                    .map((e) => e.categoryName)
-                                                    .toList(),
-                                            onChanged: (val) async {
-                                              setState(() =>
-                                                  _model.dropDownValue = val);
-                                              logFirebaseEvent(
-                                                  'FEED_DropDown_8q3rxfaj_ON_FORM_WIDGET_SE');
-                                              logFirebaseEvent(
-                                                  'DropDown_update_app_state');
-                                              setState(() {
-                                                FFAppState().currentCategory =
-                                                    _model.dropDownValue!;
-                                              });
-                                            },
-                                            width: MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.92,
-                                            height: 50.0,
-                                            searchHintTextStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium,
-                                            hintText: 'Select a topic',
-                                            searchHintText: 'Select a topic',
-                                            icon: Icon(
-                                              Icons.keyboard_arrow_down_rounded,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              size: 24.0,
-                                            ),
-                                            fillColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                            elevation: 2.0,
-                                            borderColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
-                                            borderWidth: 1.0,
-                                            borderRadius: 20.0,
-                                            margin:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 4.0, 16.0, 4.0),
-                                            hidesUnderline: true,
-                                            isSearchable: true,
                                           );
-                                        },
-                                      ),
+                                        }
+                                        List<CategoriesRecord>
+                                            dropDownCategoriesRecordList =
+                                            snapshot.data!;
+                                        return FlutterFlowDropDown<String>(
+                                          controller:
+                                              _model.dropDownValueController ??=
+                                                  FormFieldController<String>(
+                                            _model.dropDownValue ??= 'AI',
+                                          ),
+                                          options: dropDownCategoriesRecordList
+                                              .map((e) => e.categoryName)
+                                              .toList(),
+                                          onChanged: (val) async {
+                                            setState(() =>
+                                                _model.dropDownValue = val);
+                                            logFirebaseEvent(
+                                                'FEED_DropDown_8q3rxfaj_ON_FORM_WIDGET_SE');
+                                            logFirebaseEvent(
+                                                'DropDown_update_app_state');
+                                            setState(() {
+                                              FFAppState().currentCategory =
+                                                  _model.dropDownValue!;
+                                            });
+                                          },
+                                          width:
+                                              MediaQuery.sizeOf(context).width *
+                                                  0.92,
+                                          height: 50.0,
+                                          searchHintTextStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium,
+                                          textStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium,
+                                          hintText: 'Select a topic',
+                                          searchHintText: 'Select a topic',
+                                          icon: Icon(
+                                            Icons.keyboard_arrow_down_rounded,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryText,
+                                            size: 24.0,
+                                          ),
+                                          fillColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondaryBackground,
+                                          elevation: 2.0,
+                                          borderColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                          borderWidth: 1.0,
+                                          borderRadius: 20.0,
+                                          margin:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 4.0, 16.0, 4.0),
+                                          hidesUnderline: true,
+                                          isSearchable: true,
+                                        );
+                                      },
                                     ),
-                                    Align(
-                                      alignment:
-                                          AlignmentDirectional(0.0, -1.0),
-                                      child: wrapWithModel(
-                                        model: _model.trendingPollsModel,
-                                        updateCallback: () => setState(() {}),
-                                        child: TrendingPollsWidget(),
-                                      ),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, -1.0),
+                                    child: wrapWithModel(
+                                      model: _model.trendingPollsModel,
+                                      updateCallback: () => setState(() {}),
+                                      child: TrendingPollsWidget(),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ],
