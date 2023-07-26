@@ -66,7 +66,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Image.asset(
-                    'assets/images/Favicon_Pollsapart.png',
+                    'assets/images/Logo.png',
                     width: 35.0,
                     height: 30.0,
                     fit: BoxFit.contain,

@@ -85,7 +85,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
           borderRadius: BorderRadius.circular(30.0),
           child: Container(
             width: MediaQuery.sizeOf(context).width * 1.0,
-            height: 345.0,
+            height: 308.0,
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
@@ -135,7 +135,7 @@ class _QuestCardWidgetState extends State<QuestCardWidget> {
                       children: [
                         Container(
                           width: 323.0,
-                          height: 148.0,
+                          height: 109.0,
                           decoration: BoxDecoration(),
                           child: Align(
                             alignment: AlignmentDirectional(-1.0, -1.0),

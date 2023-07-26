@@ -87,7 +87,7 @@ class _SplashWidgetState extends State<SplashWidget>
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8.0),
                             child: Image.asset(
-                              'assets/images/Favicon_Pollsapart.png',
+                              'assets/images/Logo.png',
                               width: 60.0,
                               height: 60.0,
                               fit: BoxFit.contain,
@@ -103,7 +103,7 @@ class _SplashWidgetState extends State<SplashWidget>
                           child: Image.asset(
                             'assets/images/Group_19.png',
                             width: MediaQuery.sizeOf(context).width * 1.0,
-                            height: 291.0,
+                            height: 278.0,
                             fit: BoxFit.contain,
                           ),
                         ).animateOnPageLoad(

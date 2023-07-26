@@ -9,7 +9,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -42,8 +41,6 @@ class AddPollModel extends FlutterFlowModel {
   bool? switchValue2;
   // Stores action output result for [Backend Call - Create Document] action in Button widget.
   PollsRecord? pollCreated;
-  // Stores action output result for [Firestore Query - Query a collection] action in Button widget.
-  CategoriesRecord? chosenCategory;
 
   /// Initialization and disposal methods.
 

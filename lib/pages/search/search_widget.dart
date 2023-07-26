@@ -72,8 +72,12 @@ class _SearchWidgetState extends State<SearchWidget> {
                                     0.0, 0.0, 0.0, 10.0),
                                 child: Text(
                                   'Search',
-                                  style:
-                                      FlutterFlowTheme.of(context).displayLarge,
+                                  style: FlutterFlowTheme.of(context)
+                                      .displayLarge
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        letterSpacing: 1.0,
+                                      ),
                                 ),
                               ),
                             ),
@@ -238,6 +242,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                               isDeleted: resultsItem.isDeleted,
                               createdBy: resultsItem.createdBy,
                               isAnonymous: resultsItem.isAnonymous,
+                              category: resultsItem.category,
                             ),
                           );
                         },

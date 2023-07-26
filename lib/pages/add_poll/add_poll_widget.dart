@@ -9,7 +9,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -78,7 +77,7 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(8.0),
                                     child: Image.asset(
-                                      'assets/images/Favicon_Pollsapart.png',
+                                      'assets/images/Logo.png',
                                       width: 30.0,
                                       height: 40.0,
                                       fit: BoxFit.contain,
@@ -479,31 +478,17 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                             _model.pollCreated?.reference
                                           ]),
                                         });
-                                        logFirebaseEvent(
-                                            'Button_firestore_query');
-                                        _model.chosenCategory =
-                                            await queryCategoriesRecordOnce(
-                                          queryBuilder: (categoriesRecord) =>
-                                              categoriesRecord.where(
-                                                  'category_name',
-                                                  isEqualTo:
-                                                      _model.dropDownValue),
-                                          singleRecord: true,
-                                        ).then((s) => s.firstOrNull);
-                                        logFirebaseEvent('Button_backend_call');
+                                        logFirebaseEvent('Button_navigate_to');
 
-                                        await _model.chosenCategory!.reference
-                                            .update({
-                                          'polls_count':
-                                              FieldValue.increment(1),
-                                        });
+                                        context.pushNamed('Feed');
+
                                         logFirebaseEvent(
                                             'Button_show_snack_bar');
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(
                                             content: Text(
-                                              'Poll Added',
+                                              'Poll created',
                                               style: TextStyle(
                                                 color:
                                                     FlutterFlowTheme.of(context)
@@ -517,9 +502,6 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                                     .secondary,
                                           ),
                                         );
-                                        logFirebaseEvent('Button_navigate_to');
-
-                                        context.pushNamed('Feed');
 
                                         setState(() {});
                                       },
