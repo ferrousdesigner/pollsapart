@@ -130,7 +130,7 @@ class _TrendingPollsWidgetState extends State<TrendingPollsWidget> {
                     PollsRecord.collection
                         .where('category',
                             isEqualTo: FFAppState().currentCategory)
-                        .orderBy('created_at'),
+                        .orderBy('up_votes', descending: true),
                   ),
                   padding: EdgeInsets.zero,
                   shrinkWrap: true,
