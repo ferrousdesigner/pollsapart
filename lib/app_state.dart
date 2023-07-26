@@ -18,6 +18,9 @@ class FFAppState extends ChangeNotifier {
       _currentCategory =
           prefs.getString('ff_currentCategory') ?? _currentCategory;
     });
+    _safeInit(() {
+      _activeTab = prefs.getString('ff_activeTab') ?? _activeTab;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -32,6 +35,13 @@ class FFAppState extends ChangeNotifier {
   set currentCategory(String _value) {
     _currentCategory = _value;
     prefs.setString('ff_currentCategory', _value);
+  }
+
+  String _activeTab = 'new';
+  String get activeTab => _activeTab;
+  set activeTab(String _value) {
+    _activeTab = _value;
+    prefs.setString('ff_activeTab', _value);
   }
 }
 
