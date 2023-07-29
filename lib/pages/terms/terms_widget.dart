@@ -83,11 +83,24 @@ class _TermsWidgetState extends State<TermsWidget> {
                                   ),
                                   Align(
                                     alignment: AlignmentDirectional(-1.0, 0.0),
+                                    child: Text(
+                                      'End-User License Agreement (EULA) of Pollsapart',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            fontSize: 18.0,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 20.0, 0.0, 0.0),
                                       child: Text(
-                                        'Welcome to Pollsapart, a polling app that allows users to create polls and vote on polls. Please read these terms and conditions carefully before using the app.\n\nBy using Pollsapart, you agree to be bound by these terms and conditions, which govern your use of the app. If you do not agree to these terms and conditions, please do not use Pollsapart.',
+                                        'This End-User License Agreement (\"EULA\") is a legal agreement between you and Pollsapart regarding your use of the Pollsapart mobile application (\"App\") and associated services. By downloading, installing, or using the App, you agree to be bound by the terms and conditions of this EULA. If you do not agree with these terms, do not download, install, or use the App.',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
@@ -99,7 +112,7 @@ class _TermsWidgetState extends State<TermsWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 20.0, 0.0, 0.0),
                                       child: Text(
-                                        '1. Use of Pollsapart',
+                                        '1. License Grant and Usage',
                                         style: FlutterFlowTheme.of(context)
                                             .headlineSmall,
                                       ),
@@ -111,7 +124,7 @@ class _TermsWidgetState extends State<TermsWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 5.0, 0.0, 0.0),
                                       child: Text(
-                                        '1.1. You must be 18 years or older to use Pollsapart.\n1.2. NSFW content is allowed but must comply with community guidelines.\n1.3. You are solely responsible for any content you post on Pollsapart.',
+                                        'Subject to your compliance with this EULA, Pollsapart grants you a personal, non-transferable, non-exclusive, revocable license to use the App for the purpose of creating and answering polls. You may use the App for personal or non-commercial use only. Any use of the App for commercial purposes is strictly prohibited unless you have obtained prior written consent from Pollsapart.\n\n1.1. You must be 18 years or older to use Pollsapart.\n1.2. NSFW content is allowed but must comply with community guidelines.\n1.3. You are solely responsible for any content you post on Pollsapart.\n1.4 Any user which is reported by other users will be blocked from using the app.\n1.5 Any post can be reported and will be removed if found objectionable.\n1.6 User can also block other users by going to their profile page.\n1.7. User can filter out objectionable content marked by NSFW flag by using the \'Safe Feed\' toggle button at the top of app and also from their profile settings.',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
@@ -123,7 +136,7 @@ class _TermsWidgetState extends State<TermsWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 20.0, 0.0, 0.0),
                                       child: Text(
-                                        '2. User Accounts',
+                                        '2. Content and User Conduct',
                                         style: FlutterFlowTheme.of(context)
                                             .titleLarge,
                                       ),
@@ -135,7 +148,7 @@ class _TermsWidgetState extends State<TermsWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 5.0, 0.0, 0.0),
                                       child: Text(
-                                        '2.1. To use certain features of Pollsapart, you must register and create a user account.\n2.2. You must provide accurate and complete information when creating your user account.\n2.3. You are solely responsible for maintaining the confidentiality of your account login information.\n2.4. You agree to use your account only for lawful purposes and in accordance with these terms and conditions.',
+                                        'a. Polls Creation and NSFW Marking: As a user of Pollsapart, you may create polls and provide answers to other polls. You acknowledge that you are solely responsible for the content you create, including polls and any accompanying text or media. If you create polls that contain questionable or explicit content, you must appropriately mark them as \"Not Safe For Work\" (NSFW) to warn other users about their nature.\n\nb. User Blocking: Pollsapart reserves the right to enable a user-blocking feature within the App. If you encounter any user whose behavior is inappropriate or violates this EULA, you may block that user from interacting with you through the App. However, Pollsapart is not responsible for the actions or content posted by other users.\n\nc. Prohibited Content and Conduct: You agree not to use the App to:\nc1. Post, share, or transmit any content that is unlawful, harmful, defamatory, obscene, offensive, or otherwise objectionable.\nc2. Violate any applicable laws or regulations in your use of the App.\nc3. Impersonate any person or entity or falsely represent your affiliation with any person or entity.\nc4. Harass, stalk, or otherwise harm other users of the App.\nc5. Use the App in any manner that could disable, overburden, damage, or impair the App\'s functionality.\nc6. Engage in any activity that compromises the security or integrity of the App.',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
@@ -147,7 +160,7 @@ class _TermsWidgetState extends State<TermsWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 20.0, 0.0, 0.0),
                                       child: Text(
-                                        '3. Prohibited Conduct',
+                                        'Intellectual Property Rights',
                                         style: FlutterFlowTheme.of(context)
                                             .titleLarge,
                                       ),
@@ -159,7 +172,7 @@ class _TermsWidgetState extends State<TermsWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 5.0, 0.0, 0.0),
                                       child: Text(
-                                        '3.1. You must not use Pollsapart in any way that violates any applicable federal, state, local, or international law or regulation.\n3.2. You must not use Pollsapart to harm, abuse, harass, or intimidate others.\n3.3. You must not use Pollsapart to engage in any activity that infringes or violates the rights of others.\n3.4. You must not use Pollsapart to post or transmit any material that is defamatory, obscene, or otherwise offensive.',
+                                        'The App and all its content, including but not limited to text, graphics, images, logos, and software, are the property of Pollsapart and its licensors and are protected by copyright and other intellectual property laws. You agree not to modify, copy, distribute, transmit, display, perform, reproduce, publish, license, create derivative works from, transfer, or sell any information or content obtained from or through the App.\n\n',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
@@ -171,7 +184,7 @@ class _TermsWidgetState extends State<TermsWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 20.0, 0.0, 0.0),
                                       child: Text(
-                                        '4. Intellectual Property Rights',
+                                        'Termination',
                                         style: FlutterFlowTheme.of(context)
                                             .titleLarge,
                                       ),
@@ -183,7 +196,7 @@ class _TermsWidgetState extends State<TermsWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 5.0, 0.0, 0.0),
                                       child: Text(
-                                        '4.1. Pollsapart and its entire contents, features, and functionality are owned by Pollsapart or its licensors and are protected by international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.\n4.2. You must not reproduce, distribute, modify, create derivative works of, publicly display, publicly perform, republish, download, store, or transmit any of the material on Pollsapart except as generally and ordinarily permitted through the app\'s functionality.',
+                                        'Pollsapart may, at its sole discretion, terminate or suspend your access to the App at any time and for any reason without prior notice. Upon termination, you must cease all use of the App, and any provisions of this EULA that are intended to survive termination shall remain in effect.',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),
@@ -195,7 +208,7 @@ class _TermsWidgetState extends State<TermsWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 20.0, 0.0, 0.0),
                                       child: Text(
-                                        '5. Disclaimers',
+                                        'Disclaimer of Warranty',
                                         style: FlutterFlowTheme.of(context)
                                             .titleLarge,
                                       ),
@@ -204,7 +217,7 @@ class _TermsWidgetState extends State<TermsWidget> {
                                   Align(
                                     alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Text(
-                                      '5.1. Pollsapart is provided on an \"as is\" and \"as available\" basis, without any warranties of any kind, express or implied.\n5.2. Pollsapart does not warrant that the app will be error-free or uninterrupted.\n5.3. Pollsapart is not responsible for any content posted by users on the app.',
+                                      'The App is provided \"as is\" and without warranties of any kind, whether express or implied. Pollsapart disclaims all warranties, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, and non-infringement. Your use of the App is at your own risk.',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
@@ -215,7 +228,7 @@ class _TermsWidgetState extends State<TermsWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 20.0, 0.0, 0.0),
                                       child: Text(
-                                        '6. Limitation of Liability',
+                                        'Limitation of Liability',
                                         style: FlutterFlowTheme.of(context)
                                             .titleLarge,
                                       ),
@@ -224,7 +237,7 @@ class _TermsWidgetState extends State<TermsWidget> {
                                   Align(
                                     alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Text(
-                                      '6.1. In no event shall Pollsapart be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use Pollsapart, (ii) any conduct or content of any third party on the app, or (iii) unauthorized access, use, or alteration of your transmissions or content.',
+                                      'In no event shall Pollsapart or its affiliates be liable to you or any third party for any direct, indirect, consequential, incidental, special, or punitive damages arising out of or related to your use of the App or any content therein.',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
@@ -235,7 +248,7 @@ class _TermsWidgetState extends State<TermsWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 20.0, 0.0, 0.0),
                                       child: Text(
-                                        '7. Governing Law',
+                                        'Governing Law',
                                         style: FlutterFlowTheme.of(context)
                                             .titleLarge,
                                       ),
@@ -244,7 +257,7 @@ class _TermsWidgetState extends State<TermsWidget> {
                                   Align(
                                     alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Text(
-                                      '7.1. These terms and conditions shall be governed by and construed in accordance with the laws of Information Technology Act of India.',
+                                      'This EULA shall be governed by and construed in accordance with the laws of India, without regard to its conflicts of law principles.',
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
@@ -255,7 +268,7 @@ class _TermsWidgetState extends State<TermsWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 20.0, 0.0, 0.0),
                                       child: Text(
-                                        '8. Changes to T & C',
+                                        'Changes to the EULA',
                                         style: FlutterFlowTheme.of(context)
                                             .titleLarge,
                                       ),
@@ -267,7 +280,7 @@ class _TermsWidgetState extends State<TermsWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 50.0),
                                       child: Text(
-                                        '8.1. Pollsapart reserves the right to modify these terms and conditions at any time. Your continued use of the app after any such changes constitutes your acceptance of the new terms and conditions.',
+                                        'Pollsapart reserves the right to modify or update this EULA at any time without prior notice. Any changes to the EULA will be effective immediately upon posting the revised version on the App or website. Your continued use of the App after any changes to the EULA will signify your acceptance of those changes.\n\nPlease make sure to review the EULA periodically to stay informed about any updates or modifications.\n\nBy downloading, installing, or using Pollsapart, you acknowledge that you have read and understood this EULA and agree to be bound by its terms and conditions. If you do not agree with any part of this EULA, do not use the App.\n',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium,
                                       ),

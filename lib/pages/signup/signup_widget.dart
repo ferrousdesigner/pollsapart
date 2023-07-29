@@ -365,7 +365,7 @@ class _SignupWidgetState extends State<SignupWidget> {
                                                   context.pushNamed('Terms');
                                                 },
                                                 child: Text(
-                                                  'Terms of Use',
+                                                  'Terms of Use (EULA)',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium

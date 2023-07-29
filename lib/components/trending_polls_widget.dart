@@ -176,7 +176,10 @@ class _TrendingPollsWidgetState extends State<TrendingPollsWidget> {
                                 valueOrDefault<bool>(
                                     currentUserDocument?.allowNsfw, false),
                                 listViewPollsRecord.isNsfw,
-                                listViewPollsRecord.isDeleted) ??
+                                listViewPollsRecord.isDeleted,
+                                (currentUserDocument?.blockedUsers?.toList() ??
+                                        [])
+                                    .contains(listViewPollsRecord.createdBy)) ??
                             true,
                         child: AuthUserStreamWidget(
                           builder: (context) => InkWell(

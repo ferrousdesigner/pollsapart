@@ -1,6 +1,9 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -60,16 +63,59 @@ class _AppBarWidgetState extends State<AppBarWidget> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.asset(
+                'assets/images/Logo.png',
+                width: 35.0,
+                height: 30.0,
+                fit: BoxFit.contain,
+              ),
+            ),
             Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(8.0),
-                  child: Image.asset(
-                    'assets/images/Logo.png',
-                    width: 35.0,
-                    height: 30.0,
-                    fit: BoxFit.contain,
+                AuthUserStreamWidget(
+                  builder: (context) => Switch.adaptive(
+                    value: _model.switchValue ??= valueOrDefault<bool>(
+                        currentUserDocument?.allowNsfw, false),
+                    onChanged: (newValue) async {
+                      setState(() => _model.switchValue = newValue!);
+                      if (newValue!) {
+                        logFirebaseEvent(
+                            'APP_BAR_Switch_p3sua398_ON_TOGGLE_ON');
+                        logFirebaseEvent('Switch_backend_call');
+
+                        await currentUserReference!
+                            .update(createUsersRecordData(
+                          allowNsfw: true,
+                        ));
+                      } else {
+                        logFirebaseEvent(
+                            'APP_BAR_Switch_p3sua398_ON_TOGGLE_OFF');
+                        logFirebaseEvent('Switch_backend_call');
+
+                        await currentUserReference!
+                            .update(createUsersRecordData(
+                          allowNsfw: false,
+                        ));
+                      }
+                    },
+                    activeColor: FlutterFlowTheme.of(context).primary,
+                    activeTrackColor: FlutterFlowTheme.of(context).accent1,
+                    inactiveTrackColor: FlutterFlowTheme.of(context).alternate,
+                    inactiveThumbColor:
+                        FlutterFlowTheme.of(context).secondaryText,
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                  child: Text(
+                    'Safe Feed',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Poppins',
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                        ),
                   ),
                 ),
               ],

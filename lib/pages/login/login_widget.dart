@@ -142,7 +142,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                                   context.pushNamed('Terms');
                                                 },
                                                 child: Text(
-                                                  'Terms of Use',
+                                                  'Terms of Use (EULA)',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -215,9 +215,116 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     ),
                                   ],
                                 ),
+                                isAndroid
+                                    ? Container()
+                                    : Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 20.0, 0.0, 10.0),
+                                        child: FFButtonWidget(
+                                          onPressed: () async {
+                                            logFirebaseEvent(
+                                                'LOGIN_PAGE_LOGIN_WITH_APPLE_BTN_ON_TAP');
+                                            logFirebaseEvent('Button_auth');
+                                            GoRouter.of(context)
+                                                .prepareAuthEvent();
+                                            final user = await authManager
+                                                .signInWithApple(context);
+                                            if (user == null) {
+                                              return;
+                                            }
+                                            if (valueOrDefault<bool>(
+                                                currentUserDocument?.isDeleted,
+                                                false)) {
+                                              logFirebaseEvent(
+                                                  'Button_show_snack_bar');
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'Account deleted.  Please try a different emai.',
+                                                    style: GoogleFonts.getFont(
+                                                      'Poppins',
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                    ),
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 4000),
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondary,
+                                                ),
+                                              );
+                                              logFirebaseEvent('Button_auth');
+                                              GoRouter.of(context)
+                                                  .prepareAuthEvent();
+                                              await authManager.signOut();
+                                              GoRouter.of(context)
+                                                  .clearRedirectLocation();
+                                            } else {
+                                              logFirebaseEvent(
+                                                  'Button_show_snack_bar');
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'Login successful',
+                                                    style: GoogleFonts.getFont(
+                                                      'Poppins',
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                    ),
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 4000),
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondary,
+                                                ),
+                                              );
+                                              logFirebaseEvent(
+                                                  'Button_navigate_to');
+
+                                              context.goNamedAuth(
+                                                  'Feed', context.mounted);
+                                            }
+                                          },
+                                          text: 'Login with Apple',
+                                          icon: Icon(
+                                            Icons.apple,
+                                            size: 15.0,
+                                          ),
+                                          options: FFButtonOptions(
+                                            width: double.infinity,
+                                            height: 50.0,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 8.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodySmall,
+                                            elevation: 0.0,
+                                            borderSide: BorderSide(
+                                              color: Colors.transparent,
+                                              width: 1.0,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(30.0),
+                                          ),
+                                        ),
+                                      ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 20.0, 0.0, 10.0),
+                                      0.0, 10.0, 0.0, 10.0),
                                   child: FFButtonWidget(
                                     onPressed: () async {
                                       logFirebaseEvent(

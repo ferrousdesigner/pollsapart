@@ -667,7 +667,7 @@ class _PollMetricWidgetState extends State<PollMetricWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   8.0, 0.0, 0.0, 0.0),
                                           child: Text(
-                                            'Report Abuse',
+                                            'Report',
                                             style: FlutterFlowTheme.of(context)
                                                 .labelSmall,
                                           ),

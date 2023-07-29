@@ -78,7 +78,7 @@ class _ReportAbuseWidgetState extends State<ReportAbuseWidget> {
                       Align(
                         alignment: AlignmentDirectional(-1.0, 0.0),
                         child: Text(
-                          'Report Abuse',
+                          'Report',
                           style: FlutterFlowTheme.of(context).displayLarge,
                         ),
                       ),

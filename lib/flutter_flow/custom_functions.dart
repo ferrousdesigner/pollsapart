@@ -31,8 +31,9 @@ bool? canShowPoll(
   bool userAllowsNSFW,
   bool isPollNSFW,
   bool isDeleted,
+  bool isByBlockedUser,
 ) {
-  if ((!userAllowsNSFW && isPollNSFW) || isDeleted) {
+  if ((!userAllowsNSFW && isPollNSFW) || isDeleted || isByBlockedUser) {
     return false;
   }
   return true;

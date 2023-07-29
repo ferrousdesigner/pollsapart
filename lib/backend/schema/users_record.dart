@@ -101,6 +101,11 @@ class UsersRecord extends FirestoreRecord {
   String get accountDeletionReason => _accountDeletionReason ?? '';
   bool hasAccountDeletionReason() => _accountDeletionReason != null;
 
+  // "blocked_users" field.
+  List<DocumentReference>? _blockedUsers;
+  List<DocumentReference> get blockedUsers => _blockedUsers ?? const [];
+  bool hasBlockedUsers() => _blockedUsers != null;
+
   void _initializeFields() {
     _email = snapshotData['email'] as String?;
     _displayName = snapshotData['display_name'] as String?;
@@ -120,6 +125,7 @@ class UsersRecord extends FirestoreRecord {
     _accountDeletionComment =
         snapshotData['account_deletion_comment'] as String?;
     _accountDeletionReason = snapshotData['account_deletion_reason'] as String?;
+    _blockedUsers = getDataList(snapshotData['blocked_users']);
   }
 
   static CollectionReference get collection =>
@@ -209,7 +215,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e1?.allowNsfw == e2?.allowNsfw &&
         e1?.isDeleted == e2?.isDeleted &&
         e1?.accountDeletionComment == e2?.accountDeletionComment &&
-        e1?.accountDeletionReason == e2?.accountDeletionReason;
+        e1?.accountDeletionReason == e2?.accountDeletionReason &&
+        listEquality.equals(e1?.blockedUsers, e2?.blockedUsers);
   }
 
   @override
@@ -230,7 +237,8 @@ class UsersRecordDocumentEquality implements Equality<UsersRecord> {
         e?.allowNsfw,
         e?.isDeleted,
         e?.accountDeletionComment,
-        e?.accountDeletionReason
+        e?.accountDeletionReason,
+        e?.blockedUsers
       ]);
 
   @override

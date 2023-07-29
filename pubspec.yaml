@@ -97,7 +97,7 @@ dependencies:
   sticky_headers: 0.3.0+2
   stream_transform: 2.1.0
   timeago: 3.2.2
-  universal_io: 2.2.0
+  universal_io: 2.2.2
   url_launcher: 6.1.10
   url_launcher_android: 6.0.27
   url_launcher_ios: 6.1.4
@@ -124,7 +124,7 @@ flutter_icons:
   android: true
   ios: true
   remove_alpha_ios: true
-  image_path: 'assets/images/app_launcher_icon.png'
+  image_path: 'assets/images/app_launcher_icon.jpg'
 
 
 # For information on the generic Dart part of this file, see the
