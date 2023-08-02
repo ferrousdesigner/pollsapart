@@ -296,7 +296,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                           text: 'Login with Apple',
                                           icon: Icon(
                                             Icons.apple,
-                                            size: 15.0,
+                                            size: 22.0,
                                           ),
                                           options: FFButtonOptions(
                                             width: double.infinity,
@@ -396,6 +396,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     text: 'Login with Google',
                                     icon: FaIcon(
                                       FontAwesomeIcons.google,
+                                      size: 18.0,
                                     ),
                                     options: FFButtonOptions(
                                       width: double.infinity,
