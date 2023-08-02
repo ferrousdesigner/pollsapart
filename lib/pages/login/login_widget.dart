@@ -88,8 +88,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                             borderRadius: BorderRadius.circular(30.0),
                             child: Image.asset(
                               'assets/images/Group_19.png',
-                              width: 300.0,
-                              height: 333.0,
+                              width: 317.0,
+                              height: 250.0,
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -105,8 +105,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                               children: [
                                 Text(
                                   'Welcome',
-                                  style:
-                                      FlutterFlowTheme.of(context).displayLarge,
+                                  style: FlutterFlowTheme.of(context)
+                                      .displayLarge
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                 ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -120,7 +124,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'By using our app you are agreeing to our',
+                                            'By using this app you are agreeing to our',
                                             style: FlutterFlowTheme.of(context)
                                                 .labelMedium,
                                           ),

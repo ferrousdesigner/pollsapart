@@ -63,13 +63,25 @@ class _AppBarWidgetState extends State<AppBarWidget> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image.asset(
-                'assets/images/Logo.png',
-                width: 35.0,
-                height: 30.0,
-                fit: BoxFit.contain,
+            InkWell(
+              splashColor: Colors.transparent,
+              focusColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              onTap: () async {
+                logFirebaseEvent('APP_BAR_COMP_Image_r0spltxa_ON_TAP');
+                logFirebaseEvent('Image_navigate_to');
+
+                context.pushNamed('Feed');
+              },
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: Image.asset(
+                  'assets/images/Logo.png',
+                  width: 35.0,
+                  height: 30.0,
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
             Row(
