@@ -1,4 +1,3 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -137,9 +136,10 @@ class _SplashWidgetState extends State<SplashWidget>
                                 .titleMedium
                                 .override(
                                   fontFamily: 'Poppins',
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  fontSize: 16.0,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.w500,
                                 ),
                           ),
                         ),
@@ -159,63 +159,12 @@ class _SplashWidgetState extends State<SplashWidget>
                               child: FFButtonWidget(
                                 onPressed: () async {
                                   logFirebaseEvent(
-                                      'SPLASH_PAGE_LOGIN_WITH_GOOGLE_BTN_ON_TAP');
-                                  logFirebaseEvent('Button_auth');
-                                  GoRouter.of(context).prepareAuthEvent();
-                                  final user = await authManager
-                                      .signInWithGoogle(context);
-                                  if (user == null) {
-                                    return;
-                                  }
-                                  if (valueOrDefault<bool>(
-                                      currentUserDocument?.isDeleted, false)) {
-                                    logFirebaseEvent('Button_show_snack_bar');
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          'Account deleted.  Please try a different emai.',
-                                          style: GoogleFonts.getFont(
-                                            'Poppins',
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
-                                        ),
-                                        duration: Duration(milliseconds: 4000),
-                                        backgroundColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondary,
-                                      ),
-                                    );
-                                    logFirebaseEvent('Button_auth');
-                                    GoRouter.of(context).prepareAuthEvent();
-                                    await authManager.signOut();
-                                    GoRouter.of(context)
-                                        .clearRedirectLocation();
-                                  } else {
-                                    logFirebaseEvent('Button_show_snack_bar');
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          'Login successful',
-                                          style: GoogleFonts.getFont(
-                                            'Poppins',
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
-                                        ),
-                                        duration: Duration(milliseconds: 4000),
-                                        backgroundColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondary,
-                                      ),
-                                    );
-                                    logFirebaseEvent('Button_navigate_to');
+                                      'SPLASH_PAGE_GET_STARTED_BTN_ON_TAP');
+                                  logFirebaseEvent('Button_navigate_to');
 
-                                    context.goNamedAuth(
-                                        'Feed', context.mounted);
-                                  }
+                                  context.pushNamed('Login');
                                 },
-                                text: 'Login with Google',
+                                text: 'Get Started',
                                 options: FFButtonOptions(
                                   width: double.infinity,
                                   height: 50.0,
