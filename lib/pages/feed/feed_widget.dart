@@ -1,6 +1,7 @@
 import '/components/app_bar_widget.dart';
 import '/components/newest_polls_widget.dart';
 import '/components/trending_polls_widget.dart';
+import '/flutter_flow/flutter_flow_ad_banner.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -142,6 +143,12 @@ class _FeedWidgetState extends State<FeedWidget> {
                     ],
                   ),
                 ),
+              ),
+              FlutterFlowAdBanner(
+                width: MediaQuery.sizeOf(context).width * 1.0,
+                height: 50.0,
+                showsTestAd: false,
+                iOSAdUnitID: 'ca-app-pub-6283076109028810/9726106035',
               ),
             ],
           ),

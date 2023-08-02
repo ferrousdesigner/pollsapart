@@ -89,7 +89,7 @@ class _AppBarWidgetState extends State<AppBarWidget> {
               children: [
                 AuthUserStreamWidget(
                   builder: (context) => Switch.adaptive(
-                    value: _model.switchValue ??= valueOrDefault<bool>(
+                    value: _model.switchValue ??= !valueOrDefault<bool>(
                         currentUserDocument?.allowNsfw, false),
                     onChanged: (newValue) async {
                       setState(() => _model.switchValue = newValue!);
@@ -122,12 +122,21 @@ class _AppBarWidgetState extends State<AppBarWidget> {
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
-                  child: Text(
-                    'Safe Feed',
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Poppins',
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                        ),
+                  child: AuthUserStreamWidget(
+                    builder: (context) => Text(
+                      valueOrDefault<String>(
+                        valueOrDefault<bool>(
+                                currentUserDocument?.allowNsfw, false)
+                            ? 'Unfiltered'
+                            : 'Safe Feed',
+                        'Safe Feed',
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Poppins',
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            fontSize: 12.0,
+                          ),
+                    ),
                   ),
                 ),
               ],
