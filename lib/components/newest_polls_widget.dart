@@ -99,8 +99,7 @@ class _NewestPollsWidgetState extends State<NewestPollsWidget> {
                             currentUserDocument?.allowNsfw, false),
                         listViewPollsRecord.isNsfw,
                         listViewPollsRecord.isDeleted,
-                        (currentUserDocument?.blockedUsers?.toList() ?? [])
-                            .contains(listViewPollsRecord.createdBy),
+                        false,
                         (currentUserDocument?.pollsBanned?.toList() ?? [])
                             .contains(listViewPollsRecord.reference),
                         listViewPollsRecord.reportAbusesCount >= 3) ??
