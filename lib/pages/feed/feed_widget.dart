@@ -147,7 +147,7 @@ class _FeedWidgetState extends State<FeedWidget> {
               FlutterFlowAdBanner(
                 width: MediaQuery.sizeOf(context).width * 1.0,
                 height: 50.0,
-                showsTestAd: false,
+                showsTestAd: true,
                 iOSAdUnitID: 'ca-app-pub-6283076109028810/9726106035',
               ),
             ],
