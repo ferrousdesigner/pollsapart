@@ -100,7 +100,10 @@ class _NewestPollsWidgetState extends State<NewestPollsWidget> {
                         listViewPollsRecord.isNsfw,
                         listViewPollsRecord.isDeleted,
                         (currentUserDocument?.blockedUsers?.toList() ?? [])
-                            .contains(listViewPollsRecord.createdBy)) ??
+                            .contains(listViewPollsRecord.createdBy),
+                        (currentUserDocument?.pollsBanned?.toList() ?? [])
+                            .contains(listViewPollsRecord.reference),
+                        listViewPollsRecord.reportAbusesCount >= 3) ??
                     true,
                 child: AuthUserStreamWidget(
                   builder: (context) => InkWell(
