@@ -133,7 +133,7 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                             hint: 'Example: iOS',
                                             label: 'Option A',
                                             value: 'Yes',
-                                            isDisabled: true,
+                                            isDisabled: false,
                                           ),
                                         ),
                                       ),
@@ -308,7 +308,7 @@ class _AddPollWidgetState extends State<AddPollWidget> {
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             4.0, 4.0, 4.0, 4.0),
                                         child: Text(
-                                          'Please enable this if the poll contains something sexual for not safe for work',
+                                          'Please enable this if the poll contains something sexual or content is objectionalble i.e. not safe for work',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyLarge,
                                         )),

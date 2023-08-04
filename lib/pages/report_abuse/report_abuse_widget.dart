@@ -146,8 +146,8 @@ class _ReportAbuseWidgetState extends State<ReportAbuseWidget> {
                         ),
                       ),
                       FFButtonWidget(
-                        onPressed: _model.dropDownValue != null &&
-                                _model.dropDownValue != ''
+                        onPressed: _model.dropDownValue == null ||
+                                _model.dropDownValue == ''
                             ? null
                             : () async {
                                 logFirebaseEvent(
